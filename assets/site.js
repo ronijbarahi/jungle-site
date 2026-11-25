@@ -103,7 +103,7 @@ document.body.insertAdjacentHTML('afterbegin', `
   <button class="menu" aria-expanded="false" aria-controls="nav-links">Menu</button>
   <div class="links" id="nav-links">
     <a href="work.html" data-p="work">Work</a><div class="has-mega"><button class="mega-btn" data-p="services" aria-expanded="false" aria-controls="mega">Services <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>${MEGA}</div><div class="has-mega"><button class="mega-btn" data-p="why" aria-expanded="false" aria-controls="mega-why">Why us <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>${WHY_MENU}</div>
-    <a href="clearing.html" data-p="clearing">The Clearing</a><a href="contact.html" data-p="contact">Contact</a><a class="btn" href="contact.html">Start a project</a></div></nav>`);
+    <a href="contact.html" data-p="contact">Contact</a><a class="btn" href="contact.html">Start a project</a></div></nav>`);
 document.body.insertAdjacentHTML('beforeend', `
 <footer class="cta">${page === 'contact' || page === 'home' ? '' : `
   <p class="cta-line reveal">Good ideas deserve good execution<span class="dot">.</span></p>
@@ -111,7 +111,7 @@ document.body.insertAdjacentHTML('beforeend', `
   <a class="btn btn-2" href="mailto:ronij.jungle@gmail.com">ronij.jungle@gmail.com</a></div>`}
   <div class="foot">
     <div><img class="foot-logo" src="assets/logo-dark.svg" alt="Jungle." width="454" height="167"><small>A design-led creative agency.<br>Design, motion, digital, content and AI services.</small></div>
-    <div><span class="label">Site</span><a href="work.html">Work</a><a href="services.html">Services</a><a href="clearing.html">The Clearing</a><a href="contact.html">Contact</a></div>
+    <div><span class="label">Site</span><a href="work.html">Work</a><a href="services.html">Services</a><a href="contact.html">Contact</a></div>
     <div><span class="label">Follow</span><a href="https://instagram.com/jungledesigns">Instagram</a><a href="https://designbyjungle.com">designbyjungle.com</a></div>
     <div><span class="label">Say hello</span><a href="mailto:ronij.jungle@gmail.com">ronij.jungle@gmail.com</a><small>© 2026 Jungle.</small></div>
   </div></footer>`);
@@ -270,19 +270,6 @@ if (page === 'home') {
   // Wins: real results from the work, two rows drifting opposite ways (no invented quotes)
   const win = p => `<a class="win" href="project.html?p=${p.slug}"><div class="who">${p.img ? img(p.img) : `<span class="art ${p.art}" style="position:relative;width:44px;height:44px;border-radius:50%;flex:none;overflow:hidden"></span>`}<div><b>${p.title}</b><span>${p.client.split(',')[0]}</span></div></div><p>${p.result}</p><span class="lnk">${sector(p)}</span></a>`;
   const wr = real.map(win).join(''); $('#wrow1').innerHTML = wr + wr;
-
-  // Bento: typed brief, stepping process, brand collage, tools hub
-  const typed = $('#typed'), lines = ['Can you make 12 matchday posts by Friday?', 'We need a 15s reel for the tour launch.', 'Resize our campaign for every format.'];
-  let li = 0, ci = 0;
-  const type = () => { const l = lines[li]; typed.textContent = l.slice(0, ++ci);
-    if (ci < l.length) setTimeout(type, 45); else setTimeout(() => { ci = 0; li = (li + 1) % lines.length; type(); }, 2200); };
-  reduce ? typed.textContent = lines[0] : type();
-  const st = $$('#steps2 li'); let k = 0;
-  const step = () => { st.forEach((x, i) => x.classList.toggle('on', i <= k)); k = (k + 1) % (st.length + 1); };
-  step(); if (!reduce) setInterval(step, 1100);
-  $('#collage').innerHTML = ['janakpur-bolts', 'lumbini-all-stars', 'husqvarna'].map(f => `<img src="assets/clients/${f}.png" alt="" loading="lazy">`).join('');
-  $('#tj').innerHTML = `<span style="display:flex;align-items:flex-end;gap:3px;width:46%">${LOGO_NAV.split('<span')[0].replace('class="lj"', 'style="width:72%;height:auto;color:#fff"')}<i style="width:24%;aspect-ratio:1;border-radius:50%;background:var(--green);margin-bottom:6%"></i></span>`;
-
 }
 
 if (page === 'services') {
@@ -403,7 +390,7 @@ if (page === 'clearing') {
   const a = new URLSearchParams(location.search).get('a'), n = NOTES.find(x => x.slug === a);
   if (n) {
     document.title = `${n.title} | The Clearing | Jungle.`;
-    $('#clr').innerHTML = `<article class="art-page"><header class="ph" style="max-width:900px"><p class="sv-crumb"><a href="clearing.html">The Clearing</a> / ${n.tag}</p><h1 class="x words">${n.title}.</h1><p class="lead">${n.dek}</p><p class="nmeta" style="margin-top:12px">${fmtDate(n.date)} · ${n.mins} min read</p></header>
+    $('#clr').innerHTML = `<article class="art-page"><header class="ph" style="max-width:900px"><p class="sv-crumb"> / ${n.tag}</p><h1 class="x words">${n.title}.</h1><p class="lead">${n.dek}</p><p class="nmeta" style="margin-top:12px">${fmtDate(n.date)} · ${n.mins} min read</p></header>
       <figure class="art-hero"><img src="${n.img}" alt=""></figure>
       <div class="inv pad sec"><div class="prose">${n.body.map(p => `<p>${p}</p>`).join('')}<p><a class="btn" href="contact.html">Start a project <span aria-hidden="true">→</span></a></p></div></div>
       <section class="pad sec"><h2 class="x" style="font-size:var(--t-head)">Keep reading.</h2><div class="notes-grid mt">${NOTES.filter(x => x !== n).slice(0, 3).map(x => noteCard(x)).join('')}</div></section></article>`;
