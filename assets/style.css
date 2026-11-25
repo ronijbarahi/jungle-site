@@ -2,17 +2,11 @@
    Colour  Ink #1A1A1A leads (60) · Paper #FFF gives space (30) · Jungle Green #61FE87 is the spark (10)
            Smoke #9A9A9A = secondary text on Ink · Stone #6B6B6B = secondary on Paper · Mist #ECECEC = panels on Paper
            Green is never text, icons or thin lines on Paper (1.3:1).
-   Type    PP Agrandir Regular = headlines (lh 1.0-1.1) · Narrow = one voice line per layout · Text Bold = numbers
-           Aileron Regular = body, captions, labels, UI · Light = intro. No bold Aileron: emphasis is Agrandir Text Bold.
+   Type    General Sans (variable, upright only) · all text, labels and numbers · no italics
    Devices the 10° slant (panels, wipes) · the full stop ending every headline · one 10°-tilted sticker per layout
    Motion  ease out, settle fast, 0.3-0.6s · the dot lands with one bounce · type builds word by word
    ──────────────────────────────────────────────────────────────── */
-@font-face{font-family:"PP Agrandir";src:url(fonts/ApfelGrotezk-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
-@font-face{font-family:"PP Agrandir";src:url(fonts/ApfelGrotezk-Mittel.woff2) format("woff2");font-weight:500;font-display:swap}
-@font-face{font-family:"PP Agrandir Narrow";src:url(fonts/Agrandir-Narrow.otf) format("opentype");font-weight:400;font-display:swap}
-@font-face{font-family:"PP Agrandir Text";src:url(fonts/Agrandir-TextBold.otf) format("opentype");font-weight:700;font-display:swap}
-@font-face{font-family:"Aileron";src:url(fonts/Aileron-Regular.ttf) format("truetype");font-weight:400;font-display:swap}
-@font-face{font-family:"Aileron";src:url(fonts/Aileron-Light.ttf) format("truetype");font-weight:300;font-display:swap}
+@font-face{font-family:"General Sans";src:url(fonts/GeneralSans-Variable.woff2) format("woff2");font-weight:200 700;font-style:normal;font-display:swap}
 
 :root{
   --ink:#1A1A1A; --paper:#FFFFFF; --green:#61FE87;
@@ -32,7 +26,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--ink);-webkit-text-size-adjust:100%;scroll-padding-top:96px;scrollbar-color:#3a3a3a var(--ink)}
-body{background:var(--ink);color:var(--paper);font:400 var(--t-body)/1.55 Aileron,system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{background:var(--ink);color:var(--paper);font:400 var(--t-body)/1.55 "General Sans",system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 [hidden]{display:none!important}
@@ -41,12 +35,12 @@ img{max-width:100%;display:block}
 .inv :focus-visible,.cta :focus-visible{outline-color:var(--ink)}
 
 /* type roles */
-.x{font-family:"PP Agrandir",sans-serif;font-weight:400;line-height:1.04;letter-spacing:-.025em;text-wrap:balance}
-.w{font-family:"PP Agrandir",sans-serif;font-weight:400;line-height:1.1;letter-spacing:-.01em}
-.v,.out{font-family:"PP Agrandir Narrow",sans-serif;font-weight:400;line-height:1.1}
-.n{font-family:"PP Agrandir Text",sans-serif;font-weight:700;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-body[data-page="services"] :is(.x,.w),body[data-page="service"] :is(.x,.w){font-family:"PP Agrandir Narrow",sans-serif}
-.label{font:400 var(--t-label)/1.4 Aileron,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.x{font-family:"General Sans",sans-serif;font-weight:400;line-height:1.04;letter-spacing:-.025em;text-wrap:balance}
+.w{font-family:"General Sans",sans-serif;font-weight:400;line-height:1.1;letter-spacing:-.01em}
+.v,.out{font-family:"General Sans",sans-serif;font-weight:400;line-height:1.1}
+.n{font-family:"General Sans",sans-serif;font-weight:700;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+body[data-page="services"] :is(.x,.w),body[data-page="service"] :is(.x,.w){font-family:"General Sans",sans-serif}
+.label{font:400 var(--t-label)/1.4 "General Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase}
 .lead{font-size:var(--t-lead);line-height:1.45;color:var(--smoke);max-width:46ch}
 .inv .lead{color:var(--stone)}
 .muted{color:var(--smoke)} .inv .muted{color:var(--stone)}
@@ -72,17 +66,17 @@ body[data-page="services"] :is(.x,.w),body[data-page="service"] :is(.x,.w){font-
 
 /* the sticker: one per layout */
 .sticker{position:absolute;z-index:3;display:inline-block;padding:10px 18px;border-radius:99px;background:var(--ink);color:var(--green);
-  font:400 15px/1 Aileron,sans-serif;white-space:nowrap;transform:rotate(-10deg);box-shadow:0 10px 24px -10px rgba(0,0,0,.6)}
+  font:400 15px/1 "General Sans",sans-serif;white-space:nowrap;transform:rotate(-10deg);box-shadow:0 10px 24px -10px rgba(0,0,0,.6)}
 .sticker.g{background:var(--green);color:var(--ink)}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 28px;border:0;border-radius:99px;background:var(--green);color:var(--ink);
-  font:400 16px/1 Aileron,sans-serif;cursor:pointer;white-space:nowrap;transition:transform .3s var(--ease),gap .3s var(--ease)}
+  font:400 16px/1 "General Sans",sans-serif;cursor:pointer;white-space:nowrap;transition:transform .3s var(--ease),gap .3s var(--ease)}
 .btn:hover{gap:20px}
 .btn:active{transform:scale(.97)}
 .inv .btn{background:var(--ink);color:var(--paper)}
 .chip{position:relative;display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 20px;border:1px solid #444;border-radius:99px;background:none;color:inherit;
-  font:400 15px/1 Aileron,sans-serif;cursor:pointer;white-space:nowrap;transition:background .3s var(--ease),color .3s var(--ease),border-color .3s}
+  font:400 15px/1 "General Sans",sans-serif;cursor:pointer;white-space:nowrap;transition:background .3s var(--ease),color .3s var(--ease),border-color .3s}
 .chip:hover{border-color:var(--paper)}
 .chip.on{background:var(--paper);color:var(--ink);border-color:var(--paper)}
 .inv .chip{border-color:#d4d4d4} .inv .chip:hover{border-color:var(--ink)} .inv .chip.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
@@ -112,13 +106,13 @@ nav .links a:hover,nav .links a.cur{color:var(--paper)}
 nav .links a.cur::before{content:"";position:absolute;left:-12px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:var(--green)}
 nav .links .btn{height:44px;padding:0 20px;font-size:15px;color:var(--ink)}
 nav .links .btn::before{display:none}
-nav .menu{display:none;background:none;border:0;color:var(--paper);font:400 15px Aileron,sans-serif;cursor:pointer;height:44px;padding:0 4px}
+nav .menu{display:none;background:none;border:0;color:var(--paper);font:400 15px "General Sans",sans-serif;cursor:pointer;height:44px;padding:0 4px}
 @media(max-width:760px){
   nav .links{position:fixed;top:72px;left:0;right:0;height:calc(100dvh - 72px);flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:4px;padding:32px var(--gut);background:var(--ink);
     transform:translateY(-120%);visibility:hidden;transition:transform .5s var(--ease),visibility 0s .5s}
-  nav .links a{font:400 clamp(40px,12vw,56px)/1.15 "PP Agrandir",sans-serif;color:var(--paper)}
+  nav .links a{font:400 clamp(40px,12vw,56px)/1.15 "General Sans",sans-serif;color:var(--paper)}
   nav .links a.cur::before{display:none}
-  nav .links .btn{margin-top:24px;font:400 16px Aileron,sans-serif;height:56px}
+  nav .links .btn{margin-top:24px;font:400 16px "General Sans",sans-serif;height:56px}
   nav.open .links{transform:none;visibility:visible;transition:transform .5s var(--ease)}
   nav .menu{display:block}
 }
@@ -143,7 +137,7 @@ nav .menu{display:none;background:none;border:0;color:var(--paper);font:400 15px
 .card .meta .n{font-size:15px;color:var(--smoke)}
 /* slant wipe on hover: a green panel rises along 10° */
 .card .thumb::after{content:"View project";position:absolute;inset:auto 0 0 0;height:72px;display:flex;align-items:flex-end;padding:0 20px 18px;
-  background:var(--green);color:var(--ink);font:400 15px Aileron,sans-serif;clip-path:polygon(0 100%,100% 100%,100% 100%,0 100%);transition:clip-path .45s var(--ease)}
+  background:var(--green);color:var(--ink);font:400 15px "General Sans",sans-serif;clip-path:polygon(0 100%,100% 100%,100% 100%,0 100%);transition:clip-path .45s var(--ease)}
 .card:hover .thumb::after,.card:focus-visible .thumb::after{clip-path:polygon(0 26px,100% 0,100% 100%,0 100%)}
 
 /* list view */
@@ -162,14 +156,14 @@ nav .menu{display:none;background:none;border:0;color:var(--paper);font:400 15px
 /* artwork: real images, or typographic placeholders in brand colours */
 .art{position:absolute;inset:0;overflow:hidden}
 .art img{width:100%;height:100%;object-fit:cover;object-position:center top}
-.art b{font-family:"PP Agrandir",sans-serif;font-weight:400;letter-spacing:-.03em;line-height:.92}
+.art b{font-family:"General Sans",sans-serif;font-weight:400;letter-spacing:-.03em;line-height:.92}
 .a1,.a4,.a7{background:var(--paper);color:var(--ink)} .a2,.a5,.a8{background:var(--ink-2);color:var(--paper)} .a3,.a6,.a9{background:var(--green);color:var(--ink)}
 .art[class*=" a"] b{position:absolute;left:8%;bottom:8%;right:8%;font-size:clamp(40px,5vw,88px)}
 .a6 b{white-space:nowrap;font-size:clamp(32px,3.4vw,56px)!important;overflow:hidden}
 .a6 .out{font-family:inherit}
 
 /* statement */
-.say{font:400 clamp(28px,3.6vw,60px)/1.12 "PP Agrandir",sans-serif;letter-spacing:-.02em;max-width:24ch;text-wrap:balance}
+.say{font:400 clamp(28px,3.6vw,60px)/1.12 "General Sans",sans-serif;letter-spacing:-.02em;max-width:24ch;text-wrap:balance}
 
 /* two-col blocks */
 .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:48px;padding-block:48px}
@@ -196,7 +190,7 @@ nav .menu{display:none;background:none;border:0;color:var(--paper);font:400 15px
 /* FAQ */
 details{border-top:1px solid var(--mist);padding:24px 0}
 details:last-child{border-bottom:1px solid var(--mist)}
-summary{list-style:none;display:flex;justify-content:space-between;gap:24px;cursor:pointer;font:400 clamp(20px,1.8vw,30px)/1.2 "PP Agrandir",sans-serif;letter-spacing:-.01em}
+summary{list-style:none;display:flex;justify-content:space-between;gap:24px;cursor:pointer;font:400 clamp(20px,1.8vw,30px)/1.2 "General Sans",sans-serif;letter-spacing:-.01em}
 summary::-webkit-details-marker{display:none}
 summary::after{content:"";flex:none;width:18px;height:18px;margin-top:.25em;background:linear-gradient(currentColor,currentColor) center/100% 2px no-repeat,linear-gradient(currentColor,currentColor) center/2px 100% no-repeat;transition:transform .35s var(--ease)}
 details[open] summary::after{transform:rotate(45deg)}
@@ -210,7 +204,7 @@ details p{max-width:62ch;margin-top:14px;color:var(--stone)}
 .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:40px var(--gut);font-size:15px}
 .facts span{display:block;margin-bottom:8px;color:var(--smoke)}
 @media(max-width:760px){.facts{grid-template-columns:1fr 1fr}}
-.quote{font:400 clamp(24px,2.8vw,44px)/1.18 "PP Agrandir",sans-serif;letter-spacing:-.015em;max-width:30ch;text-wrap:pretty}
+.quote{font:400 clamp(24px,2.8vw,44px)/1.18 "General Sans",sans-serif;letter-spacing:-.015em;max-width:30ch;text-wrap:pretty}
 .idea{font-size:var(--t-lead);line-height:1.45;max-width:52ch}
 .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;padding:0 var(--gut)}
 .gallery .g{position:relative;overflow:hidden;border-radius:var(--r)}
@@ -233,7 +227,7 @@ details p{max-width:62ch;margin-top:14px;color:var(--stone)}
 /* form */
 form{display:grid;gap:40px;max-width:1100px}
 .field label,.field>.label{display:block;margin-bottom:10px;color:var(--stone)}
-.field input,.field textarea,.field select{width:100%;background:none;border:0;border-bottom:1px solid #cfcfcf;color:var(--ink);font:400 clamp(20px,1.8vw,28px)/1.3 Aileron,sans-serif;padding:10px 0;outline:none;border-radius:0;transition:border-color .3s}
+.field input,.field textarea,.field select{width:100%;background:none;border:0;border-bottom:1px solid #cfcfcf;color:var(--ink);font:400 clamp(20px,1.8vw,28px)/1.3 "General Sans",sans-serif;padding:10px 0;outline:none;border-radius:0;transition:border-color .3s}
 .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--ink)}
 .field textarea{min-height:140px;resize:vertical}
 .field input::placeholder,.field textarea::placeholder{color:#8a8a8a}
@@ -246,7 +240,7 @@ form{display:grid;gap:40px;max-width:1100px}
 
 /* footer */
 .cta{background:var(--paper);color:var(--ink);padding:clamp(88px,10vw,160px) var(--gut) 40px}
-.cta-line{font:400 var(--t-title)/1.02 "PP Agrandir",sans-serif;letter-spacing:-.025em;max-width:13ch;text-wrap:balance}
+.cta-line{font:400 var(--t-title)/1.02 "General Sans",sans-serif;letter-spacing:-.025em;max-width:13ch;text-wrap:balance}
 .cta-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:40px}
 .cta .btn{background:var(--ink);color:var(--paper)}
 .cta .chip{border-color:#d4d4d4} .cta .chip:hover{border-color:var(--ink)}
@@ -301,7 +295,7 @@ h1,h2,h3{scroll-margin-top:96px}
   opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .3s var(--ease),transform .3s var(--ease),visibility 0s .3s;max-height:calc(100dvh - 72px);overflow:auto}
 .has-mega.open .mega{opacity:1;visibility:visible;transform:none;transition:opacity .3s var(--ease),transform .3s var(--ease)}
 .mega-in{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,56px);padding:32px var(--gut) 40px;max-width:1600px;margin:0 auto}
-.mh{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:10px;font:400 17px/1 "PP Agrandir",sans-serif;margin-bottom:14px;transition:transform .3s var(--ease)}
+.mh{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:10px;font:400 17px/1 "General Sans",sans-serif;margin-bottom:14px;transition:transform .3s var(--ease)}
 .mh:hover{transform:translateY(-2px)}
 .mh-g{background:var(--green);color:var(--ink)} .mh-i{background:var(--ink);color:var(--green)} .mh-m{background:#262626;color:var(--paper)} .mh-p{background:var(--mist);color:var(--ink)}
 .mcol ul{list-style:none;margin-bottom:28px}
@@ -322,7 +316,7 @@ nav .mega .mcol li a:hover{color:var(--ink)}
 nav.mega-open{background:var(--ink)}
 @media(max-width:760px){
   .has-mega{width:100%}
-  nav .links .mega-btn{font:400 clamp(40px,12vw,56px)/1.15 "PP Agrandir",sans-serif;color:var(--paper)}
+  nav .links .mega-btn{font:400 clamp(40px,12vw,56px)/1.15 "General Sans",sans-serif;color:var(--paper)}
   .mega-btn svg{width:28px;height:28px}
   .mega{position:static;max-height:0;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;background:none;color:var(--paper);overflow:hidden;transition:max-height .5s var(--ease)}
   .has-mega.open .mega{max-height:2000px}
@@ -392,7 +386,7 @@ body[data-page=work] .wk-top{padding-top:96px;background:var(--paper);color:var(
 .reel span:hover img{transform:scale(1.08)}
 .reel .r0{grid-row:span 2} .reel .r3{grid-column:span 2}
 @keyframes rin{from{opacity:0;transform:scale(.94)}}
-.wk-state{max-width:34ch;margin:clamp(64px,8vw,120px) auto;text-align:center;font:400 clamp(22px,2.4vw,38px)/1.25 "PP Agrandir",sans-serif;letter-spacing:-.015em}
+.wk-state{max-width:34ch;margin:clamp(64px,8vw,120px) auto;text-align:center;font:400 clamp(22px,2.4vw,38px)/1.25 "General Sans",sans-serif;letter-spacing:-.015em}
 .wk-trust{text-align:center;color:var(--stone)}
 body[data-page=work] .logos{padding:28px 0 clamp(56px,7vw,96px);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);overflow:hidden}
 body[data-page=work] .logo-track{display:flex;gap:40px;width:max-content;animation:slide 40s linear infinite}
@@ -405,7 +399,7 @@ body[data-page=work] .chip{border-color:#d4d4d4;color:var(--ink)} body[data-page
 .tile2::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(transparent 55%,rgba(10,10,10,.75))}
 .t2-cap{position:absolute;left:clamp(20px,3vw,44px);bottom:clamp(20px,3vw,40px);right:20px}
 .t2-cap h2{font-size:clamp(26px,3vw,52px);display:flex;align-items:center;gap:12px}
-.t2-cap h2 span{font-family:Aileron,sans-serif;font-size:.6em;transition:transform .4s var(--bounce)}
+.t2-cap h2 span{font-family:"General Sans",sans-serif;font-size:.6em;transition:transform .4s var(--bounce)}
 .tile2:hover .t2-cap h2 span{transform:rotate(90deg);color:var(--green)}
 .t2-cap p{font-size:14px;opacity:.85;margin-top:8px}
 @media(max-width:760px){.tiles{grid-template-columns:1fr}.reel{grid-template-columns:repeat(3,1fr);height:52vh}.reel .r3{grid-column:auto}.reel span:nth-child(n+7){display:none}}
@@ -483,8 +477,8 @@ nav .links a.cur:hover::after,nav .mega-btn.cur:hover::after{opacity:1}
    .btn        primary   : filled. Green on Ink · Ink on Paper/Green
    .btn.btn-2  secondary : outline in the surface's text colour
    .chip                 : filters and tags only (never a call to action)
-   One size everywhere: 44px tall, 20px sides, 15px Aileron.            */
-.btn,.btn-2,nav .links .btn{height:44px!important;padding:0 20px!important;gap:10px!important;font:400 15px/1 Aileron,sans-serif!important;border-radius:99px!important;white-space:nowrap}
+   One size everywhere: 44px tall, 20px sides, 15px General Sans.            */
+.btn,.btn-2,nav .links .btn{height:44px!important;padding:0 20px!important;gap:10px!important;font:400 15px/1 "General Sans",sans-serif!important;border-radius:99px!important;white-space:nowrap}
 .btn:hover{gap:16px!important}
 .btn{background:var(--green);color:var(--ink);border:1px solid var(--green)}
 .inv .btn,.cta .btn,.on-green .btn,body[data-page=work] .wk-top .btn{background:var(--ink);color:var(--paper);border-color:var(--ink)}
@@ -498,3 +492,6 @@ nav .links .btn{background:var(--green)!important;color:var(--ink)!important;bor
 .chip{height:38px;padding:0 16px;font-size:14px}
 .sr-btn{width:44px!important;height:44px!important}
 @media(max-width:760px){nav .links .btn{height:48px!important}}
+
+/* no italics anywhere */
+*,*::before,*::after{font-style:normal!important;font-synthesis-style:none}
