@@ -110,7 +110,7 @@ document.body.insertAdjacentHTML('beforeend', `
   <div class="cta-row"><a class="btn" href="contact.html">Start a project <span aria-hidden="true">→</span></a>
   <a class="btn btn-2" href="mailto:ronij.jungle@gmail.com">ronij.jungle@gmail.com</a></div>`}
   <div class="foot">
-    <div><img class="foot-logo" src="assets/logo-dark.svg" alt="Jungle." width="454" height="167"><small>A design-led creative agency.<br>Design, motion, digital, content and AI services.</small></div>
+    <div><img class="foot-logo" src="assets/logo-light.svg" alt="Jungle." width="454" height="167"><small>A design-led creative agency.<br>Design, motion, digital, content and AI services.</small></div>
     <div><span class="label">Site</span><a href="work.html">Work</a><a href="services.html">Services</a><a href="contact.html">Contact</a></div>
     <div><span class="label">Follow</span><a href="https://instagram.com/jungledesigns">Instagram</a><a href="https://designbyjungle.com">designbyjungle.com</a></div>
     <div><span class="label">Say hello</span><a href="mailto:ronij.jungle@gmail.com">ronij.jungle@gmail.com</a><small>© 2026 Jungle.</small></div>
@@ -119,8 +119,6 @@ document.body.insertAdjacentHTML('beforeend', `
 $$(`nav [data-p="${page}"]`).forEach(a => { a.classList.add('cur'); a.setAttribute('aria-current', 'page'); });
 const nav = $('nav'), menu = $('nav .menu');
 menu.onclick = () => { const o = nav.classList.toggle('open'); menu.setAttribute('aria-expanded', o); menu.textContent = o ? 'Close' : 'Menu'; };
-// glass highlight follows the pointer across the bar
-nav.addEventListener('pointermove', e => { const r = nav.getBoundingClientRect(); nav.style.setProperty('--gx', (e.clientX - r.left) + 'px'); });
 const onScroll = () => nav.classList.toggle('scrolled', scrollY > 40);
 addEventListener('scroll', onScroll, { passive: true }); onScroll();
 { // mega menus: hover on desktop, click/tap anywhere, Esc to close
@@ -144,7 +142,7 @@ $$('h1.x, h2.x, .next .x').forEach(h => {
 // Type builds word by word (hero titles only: one authored moment per page).
 $$('.words').forEach(h => {
   let i = 0;
-  h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|([^\s<]+)/g, (m, dot, w) => dot ? dot : `<span class="wd" style="--i:${i++}">${w}</span>`);
+  h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|(<span class="hl">.*?<\/span>)|([^\s<]+)/g, (m, dot, hl, w) => dot ? dot : `<span class="wd" style="--i:${i++}">${hl || w}</span>`);
   h.classList.add('rise');
 });
 
@@ -277,7 +275,7 @@ if (page === 'services') {
   $('#disciplines').innerHTML = DISCIPLINES.map(([t, v, list], i) => { const key = t.split(' ')[0].toLowerCase();
     return `<section class="split rule reveal" id="${key}" style="padding-block:clamp(56px,7vw,112px);align-items:start">
       <div class="card"><div class="thumb"><div class="art"><img src="assets/stock/s-${key}.jpg" alt="" width="900" height="1125" loading="lazy"></div></div></div>
-      <div><h2 class="x" style="font-size:var(--t-head)">${t}.</h2><p class="v" style="font-size:var(--t-voice);color:var(--green);margin-top:8px">${v}</p>
+      <div><h2 class="x" style="font-size:var(--t-head)">${t}.</h2><p class="v" style="font-size:var(--t-voice);color:var(--fg2);margin-top:8px">${v}</p>
       <div class="tags mt">${list.map(x => `<a href="service.html?s=${slugify(x)}">${x}</a>`).join('')}</div></div></section>`; }).join('');
   // headline dots for the injected h2s
   $$('#disciplines h2.x').forEach(h => h.innerHTML = h.innerHTML.replace(/\.$/, '<span class="dot">.</span>'));
@@ -309,7 +307,7 @@ if (page === 'service') {
   ${others.length ? `<section class="pad sec" style="padding-top:0"><h2 class="x reveal" style="font-size:var(--t-head)">More in ${grp[0]}.</h2>
     <div class="tags mt">${others.map(x => `<a href="service.html?s=${slugify(x)}">${x}</a>`).join('')}</div></section>` : ''}`;
   $$('#svc h1.x, #svc h2.x').forEach(h => { if (!h.querySelector('.dot')) h.innerHTML = h.innerHTML.replace(/\.?$/, '<span class="dot">.</span>'); });
-  $$('#svc .words').forEach(h => { let k = 0; h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|([^\s<]+)/g, (m, dd, w) => dd || `<span class="wd" style="--i:${k++}">${w}</span>`); h.classList.add('rise'); });
+  $$('#svc .words').forEach(h => { let k = 0; h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|(<span class="hl">.*?<\/span>)|([^\s<]+)/g, (m, dd, hl, w) => dd || `<span class="wd" style="--i:${k++}">${hl || w}</span>`); h.classList.add('rise'); });
 }
 
 if (page === 'why') {
@@ -378,7 +376,7 @@ if (page === 'project') {
   <div class="pad sec"><div class="split reveal"><span class="label">The result</span><p class="quote">${p.result}</p></div></div>
   <a class="next" href="project.html?p=${nx.slug}"><span class="label">Next project</span><span class="x">${nx.title}</span></a>`;
   $$('#cs h1.x, #cs .next .x').forEach(h => { h.innerHTML += '<span class="dot">.</span>'; });
-  $$('#cs .words').forEach(h => { let k = 0; h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|([^\s<]+)/g, (m, d, w) => d || `<span class="wd" style="--i:${k++}">${w}</span>`); h.classList.add('rise'); });
+  $$('#cs .words').forEach(h => { let k = 0; h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|(<span class="hl">.*?<\/span>)|([^\s<]+)/g, (m, d, hl, w) => d || `<span class="wd" style="--i:${k++}">${hl || w}</span>`); h.classList.add('rise'); });
 }
 
 // ── The Clearing (notes from the studio)
@@ -398,7 +396,7 @@ if (page === 'clearing') {
     $('#clr').innerHTML = `<header class="ph"><h1 class="x words">The Clearing.</h1><p class="lead">Notes, process and ideas from the studio. Where we step back from the work and say what we learned.</p></header>
       <section class="pad" style="padding-bottom:clamp(88px,10vw,160px)"><div class="notes-grid">${NOTES.map((x, i) => noteCard(x, i === 0)).join('')}</div></section>`;
   }
-  $$('#clr h1.x').forEach(h => { if (!h.querySelector('.dot')) h.innerHTML = h.innerHTML.replace(/\.$/, '<span class="dot">.</span>'); let k = 0; h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|([^\s<]+)/g, (m, d, w) => d || `<span class="wd" style="--i:${k++}">${w}</span>`); h.classList.add('rise'); });
+  $$('#clr h1.x').forEach(h => { if (!h.querySelector('.dot')) h.innerHTML = h.innerHTML.replace(/\.$/, '<span class="dot">.</span>'); let k = 0; h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|(<span class="hl">.*?<\/span>)|([^\s<]+)/g, (m, d, hl, w) => d || `<span class="wd" style="--i:${k++}">${hl || w}</span>`); h.classList.add('rise'); });
 }
 
 // ── reveal on scroll + counters
