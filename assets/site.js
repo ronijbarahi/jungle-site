@@ -155,6 +155,12 @@ document.addEventListener('click', e => {
 // ── page renderers
 
 if (page === 'home') {
+  // Collage and band cards: a random set of work images on every visit (no repeats).
+  if (typeof IMAGES !== 'undefined') {
+    const pool = Object.entries(IMAGES).flatMap(([slug, m]) => [m.cover, ...(m.gallery || [])].map(src => ({ src, t: (PROJECTS.find(p => p.slug === slug) || {}).title || '' })));
+    for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
+    $$('#zhp .zh-card, #zhb .zh-card').forEach((c, i) => { const x = pool[i % pool.length]; c.style.background = ''; c.innerHTML = `<img src="${x.src}" alt="${x.t}" decoding="async">`; });
+  }
   // Clients: real logos, greyscale until hovered.
   const CLIENTS = [['janakpur-bolts', 'Janakpur Bolts'], ['husqvarna', 'Husqvarna'], ['lumbini-all-stars', 'Lumbini All Stars'], ['plo-lubricants', 'PLO Lubricants'], ['ptt', 'PTT'], ['sk-zic', 'SK enmove ZIC']];
   const logoRow = CLIENTS.map(([f, n]) => `<span class="clogo"><img src="assets/clients/${f}.png" alt="${n}" width="120" height="120" loading="lazy"></span>`).join('');
