@@ -164,44 +164,19 @@ document.addEventListener('click', e => {
 // ── page renderers
 
 if (page === 'home') {
-  // Home sections.
-  const real = PROJECTS.filter(p => p.img), by = slug => PROJECTS.find(p => p.slug === slug) || real[0];
-  const gal = (p, n) => (p.gallery && p.gallery[n]) || p.img;
-  const img = (src, alt = '') => `<img src="${src}" alt="${alt}" loading="lazy" decoding="async">`;
-
-  // Hero wall: 3 columns drifting ~25px/s, neighbours opposite. Lists are doubled so -50% loops.
-  const tiles = PROJECTS.filter(p => p.img).flatMap(p => [p.img, ...(p.gallery || []).slice(0, 3)].map(src => ({ p, src })));
-  $('#wall').innerHTML = [0, 1, 2].map(c => {
-    const cells = tiles.filter((_, i) => i % 3 === c).map((t, i) =>
-      `<a class="tile${i % 3 === 1 ? ' tall' : ''}" href="project.html?p=${t.p.slug}" tabindex="-1">${pic(t.src, '', true)}<span>${t.p.title}</span></a>`).join('');
-    return `<div class="wcol${c % 2 ? ' down' : ''}"><div class="wtrack">${cells}${cells}</div></div>`;
-  }).join('');
-  const speed = () => $$('.wtrack').forEach(t => t.style.animationDuration = (t.scrollHeight / 2 / 50) + 's');
-  speed(); addEventListener('load', speed);
-
   // Clients: real logos, greyscale until hovered.
   const CLIENTS = [['janakpur-bolts', 'Janakpur Bolts'], ['husqvarna', 'Husqvarna'], ['lumbini-all-stars', 'Lumbini All Stars'], ['plo-lubricants', 'PLO Lubricants'], ['ptt', 'PTT'], ['sk-zic', 'SK enmove ZIC']];
   const logoRow = CLIENTS.map(([f, n]) => `<span class="clogo"><img src="assets/clients/${f}.png" alt="${n}" width="120" height="120" loading="lazy"></span>`).join('');
   $('#logos').innerHTML = logoRow.repeat(4);
 
-  // Split media
-  $('#m-ai').insertAdjacentHTML('afterbegin', img('assets/stock/h-ai.jpg', 'A designer at work'));
-  $('#m-partner').insertAdjacentHTML('afterbegin', img('assets/stock/h-partner.jpg', 'A team working together around a table') +
-    '<a class="play" href="work.html" aria-label="See the work"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></a>');
-
-
+  // Selected work: four real projects in an uneven grid.
+  const pick = ['lumbini-all-stars', 'nepathya-auckland', 'trn-fest', '1974-ad-tour'].map(s => PROJECTS.find(p => p.slug === s)).filter(p => p && p.img);
+  $('#zhw').innerHTML = pick.map((p, i) => `<a class="zh-item zi${i + 1} reveal" href="project.html?p=${p.slug}"><div class="zh-im">${pic(p.img, p.title)}</div>
+    <h3>${p.title}</h3><p>${p.scope.slice(0, 3).join(', ')}</p>
+    <div class="zh-tags"><span class="zh-tag"><i></i>${CATS[p.cat]}</span>${p.tag ? `<span class="zh-tag"><i></i>${p.tag}</span>` : ''}</div></a>`).join('');
 
   // Three service areas.
   $('#areas').innerHTML = DISCIPLINES.map(([t, v, list, para], i) => `<a class="area reveal" href="services.html#${t.split(' ')[0].toLowerCase()}"><span class="an">0${i + 1}</span><h3 class="w">${t}</h3><p class="av">${v}</p><p class="muted">${para}</p><ul>${list.map(x => `<li>${x}</li>`).join('')}</ul><span class="alink">Explore ${ARROW}</span></a>`).join('');
-
-  // Our work: mixed-size grid (big, small, small / small, small, big)
-  const W = real.slice(0, 6);
-  $('#wgrid').innerHTML = W.map((p, i) => `<a class="wk${i === 0 || i === 5 ? ' big' : ''} reveal" href="project.html?p=${p.slug}"><div class="wm">${img(p.img, p.title)}</div><h3 class="w">${p.title}</h3><p>${p.scope.slice(0, 3).join(', ')}</p></a>`).join('');
-
-
-  // Wins: real results from the work, two rows drifting opposite ways (no invented quotes)
-  const win = p => `<a class="win" href="project.html?p=${p.slug}"><div class="who">${p.img ? img(p.img) : `<span class="art ${p.art}" style="position:relative;width:44px;height:44px;border-radius:50%;flex:none;overflow:hidden"></span>`}<div><b>${p.title}</b><span>${p.client.split(',')[0]}</span></div></div><p>${p.result}</p><span class="lnk">${sector(p)}</span></a>`;
-  const wr = real.map(win).join(''); $('#wrow1').innerHTML = wr + wr;
 }
 
 if (page === 'services') {
