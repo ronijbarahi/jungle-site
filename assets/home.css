@@ -587,3 +587,15 @@ body[data-page=work] main{padding-top:0}
 .wk-fbar .chip{background:transparent;border:0;color:var(--mw);padding:9px 16px;font-size:13px;white-space:nowrap}
 .wk-fbar .chip.on{background:var(--mw);color:var(--graphite)}
 @media(max-width:820px){.wk-list{grid-template-columns:1fr}.wk-card:nth-of-type(n){width:100%;margin-top:0}.wk-fbar{left:12px;right:12px;overflow-x:auto}.wk-fbar .chips{justify-content:flex-start}}
+
+/* Work thumbnails: no cropping, natural shape */
+.wk-card .wk-im,.wk-card:nth-of-type(n) .wk-im{aspect-ratio:auto;background:transparent}
+.wk-im .art{position:static}
+.wk-im img,.wk-im .art img{height:auto;object-fit:contain;display:block;width:100%}
+.wk-card:nth-of-type(n){width:100%}
+.wk-card.tall{width:72%}
+.wk-card.sq{width:86%}
+.wk-card:nth-of-type(4n+2),.wk-card:nth-of-type(4n+3){justify-self:end}
+.wk-list{row-gap:clamp(64px,8vw,140px)}
+@media(max-width:820px){.wk-card.tall,.wk-card.sq{width:100%}}
+.wk-card:not(.tall):not(.wide):not(.sq) .wk-im{aspect-ratio:4/3;background:var(--panel)}

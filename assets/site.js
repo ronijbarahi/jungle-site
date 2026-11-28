@@ -294,7 +294,9 @@ if (page === 'work') {
   $('#wlogos').innerHTML = CL.map(([f, n]) => `<span class="clogo"><img src="assets/clients/${f}.png" alt="${n}" width="120" height="120"></span>`).join('').repeat(4);
   const card = (p, i) => `<a class="wk-card reveal" data-c="${p.cat}" href="project.html?p=${p.slug}"><div class="wk-im">${art(p)}</div><h3>${p.title}</h3><p>${p.brief}</p><span class="wk-tags"><i>${CATS[p.cat] || ''}</i>${p.scope.slice(0, 2).map(t => `<i>${t}</i>`).join('')}</span></a>`;
   const banner = '<aside class="wk-band" data-band><p>What could a good brand do for <span class="hl">yours</span>?</p><a class="btn" href="contact.html">Start a project <span aria-hidden="true">→</span></a></aside>';
-  $('#grid').innerHTML = list.map(card).map((c, i) => i === 3 ? banner + c : c).join('');
+  $('#grid').innerHTML = list.map(card).map((c, i) => i === 6 ? banner + c : c).join('');
+  // Show every thumbnail whole: tag each card by its image shape so tall posters sit narrower and nothing is cropped.
+  $$('#grid .wk-im img').forEach(im => { const set = () => { const r = im.naturalWidth / im.naturalHeight; im.closest('.wk-card').classList.add(r < .95 ? 'tall' : r > 1.25 ? 'wide' : 'sq'); }; im.complete && im.naturalWidth ? set() : im.addEventListener('load', set, { once: true }); });
   const apply = f => {
     $$('[data-f]').forEach(x => { x.classList.toggle('on', x.dataset.f === f); x.setAttribute('aria-pressed', x.dataset.f === f); });
     $$('#grid .wk-card').forEach(c => c.hidden = f !== 'all' && c.dataset.c !== f); $$('#grid [data-band]').forEach(c => c.hidden = f !== 'all');
