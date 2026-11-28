@@ -286,7 +286,7 @@ if (page === 'work') {
   })();
   const CL = [['janakpur-bolts', 'Janakpur Bolts'], ['husqvarna', 'Husqvarna'], ['lumbini-all-stars', 'Lumbini All Stars'], ['plo-lubricants', 'PLO Lubricants'], ['ptt', 'PTT'], ['sk-zic', 'SK enmove ZIC']];
   $('#wlogos').innerHTML = CL.map(([f, n]) => `<span class="clogo"><img src="assets/clients/${f}.png" alt="${n}" width="120" height="120"></span>`).join('').repeat(4);
-  const card = (p, i) => `<a class="wk-card reveal" data-c="${p.cat}" href="project.html?p=${p.slug}"><div class="wk-im">${art(p)}</div><div class="wk-tx"><span class="wk-no">0${i + 1}</span><h3>${p.title}</h3><p>${p.brief}</p><span class="wk-tags">${p.scope.slice(0, 3).map(t => `<i>${t}</i>`).join('')}<i>${CATS[p.cat] || ''}</i></span></div></a>`;
+  const card = (p, i) => `<a class="wk-card reveal" data-c="${p.cat}" href="project.html?p=${p.slug}"><div class="wk-im">${art(p)}</div><h3>${p.title}</h3><p>${p.brief}</p><span class="wk-tags"><i>${CATS[p.cat] || ''}</i>${p.scope.slice(0, 2).map(t => `<i>${t}</i>`).join('')}</span></a>`;
   const banner = '<aside class="wk-band" data-band><p>What could a good brand do for <span class="hl">yours</span>?</p><a class="btn" href="contact.html">Start a project <span aria-hidden="true">→</span></a></aside>';
   $('#grid').innerHTML = list.map(card).map((c, i) => i === 3 ? banner + c : c).join('');
   const apply = f => {
@@ -294,6 +294,7 @@ if (page === 'work') {
     $$('#grid .wk-card').forEach(c => c.hidden = f !== 'all' && c.dataset.c !== f); $$('#grid [data-band]').forEach(c => c.hidden = f !== 'all');
   };
   $$('[data-f]').forEach(b => b.onclick = () => { apply(b.dataset.f); history.replaceState(null, '', b.dataset.f === 'all' ? 'work.html' : `?f=${b.dataset.f}`); });
+  { const fb = $('#fbar'), gr = $('#grid'); if (fb && gr && 'IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(e => fb.classList.toggle('show', e.isIntersecting)), { threshold: 0, rootMargin: '0px 0px -20% 0px' }).observe(gr); else if (fb) fb.classList.add('show'); }
   const f0 = new URLSearchParams(location.search).get('f'); apply(f0 && CATS[f0] ? f0 : 'all');
 }
 
