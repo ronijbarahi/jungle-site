@@ -83,18 +83,20 @@ const MEGA = `<div class="mega" id="mega"><div class="mega-in">${MENU.map(col =>
 
 
 // ── chrome
-// 48-hour countdown banner (ends Mon 30 Nov 2026, 7:08 pm Nepal time). Hides itself at zero; × hides it for the visit.
+// 48-hour reveal page: until END, visitors see only the countdown; the site opens at zero. ?preview=jungle skips it for this browser.
 (() => {
-  const END = Date.parse('2026-11-30T13:23:00Z'); if (Date.now() >= END) return;
-  try { if (sessionStorage.getItem('cd-x')) return; } catch (e) {}
-  document.body.insertAdjacentHTML('afterbegin', `<div class="cd" id="cd" role="status"><span class="cd-t">Something new is <span class="hl">growing</span> at Jungle.</span><span class="cd-c" id="cdc" aria-label="Time left"></span><button class="cd-x" id="cdx" aria-label="Hide countdown">×</button></div>`);
-  document.documentElement.classList.add('has-cd');
-  const el = document.getElementById('cdc'), p = n => String(n).padStart(2, '0');
-  const tick = () => { const ms = END - Date.now(); if (ms <= 0) { hide(); return; } const s = Math.floor(ms / 1000);
-    el.innerHTML = `<b>${p(Math.floor(s / 3600))}</b><i>h</i><b>${p(Math.floor(s / 60) % 60)}</b><i>m</i><b>${p(s % 60)}</b><i>s</i>`; };
-  const hide = () => { clearInterval(iv); document.getElementById('cd')?.remove(); document.documentElement.classList.remove('has-cd'); };
+  const html = document.documentElement; if (!html.classList.contains('rv-lock')) return;
+  const END = Date.parse('2026-11-30T13:26:00Z');
+  document.body.insertAdjacentHTML('afterbegin', `<div class="rv" id="rv" role="main" aria-label="Coming soon">
+    <div class="rv-top"><span class="rv-logo">${LOGO}</span><span class="rv-tag">Kathmandu</span></div>
+    <div class="rv-mid"><p class="rv-k">A new Jungle. is on its way</p><h1 class="rv-h">Something new is <span class="hl">growing</span>.</h1>
+      <div class="rv-c" id="rvc" aria-live="off"></div></div>
+    <div class="rv-bot"><a href="mailto:ronij.jungle@gmail.com">ronij.jungle@gmail.com</a><a href="https://instagram.com/jungledesigns" target="_blank" rel="noopener">Instagram @jungledesigns</a></div></div>`);
+  const el = document.getElementById('rvc'), p = n => String(n).padStart(2, '0');
+  const unit = (v, l) => `<div><b>${v}</b><span>${l}</span></div>`;
+  const tick = () => { const ms = END - Date.now(); if (ms <= 0) { clearInterval(iv); html.classList.remove('rv-lock'); document.getElementById('rv').classList.add('rv-out'); setTimeout(() => document.getElementById('rv')?.remove(), 1200); return; }
+    const s = Math.floor(ms / 1000); el.innerHTML = unit(p(Math.floor(s / 3600)), 'hours') + unit(p(Math.floor(s / 60) % 60), 'minutes') + unit(p(s % 60), 'seconds'); };
   const iv = setInterval(tick, 1000); tick();
-  document.getElementById('cdx').onclick = () => { try { sessionStorage.setItem('cd-x', 1); } catch (e) {} hide(); };
 })();
 document.body.insertAdjacentHTML('afterbegin', `
 <a class="skip" href="#main">Skip to content</a>

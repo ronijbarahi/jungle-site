@@ -440,14 +440,20 @@ body[data-page=work] .logo-track{display:flex;gap:40px;width:max-content;animati
 @media(max-width:700px){.aud>div{grid-template-columns:1fr;gap:8px}}
 .steps.s3 .step{justify-content:flex-start;gap:clamp(40px,5vw,72px);min-height:260px}
 
-/* 48-hour countdown banner */
-.cd{position:fixed;top:0;left:0;right:0;height:40px;z-index:120;background:var(--graphite);color:var(--mw);display:flex;align-items:center;justify-content:center;gap:18px;padding:0 48px;font-size:14px}
-.cd .hl{color:var(--mint)}
-.cd-c{display:flex;align-items:baseline;gap:2px;font-variant-numeric:tabular-nums}
-.cd-c b{font-weight:500;color:var(--mint);font-size:15px}.cd-c i{font-style:normal;opacity:.7;margin-right:8px;font-size:12px}
-.cd-x{position:absolute;right:14px;top:50%;translate:0 -50%;background:none;border:0;color:var(--mw);font-size:20px;line-height:1;cursor:pointer;padding:6px}
-.has-cd nav{top:40px}
-.has-cd body{padding-top:40px}
-.has-cd .zh-stick,.has-cd .ss-stick,.has-cd .wk-hero-in{top:40px}
-.has-cd .sx-bar{top:112px}
-@media(max-width:600px){.cd{font-size:12px;gap:10px;padding:0 36px 0 12px;justify-content:flex-start}.cd-c i{margin-right:4px}.cd-t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+/* 48-hour reveal page */
+html.rv-lock body>*:not(.rv){display:none!important}
+html.rv-lock,html.rv-lock body{overflow:hidden;height:100%}
+.rv{position:fixed;inset:0;z-index:999;display:grid;grid-template-rows:auto 1fr auto;padding:clamp(20px,3vw,44px) var(--gut);color:var(--graphite);
+  background:radial-gradient(60% 70% at 12% 8%,rgba(122,241,122,.9),transparent 60%),radial-gradient(50% 60% at 92% 96%,rgba(188,135,255,.55),transparent 60%),var(--mw);transition:opacity 1s var(--ease)}
+.rv.rv-out{opacity:0;pointer-events:none}
+.rv-top{display:flex;justify-content:space-between;align-items:center}
+.rv-logo svg{height:44px;width:auto;display:block}.rv-logo .d{fill:var(--graphite)}
+.rv-tag{font-size:14px}
+.rv-mid{align-self:center;display:grid;gap:clamp(18px,2.4vw,32px)}
+.rv-k{font-size:14px}
+.rv-h{font-weight:400;font-size:clamp(44px,8vw,140px);letter-spacing:-.045em;line-height:.95;max-width:11ch}
+.rv-c{display:flex;gap:clamp(14px,3vw,48px);font-variant-numeric:tabular-nums}
+.rv-c div{display:grid;gap:6px}
+.rv-c b{font-weight:400;font-size:clamp(48px,9vw,150px);letter-spacing:-.04em;line-height:.9}
+.rv-c span{font-size:14px}
+.rv-bot{display:flex;gap:28px;flex-wrap:wrap;font-size:15px}.rv-bot a{text-decoration:underline;text-underline-offset:4px}
