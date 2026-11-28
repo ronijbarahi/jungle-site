@@ -88,7 +88,7 @@ const MEGA = `<div class="mega" id="mega"><div class="mega-in">${MENU.map(col =>
   const html = document.documentElement; if (!html.classList.contains('rv-lock')) return;
   const END = Date.parse('2026-11-30T13:26:00Z');
   document.body.insertAdjacentHTML('afterbegin', `<div class="rv" id="rv" role="main" aria-label="Coming soon">
-    <div class="rv-top"><span class="rv-logo">${LOGO}</span><span class="rv-tag">Kathmandu</span></div>
+    <div class="rv-top"><span></span><span class="rv-tag">Kathmandu</span></div>
     <div class="rv-mid"><p class="rv-k">A new Jungle. is on its way</p><h1 class="rv-h">Something new is <span class="hl">growing</span>.</h1>
       <div class="rv-c" id="rvc" aria-live="off"></div></div>
     <div class="rv-bot"><a href="https://instagram.com/jungledesigns" target="_blank" rel="noopener">Instagram @jungledesigns</a></div></div>`);
