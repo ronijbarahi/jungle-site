@@ -268,11 +268,24 @@ if (page === 'why') {
 if (page === 'work') {
   // Work page: collage, statement, logos, full-bleed 2-up tiles.
   const real = PROJECTS.filter(p => p.img), list = real.concat(PROJECTS.filter(p => !p.img));
-  const sr = $('#sr'), sb = $('#sr-btn');
-  if (reduce) sr.removeAttribute('autoplay'), sr.pause();
-  const sync = () => { const p = sr.paused; sb.setAttribute('aria-label', p ? 'Play showreel' : 'Pause showreel');
-    sb.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="${p ? 'M8 5l11 7-11 7z' : 'M7 5h4v14H7zM13 5h4v14h-4z'}"/></svg>`; };
-  sb.onclick = () => (sr.paused ? sr.play() : sr.pause()); sr.onplay = sr.onpause = sync; sync();
+  // Pinned hero: a Graphite wave rises over the big "Work." word, then full-screen project scenes stack up.
+  const feat = ['janakpur-bolts', 'lumbini-all-stars', 'nepathya-auckland', 'trn-fest', '1974-ad-tour'].map(sl => PROJECTS.find(p => p.slug === sl)).filter(p => p && p.img);
+  $('#wks').innerHTML = feat.map((p, i) => `<div class="ws-wrap"><a class="ws" href="project.html?p=${p.slug}" aria-label="${p.title}"><div class="ws-bg" style="background-image:url('${p.img}')"></div><div class="ws-poster">${pic(p.img, p.title)}</div><div class="ws-cap"><span class="ws-n">0${i + 1}</span><h2>${p.title}</h2><p>${p.scope.slice(0, 3).join(', ')}</p><span class="ws-go">View project <b aria-hidden="true">→</b></span></div></a></div>`).join('');
+  (() => {
+    const hero = $('#wkh'), wave = $('#wkw'), line = $('#wkl'), big = $('.wk-big'), cl = (v, a, b) => Math.min(1, Math.max(0, (v - a) / (b - a))), ease = t => t * t * (3 - 2 * t);
+    const scs = $$('.ws-wrap');
+    if (reduce) { hero.classList.add('static'); return; }
+    let tick = false;
+    const run = () => { tick = false; const vh = innerHeight;
+      const r = hero.getBoundingClientRect(), p = cl(-r.top, 0, r.height - vh), k = ease(cl(p, .1, .8));
+      wave.style.transform = `translateY(${(1 - k) * 100}%)`; big.style.transform = `scale(${1 + p * .12})`;
+      line.style.opacity = cl(p, .78, .95); line.style.transform = `translateY(${(1 - cl(p, .78, .95)) * 24}px)`;
+      scs.forEach(w => { const q = w.getBoundingClientRect(), t = cl(-q.top, 0, q.height - vh), e = cl(q.top, -vh, vh);
+        const po = $('.ws-poster', w), ca = $('.ws-cap', w), bg = $('.ws-bg', w);
+        po.style.transform = `translateY(${(.5 - t) * 8}vh) scale(${.94 + .08 * Math.sin(Math.PI * Math.min(1, t * 1.1 + .1))})`;
+        ca.style.opacity = cl(t, .0, .18) * (1 - cl(t, .88, 1)); bg.style.transform = `scale(${1.15 - t * .1})`; }); };
+    addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(run); } }, { passive: true }); addEventListener('resize', run); run();
+  })();
   const CL = [['janakpur-bolts', 'Janakpur Bolts'], ['husqvarna', 'Husqvarna'], ['lumbini-all-stars', 'Lumbini All Stars'], ['plo-lubricants', 'PLO Lubricants'], ['ptt', 'PTT'], ['sk-zic', 'SK enmove ZIC']];
   $('#wlogos').innerHTML = CL.map(([f, n]) => `<span class="clogo"><img src="assets/clients/${f}.png" alt="${n}" width="120" height="120"></span>`).join('').repeat(4);
   $('#grid').innerHTML = list.map(p => `<a class="tile2" data-c="${p.cat}" href="project.html?p=${p.slug}">${art(p)}
