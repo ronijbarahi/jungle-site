@@ -14,7 +14,7 @@ const art = p => p.img ? `<div class="art">${pic(p.img, p.title)}</div>` : `<div
 const sector = p => `${CATS[p.cat]}${p.tag ? ` / ${p.tag}` : ''}`;
 const ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 
-const card = p => `<a class="card reveal" data-c="${p.cat}" href="project.html?p=${p.slug}">
+const card = p => `<a class="card reveal" data-c="${p.cat}" href="/project?p=${p.slug}">
   <div class="thumb">${art(p)}</div>
   <div class="meta"><div><h3 class="w">${p.title}</h3><p>${sector(p)}</p></div><span class="n">${p.year}</span></div></a>`;
 
@@ -65,8 +65,8 @@ const SVC = {
   'Campaign execution': [['Every format and size you need', 'A calm, organised roll-out', 'One owner from brief to final file', 'Delivered on the date we agreed'], ''],
 };
 const svgI = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k]}</svg>`;
-const mItem = ([t, d, ic, isNew]) => `<li><a href="services.html#${slugify(t)}"><span><b>${t}${isNew ? ' <em>New</em>' : ''}</b><small>${d}</small></span>${svgI(ic)}</a></li>`;
-const mHead = ([t, c, a]) => `<a class="mh mh-${c}" href="services.html#${a}">${t} <span aria-hidden="true">↗</span></a>`;
+const mItem = ([t, d, ic, isNew]) => `<li><a href="/services#${slugify(t)}"><span><b>${t}${isNew ? ' <em>New</em>' : ''}</b><small>${d}</small></span>${svgI(ic)}</a></li>`;
+const mHead = ([t, c, a]) => `<a class="mh mh-${c}" href="/services#${a}">${t} <span aria-hidden="true">↗</span></a>`;
 const MENU_GROUP = {};
 // Services.
 const DISCIPLINES = [
@@ -91,7 +91,7 @@ const MEGA = `<div class="mega" id="mega"><div class="mega-in">${MENU.map(col =>
     <div class="rv-top"><span class="rv-logo">${LOGO}</span><span class="rv-tag">Kathmandu</span></div>
     <div class="rv-mid"><p class="rv-k">A new Jungle. is on its way</p><h1 class="rv-h">Something new is <span class="hl">growing</span>.</h1>
       <div class="rv-c" id="rvc" aria-live="off"></div></div>
-    <div class="rv-bot"><a href="mailto:ronij.jungle@gmail.com">ronij.jungle@gmail.com</a><a href="https://instagram.com/jungledesigns" target="_blank" rel="noopener">Instagram @jungledesigns</a></div></div>`);
+    <div class="rv-bot"><a href="https://instagram.com/jungledesigns" target="_blank" rel="noopener">Instagram @jungledesigns</a></div></div>`);
   const el = document.getElementById('rvc'), p = n => String(n).padStart(2, '0');
   const unit = (v, l) => `<div><b>${v}</b><span>${l}</span></div>`;
   const tick = () => { const ms = END - Date.now(); if (ms <= 0) { clearInterval(iv); html.classList.remove('rv-lock'); document.getElementById('rv').classList.add('rv-out'); setTimeout(() => document.getElementById('rv')?.remove(), 1200); return; }
@@ -101,21 +101,20 @@ const MEGA = `<div class="mega" id="mega"><div class="mega-in">${MENU.map(col =>
 document.body.insertAdjacentHTML('afterbegin', `
 <a class="skip" href="#main">Skip to content</a>
 <div id="curtain" aria-hidden="true">${LOGO.replace('<svg', '<svg class="jm"')}</div>
-<nav><a class="logo" href="index.html" aria-label="Jungle, home">${LOGO_NAV}</a>
+<nav><a class="logo" href="/" aria-label="Jungle, home">${LOGO_NAV}</a>
   <button class="menu" aria-expanded="false" aria-controls="nav-links">Menu</button>
   <div class="links" id="nav-links">
-    <a href="work.html" data-p="work">Work</a><a href="services.html" data-p="services">Services</a><a href="why.html" data-p="why">Studio</a>
-    <a href="contact.html" data-p="contact">Contact</a><a class="btn" href="contact.html">Start a project</a></div></nav>`);
+    <a href="/work" data-p="work">Work</a><a href="/services" data-p="services">Services</a><a href="/why" data-p="why">Studio</a>
+    <a href="/contact" data-p="contact">Contact</a><a class="btn" href="/contact">Start a project</a></div></nav>`);
 document.body.insertAdjacentHTML('beforeend', `
 <footer class="cta">${page === 'contact' || page === 'home' ? '' : `
   <p class="cta-line reveal">Where ideas grow<span class="dot">.</span></p>
-  <div class="cta-row"><a class="btn" href="contact.html">Start a project <span aria-hidden="true">→</span></a>
-  <a class="btn btn-2" href="mailto:ronij.jungle@gmail.com">ronij.jungle@gmail.com</a></div>`}
+  <div class="cta-row"><a class="btn" href="/contact">Start a project <span aria-hidden="true">→</span></a></div>`}
   <div class="foot">
     <div><img class="foot-logo" src="assets/logo-light.svg" alt="Jungle." width="740" height="224"><small>A design-led creative agency.<br>Where ideas grow.</small></div>
-    <div><span class="label">Site</span><a href="work.html">Work</a><a href="services.html">Services</a><a href="contact.html">Contact</a></div>
+    <div><span class="label">Site</span><a href="/work">Work</a><a href="/services">Services</a><a href="/contact">Contact</a></div>
     <div><span class="label">Follow</span><a href="https://instagram.com/jungledesigns">Instagram</a><a href="https://designbyjungle.com">designbyjungle.com</a></div>
-    <div><span class="label">Say hello</span><a href="mailto:ronij.jungle@gmail.com">ronij.jungle@gmail.com</a><small>© 2026 Jungle.</small></div>
+    <div><span class="label">Say hello</span><small>© 2026 Jungle.</small></div>
   </div></footer>`);
 { const m = $('main') || $('.ph'); if (m && !m.id) m.id = 'main'; }
 $$(`nav [data-p="${page}"]`).forEach(a => { a.classList.add('cur'); a.setAttribute('aria-current', 'page'); });
@@ -183,12 +182,12 @@ if (page === 'home') {
 
   // Selected work: four real projects in an uneven grid.
   const pick = ['lumbini-all-stars', 'nepathya-auckland', 'trn-fest', '1974-ad-tour'].map(s => PROJECTS.find(p => p.slug === s)).filter(p => p && p.img);
-  $('#zhw').innerHTML = pick.map((p, i) => `<a class="zh-item zi${i + 1} reveal" href="project.html?p=${p.slug}"><div class="zh-im">${pic(p.img, p.title)}</div>
+  $('#zhw').innerHTML = pick.map((p, i) => `<a class="zh-item zi${i + 1} reveal" href="/project?p=${p.slug}"><div class="zh-im">${pic(p.img, p.title)}</div>
     <h3>${p.title}</h3><p>${p.scope.slice(0, 3).join(', ')}</p>
     <div class="zh-tags"><span class="zh-tag"><i></i>${CATS[p.cat]}</span>${p.tag ? `<span class="zh-tag"><i></i>${p.tag}</span>` : ''}</div></a>`).join('');
 
   // Three service areas.
-  $('#areas').innerHTML = DISCIPLINES.map(([t, v, list, para], i) => `<a class="area reveal" href="services.html#${t.split(' ')[0].toLowerCase()}"><span class="an">0${i + 1}</span><h3 class="w">${t}</h3><p class="av">${v}</p><p class="muted">${para}</p><ul>${list.map(x => `<li>${x}</li>`).join('')}</ul><span class="alink">Explore ${ARROW}</span></a>`).join('');
+  $('#areas').innerHTML = DISCIPLINES.map(([t, v, list, para], i) => `<a class="area reveal" href="/services#${t.split(' ')[0].toLowerCase()}"><span class="an">0${i + 1}</span><h3 class="w">${t}</h3><p class="av">${v}</p><p class="muted">${para}</p><ul>${list.map(x => `<li>${x}</li>`).join('')}</ul><span class="alink">Explore ${ARROW}</span></a>`).join('');
 }
 
 if (page === 'services') {
@@ -201,9 +200,9 @@ if (page === 'services') {
     const work = (WK[k] || []).map(s => PROJECTS.find(p => p.slug === s)).filter(p => p && p.img);
     return `<section class="sx-area pad" id="${k}">
       <div class="sx-side"><p class="label">0${i + 1}</p><h2 class="sx-h">${hl(t)}</h2><p class="sx-v">${v}</p><p class="sx-p">${para}</p>
-        <a class="btn" href="contact.html">Start a project <span aria-hidden="true">→</span></a></div>
+        <a class="btn" href="/contact">Start a project <span aria-hidden="true">→</span></a></div>
       <div class="sx-main"><ul class="sx-list">${list.map(n => `<li id="${slugify(n)}" class="mh-${COL[k]}-li"><span class="sx-ic">${svgI(ICN[n] || 'ad')}</span><div><h3>${n}</h3><p>${(MENU.flatMap(c => c[1]).find(x => x[0] === n) || [, ''])[1]}.</p><ul class="sx-gets">${((SVC[n] || [[]])[0]).map(g => `<li>${g}</li>`).join('')}</ul></div></li>`).join('')}</ul>
-        ${work.length ? `<p class="label sx-wl">Seen in</p><div class="sx-work">${work.map(p => `<a href="project.html?p=${p.slug}"><div class="sx-wim">${pic(p.img, p.title)}</div><span>${p.title} <b aria-hidden="true">→</b></span></a>`).join('')}</div>` : ''}</div></section>`; }).join('');
+        ${work.length ? `<p class="label sx-wl">Seen in</p><div class="sx-work">${work.map(p => `<a href="/project?p=${p.slug}"><div class="sx-wim">${pic(p.img, p.title)}</div><span>${p.title} <b aria-hidden="true">→</b></span></a>`).join('')}</div>` : ''}</div></section>`; }).join('');
   // highlight the tab for the section on screen
   const tabs = $$('.sx-tabs a');
   if ('IntersectionObserver' in window) { const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) tabs.forEach(a => a.classList.toggle('on', a.dataset.k === e.target.id)); }), { rootMargin: '-45% 0px -50% 0px' }); $$('.sx-area').forEach(s => io.observe(s)); }
@@ -213,7 +212,7 @@ if (page === 'services') {
 if (page === 'service') {
   // Old single-service pages now live as sections on services.html
   const q = new URLSearchParams(location.search).get('s');
-  location.replace('services.html' + (q ? '#' + q : ''));
+  location.replace('/services' + (q ? '#' + q : ''));
 }
 
 if (page === 'why') {
@@ -231,12 +230,12 @@ if (page === 'why') {
   </div></section>
   <section class="inv pad sec st-sec" id="our-story"><div class="st-grid"><div><h2 class="st-h">Our <span class="hl">story</span></h2><figure class="st-fig st-fig-s reveal"><img src="assets/stock/s-creative.jpg" alt="Colour swatches and sketches on a designer’s desk" loading="lazy" data-par="0.08"></figure></div><div class="prose st-prose"><p>Every great thing starts somewhere. A thought. A question. A possibility.</p><p>But ideas need more than imagination. They need curiosity to explore, creativity to develop and the right people to bring them to life.</p><p>We are Jungle. A design-led creative agency that believes in the power of ideas and what they can become.</p><p>We think differently, create thoughtfully and collaborate closely to turn possibilities into meaningful creative work. From the first spark to the final detail, we create room for ideas to grow.</p></div></div></section>
   <section class="inv pad sec st-sec st-top" id="our-approach"><div class="st-grid"><h2 class="st-h">How we <span class="hl">work</span></h2><div><div class="steps s3"><div class="step reveal"><b class="n">1</b><div><h3 class="w">Seed</h3><p>The beginning. Every great project starts with a seed: an idea, a question or an opportunity waiting to grow.</p></div></div><div class="step reveal"><b class="n">2</b><div><h3 class="w">Leaf</h3><p>The growth. Ideas develop through exploration, collaboration, creative thinking and design.</p></div></div><div class="step reveal"><b class="n">3</b><div><h3 class="w">Dot</h3><p>The outcome. The idea finds its final form. A creative decision becomes something tangible and meaningful.</p></div></div></div><p class="st-note">Why we exist: to create an environment where ideas can grow into meaningful creative work that helps businesses move forward.</p></div></div></section>
-  <div class="st-strip">${strip.map(p => `<a class="reveal" href="project.html?p=${p.slug}"><div class="zh-im">${pic(p.img, p.title)}</div><small>${p.title}</small></a>`).join('')}</div>
+  <div class="st-strip">${strip.map(p => `<a class="reveal" href="/project?p=${p.slug}"><div class="zh-im">${pic(p.img, p.title)}</div><small>${p.title}</small></a>`).join('')}</div>
   <figure class="st-wide reveal"><img src="assets/stock/h-relief.jpg" alt="A team working together around a table" loading="lazy" data-par="0.12"><figcaption class="st-cap">Grow together.</figcaption></figure>
   <section class="inv pad sec st-sec" id="philosophy"><div class="st-grid"><h2 class="st-h">We’re <span class="hl">curious</span>, first</h2><div><div class="st-phil"><p><b>Explore with curiosity.</b> Question the obvious, look beyond the expected and discover new possibilities.</p><p><b>Create with intention.</b> Bring ideas to life through thoughtful design, creative direction and purposeful execution.</p><p><b>Grow together.</b> Collaborate with clients, share perspectives and build something better together.</p></div><div class="aud st-val">${VAL.map(([t, d]) => `<div class="reveal"><b class="w">${t}</b><p>${d}</p></div>`).join('')}</div></div></div></section>
   <section class="inv pad sec st-sec" id="who-we-work-with"><div class="st-grid"><div><h2 class="st-h">Who we <span class="hl">work</span> with</h2><figure class="st-fig st-fig-s reveal"><img src="assets/stock/s-motion.jpg" alt="A designer working at a laptop" loading="lazy" data-par="0.08"></figure></div><div class="aud st-aud"><div class="reveal"><b class="w">Ambitious founders</b><p>People looking to turn their vision into something recognisable.</p></div><div class="reveal"><b class="w">Growing businesses</b><p>Businesses looking for consistent, quality creative communication.</p></div><div class="reveal"><b class="w">Marketing teams</b><p>Teams seeking a dependable creative partner.</p></div><div class="reveal"><b class="w">Established businesses</b><p>Companies looking for fresh perspectives and stronger creative execution.</p></div><div class="reveal"><b class="w">International clients</b><p>Businesses looking for creative collaboration and thoughtful design solutions.</p></div></div></div></section>
   <section class="inv pad sec st-sec" id="faq"><div class="st-grid"><h2 class="st-h">Straight <span class="hl">answers</span></h2><div class="st-faq"><details><summary>Can you work with our in-house team or agency?</summary><p>Yes. We believe better ideas grow together, so we work alongside your team and share the thinking as we go.</p></details><details><summary>Where is the team based?</summary><p>In Kathmandu, working with clients in Nepal, Australia, New Zealand and beyond.</p></details><details><summary>How fast can you turn work around?</summary><p>Most social and campaign assets take a few working days. Tell us your date and we’ll tell you honestly what’s possible.</p></details><details><summary>How do we start?</summary><p>Send a brief through the contact page, or just tell us the idea. We reply within one working day.</p></details></div></div></section>
-  <section class="on-green pad sec st-end"><h2 class="st-big">Got an idea that <span class="hl">needs</span> room?</h2><p><a class="btn" href="contact.html">Start a project <span aria-hidden="true">→</span></a></p></section>`;
+  <section class="on-green pad sec st-end"><h2 class="st-big">Got an idea that <span class="hl">needs</span> room?</h2><p><a class="btn" href="/contact">Start a project <span aria-hidden="true">→</span></a></p></section>`;
   $$('#why h1.x').forEach(h => { h.innerHTML = h.innerHTML.replace(/\.$/, '<span class="dot">.</span>'); let n = 0; h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|(<span class="hl">.*?<\/span>)|([^\s<]+)/g, (m, d, hh, w) => d || `<span class="wd" style="--i:${n++}">${hh || w}</span>`); h.classList.add('rise'); });
   // Pinned Studio scene: photos drift at the edges while the statement lights up word by word, then the second line arrives.
   (() => {
@@ -290,8 +289,8 @@ if (page === 'work') {
   })();
   const CL = [['janakpur-bolts', 'Janakpur Bolts'], ['husqvarna', 'Husqvarna'], ['lumbini-all-stars', 'Lumbini All Stars'], ['plo-lubricants', 'PLO Lubricants'], ['ptt', 'PTT'], ['sk-zic', 'SK enmove ZIC']];
   $('#wlogos').innerHTML = CL.map(([f, n]) => `<span class="clogo"><img src="assets/clients/${f}.png" alt="${n}" width="120" height="120"></span>`).join('').repeat(4);
-  const card = (p, i) => `<a class="wk-card reveal" data-c="${p.cat}" href="project.html?p=${p.slug}"><div class="wk-im">${art(p)}</div><h3>${p.title}</h3><p>${p.brief}</p><span class="wk-tags"><i>${CATS[p.cat] || ''}</i>${p.scope.slice(0, 2).map(t => `<i>${t}</i>`).join('')}</span></a>`;
-  const banner = '<aside class="wk-band" data-band><p>What could a good brand do for <span class="hl">yours</span>?</p><a class="btn" href="contact.html">Start a project <span aria-hidden="true">→</span></a></aside>';
+  const card = (p, i) => `<a class="wk-card reveal" data-c="${p.cat}" href="/project?p=${p.slug}"><div class="wk-im">${art(p)}</div><h3>${p.title}</h3><p>${p.brief}</p><span class="wk-tags"><i>${CATS[p.cat] || ''}</i>${p.scope.slice(0, 2).map(t => `<i>${t}</i>`).join('')}</span></a>`;
+  const banner = '<aside class="wk-band" data-band><p>What could a good brand do for <span class="hl">yours</span>?</p><a class="btn" href="/contact">Start a project <span aria-hidden="true">→</span></a></aside>';
   $('#grid').innerHTML = list.map(card).map((c, i) => i === 6 ? banner + c : c).join('');
   // Show every thumbnail whole: tag each card by its image shape so tall posters sit narrower and nothing is cropped.
   $$('#grid .wk-im img').forEach(im => { const set = () => { const r = im.naturalWidth / im.naturalHeight; im.closest('.wk-card').classList.add(r < .95 ? 'tall' : r > 1.25 ? 'wide' : 'sq'); }; im.complete && im.naturalWidth ? set() : im.addEventListener('load', set, { once: true }); });
@@ -299,7 +298,7 @@ if (page === 'work') {
     $$('[data-f]').forEach(x => { x.classList.toggle('on', x.dataset.f === f); x.setAttribute('aria-pressed', x.dataset.f === f); });
     $$('#grid .wk-card').forEach(c => c.hidden = f !== 'all' && c.dataset.c !== f); $$('#grid [data-band]').forEach(c => c.hidden = f !== 'all');
   };
-  $$('[data-f]').forEach(b => b.onclick = () => { apply(b.dataset.f); history.replaceState(null, '', b.dataset.f === 'all' ? 'work.html' : `?f=${b.dataset.f}`); });
+  $$('[data-f]').forEach(b => b.onclick = () => { apply(b.dataset.f); history.replaceState(null, '', b.dataset.f === 'all' ? '/work' : `?f=${b.dataset.f}`); });
   { const fb = $('#fbar'), gr = $('#grid'); if (fb && gr && 'IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(e => fb.classList.toggle('show', e.isIntersecting)), { threshold: 0, rootMargin: '0px 0px -20% 0px' }).observe(gr); else if (fb) fb.classList.add('show'); }
   const f0 = new URLSearchParams(location.search).get('f'); apply(f0 && CATS[f0] ? f0 : 'all');
 }
@@ -324,7 +323,7 @@ if (page === 'project') {
   </div>
   <div class="gallery${p.gallery && p.gallery.length ? ' real' : ''}">${[...Array(nG).keys()].map(g).join('')}</div>
   <div class="pad sec"><div class="split reveal"><span class="label">The result</span><p class="quote">${p.result}</p></div></div>
-  <a class="next" href="project.html?p=${nx.slug}"><span class="label">Next project</span><span class="x">${nx.title}</span></a>`;
+  <a class="next" href="/project?p=${nx.slug}"><span class="label">Next project</span><span class="x">${nx.title}</span></a>`;
   $$('#cs h1.x, #cs .next .x').forEach(h => { h.innerHTML += '<span class="dot">.</span>'; });
   $$('#cs .words').forEach(h => { let k = 0; h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|(<span class="hl">.*?<\/span>)|([^\s<]+)/g, (m, d, hl, w) => d || `<span class="wd" style="--i:${k++}">${hl || w}</span>`); h.classList.add('rise'); });
 }
@@ -340,7 +339,7 @@ if (page === 'clearing') {
     document.title = `${n.title} | The Clearing | Jungle.`;
     $('#clr').innerHTML = `<article class="art-page"><header class="ph" style="max-width:900px"><p class="sv-crumb"> / ${n.tag}</p><h1 class="x words">${n.title}.</h1><p class="lead">${n.dek}</p><p class="nmeta" style="margin-top:12px">${fmtDate(n.date)} · ${n.mins} min read</p></header>
       <figure class="art-hero"><img src="${n.img}" alt=""></figure>
-      <div class="inv pad sec"><div class="prose">${n.body.map(p => `<p>${p}</p>`).join('')}<p><a class="btn" href="contact.html">Start a project <span aria-hidden="true">→</span></a></p></div></div>
+      <div class="inv pad sec"><div class="prose">${n.body.map(p => `<p>${p}</p>`).join('')}<p><a class="btn" href="/contact">Start a project <span aria-hidden="true">→</span></a></p></div></div>
       <section class="pad sec"><h2 class="x" style="font-size:var(--t-head)">Keep reading.</h2><div class="notes-grid mt">${NOTES.filter(x => x !== n).slice(0, 3).map(x => noteCard(x)).join('')}</div></section></article>`;
   } else {
     $('#clr').innerHTML = `<header class="ph"><h1 class="x words">The Clearing.</h1><p class="lead">Notes, process and ideas from the studio. Where we step back from the work and say what we learned.</p></header>
