@@ -83,6 +83,19 @@ const MEGA = `<div class="mega" id="mega"><div class="mega-in">${MENU.map(col =>
 
 
 // ── chrome
+// 48-hour countdown banner (ends Mon 30 Nov 2026, 7:08 pm Nepal time). Hides itself at zero; × hides it for the visit.
+(() => {
+  const END = Date.parse('2026-11-30T13:23:00Z'); if (Date.now() >= END) return;
+  try { if (sessionStorage.getItem('cd-x')) return; } catch (e) {}
+  document.body.insertAdjacentHTML('afterbegin', `<div class="cd" id="cd" role="status"><span class="cd-t">Something new is <span class="hl">growing</span> at Jungle.</span><span class="cd-c" id="cdc" aria-label="Time left"></span><button class="cd-x" id="cdx" aria-label="Hide countdown">×</button></div>`);
+  document.documentElement.classList.add('has-cd');
+  const el = document.getElementById('cdc'), p = n => String(n).padStart(2, '0');
+  const tick = () => { const ms = END - Date.now(); if (ms <= 0) { hide(); return; } const s = Math.floor(ms / 1000);
+    el.innerHTML = `<b>${p(Math.floor(s / 3600))}</b><i>h</i><b>${p(Math.floor(s / 60) % 60)}</b><i>m</i><b>${p(s % 60)}</b><i>s</i>`; };
+  const hide = () => { clearInterval(iv); document.getElementById('cd')?.remove(); document.documentElement.classList.remove('has-cd'); };
+  const iv = setInterval(tick, 1000); tick();
+  document.getElementById('cdx').onclick = () => { try { sessionStorage.setItem('cd-x', 1); } catch (e) {} hide(); };
+})();
 document.body.insertAdjacentHTML('afterbegin', `
 <a class="skip" href="#main">Skip to content</a>
 <div id="curtain" aria-hidden="true">${LOGO.replace('<svg', '<svg class="jm"')}</div>
