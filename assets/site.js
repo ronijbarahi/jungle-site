@@ -65,7 +65,7 @@ const SVC = {
   'Campaign execution': [['Every format and size you need', 'A calm, organised roll-out', 'One owner from brief to final file', 'Delivered on the date we agreed'], ''],
 };
 const svgI = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k]}</svg>`;
-const mItem = ([t, d, ic, isNew]) => `<li><a href="service.html?s=${slugify(t)}"><span><b>${t}${isNew ? ' <em>New</em>' : ''}</b><small>${d}</small></span>${svgI(ic)}</a></li>`;
+const mItem = ([t, d, ic, isNew]) => `<li><a href="services.html#${slugify(t)}"><span><b>${t}${isNew ? ' <em>New</em>' : ''}</b><small>${d}</small></span>${svgI(ic)}</a></li>`;
 const mHead = ([t, c, a]) => `<a class="mh mh-${c}" href="services.html#${a}">${t} <span aria-hidden="true">↗</span></a>`;
 const MENU_GROUP = {};
 // Services.
@@ -83,13 +83,26 @@ const MEGA = `<div class="mega" id="mega"><div class="mega-in">${MENU.map(col =>
 
 
 // ── chrome
+// 48-hour countdown banner (ends Mon 30 Nov 2026, 7:08 pm Nepal time). Hides itself at zero; × hides it for the visit.
+(() => {
+  const END = Date.parse('2026-11-30T13:23:00Z'); if (Date.now() >= END) return;
+  try { if (sessionStorage.getItem('cd-x')) return; } catch (e) {}
+  document.body.insertAdjacentHTML('afterbegin', `<div class="cd" id="cd" role="status"><span class="cd-t">Something new is <span class="hl">growing</span> at Jungle.</span><span class="cd-c" id="cdc" aria-label="Time left"></span><button class="cd-x" id="cdx" aria-label="Hide countdown">×</button></div>`);
+  document.documentElement.classList.add('has-cd');
+  const el = document.getElementById('cdc'), p = n => String(n).padStart(2, '0');
+  const tick = () => { const ms = END - Date.now(); if (ms <= 0) { hide(); return; } const s = Math.floor(ms / 1000);
+    el.innerHTML = `<b>${p(Math.floor(s / 3600))}</b><i>h</i><b>${p(Math.floor(s / 60) % 60)}</b><i>m</i><b>${p(s % 60)}</b><i>s</i>`; };
+  const hide = () => { clearInterval(iv); document.getElementById('cd')?.remove(); document.documentElement.classList.remove('has-cd'); };
+  const iv = setInterval(tick, 1000); tick();
+  document.getElementById('cdx').onclick = () => { try { sessionStorage.setItem('cd-x', 1); } catch (e) {} hide(); };
+})();
 document.body.insertAdjacentHTML('afterbegin', `
 <a class="skip" href="#main">Skip to content</a>
 <div id="curtain" aria-hidden="true">${LOGO.replace('<svg', '<svg class="jm"')}</div>
 <nav><a class="logo" href="index.html" aria-label="Jungle, home">${LOGO_NAV}</a>
   <button class="menu" aria-expanded="false" aria-controls="nav-links">Menu</button>
   <div class="links" id="nav-links">
-    <a href="work.html" data-p="work">Work</a><div class="has-mega"><button class="mega-btn" data-p="services" aria-expanded="false" aria-controls="mega">Services <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>${MEGA}</div><a href="why.html" data-p="why">Studio</a>
+    <a href="work.html" data-p="work">Work</a><a href="services.html" data-p="services">Services</a><a href="why.html" data-p="why">Studio</a>
     <a href="contact.html" data-p="contact">Contact</a><a class="btn" href="contact.html">Start a project</a></div></nav>`);
 document.body.insertAdjacentHTML('beforeend', `
 <footer class="cta">${page === 'contact' || page === 'home' ? '' : `
@@ -155,6 +168,12 @@ document.addEventListener('click', e => {
 // ── page renderers
 
 if (page === 'home') {
+  // Collage and band cards: a random set of work images on every visit (no repeats).
+  if (typeof IMAGES !== 'undefined') {
+    const pool = Object.entries(IMAGES).flatMap(([slug, m]) => [m.cover, ...(m.gallery || [])].map(src => ({ src, t: (PROJECTS.find(p => p.slug === slug) || {}).title || '' })));
+    for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
+    $$('#zhp .zh-card, #zhb .zh-card').forEach((c, i) => { const x = pool[i % pool.length]; c.style.background = ''; c.innerHTML = `<img src="${x.src}" alt="${x.t}" decoding="async">`; });
+  }
   // Clients: real logos, greyscale until hovered.
   const CLIENTS = [['janakpur-bolts', 'Janakpur Bolts'], ['husqvarna', 'Husqvarna'], ['lumbini-all-stars', 'Lumbini All Stars'], ['plo-lubricants', 'PLO Lubricants'], ['ptt', 'PTT'], ['sk-zic', 'SK enmove ZIC']];
   const logoRow = CLIENTS.map(([f, n]) => `<span class="clogo"><img src="assets/clients/${f}.png" alt="${n}" width="120" height="120" loading="lazy"></span>`).join('');
@@ -171,45 +190,28 @@ if (page === 'home') {
 }
 
 if (page === 'services') {
-  const ex = { 'Creative Design': 'janakpur-bolts', 'Motion Design': 'nepathya-auckland', 'Digital Design': 'trn-fest', 'Content and Campaigns': '1974-ad-tour', 'AI Services': 'lumbini-all-stars' };
-  $('#disciplines').innerHTML = DISCIPLINES.map(([t, v, list, para, seen], i) => { const key = t.split(' ')[0].toLowerCase();
-    return `<section class="split rule reveal" id="${key}" style="padding-block:clamp(56px,7vw,112px);align-items:start">
-      <div class="card"><div class="thumb"><div class="art"><img src="assets/stock/s-${key}.jpg" alt="" width="900" height="1125" loading="lazy"></div></div></div>
-      <div><p class="label" style="color:var(--fg2)">0${i + 1}</p><h2 class="x" style="font-size:var(--t-head);margin-top:8px">${hl(t)}.</h2><p class="v" style="font-size:var(--t-voice);color:var(--fg2);margin-top:8px">${v}</p>
-      <p class="lead" style="margin-top:20px">${para}</p>
-      <div class="tags mt">${list.map(x => `<a href="service.html?s=${slugify(x)}">${x}</a>`).join('')}</div>
-      <p class="label mt" style="color:var(--fg2)">Seen in</p><p>${seen.map(s => `<a href="project.html?p=${s}" style="text-decoration:underline;text-underline-offset:4px">${(PROJECTS.find(p => p.slug === s) || {}).title}</a>`).join(', ')}</p></div></section>`; }).join('');
-  // headline dots for the injected h2s
-  $$('#disciplines h2.x').forEach(h => h.innerHTML = h.innerHTML.replace(/\.$/, '<span class="dot">.</span>'));
+  // One page: three areas, each listing its five services. Menu links jump to #area or #service.
+  const ICN = {}; MENU.forEach(col => col[1].forEach(([t, , ic]) => ICN[t] = ic));
+  const WK = { design: ['casa-gioia', 'ghumgham'], content: ['nepathya-auckland', 'lumbini-all-stars'], creative: ['trn-fest', 'zabardesh-biryani'] };
+  const COL = { design: 'g', content: 'i', creative: 'm' };
+  $('#sxbar').innerHTML = `<div class="sx-tabs">${DISCIPLINES.map(([t], i) => { const k = t.split(' ')[0].toLowerCase(); return `<a href="#${k}" data-k="${k}"><span>0${i + 1}</span>${t}</a>`; }).join('')}</div>`;
+  $('#sx').innerHTML = DISCIPLINES.map(([t, v, list, para], i) => { const k = t.split(' ')[0].toLowerCase();
+    const work = (WK[k] || []).map(s => PROJECTS.find(p => p.slug === s)).filter(p => p && p.img);
+    return `<section class="sx-area pad" id="${k}">
+      <div class="sx-side"><p class="label">0${i + 1}</p><h2 class="sx-h">${hl(t)}</h2><p class="sx-v">${v}</p><p class="sx-p">${para}</p>
+        <a class="btn" href="contact.html">Start a project <span aria-hidden="true">→</span></a></div>
+      <div class="sx-main"><ul class="sx-list">${list.map(n => `<li id="${slugify(n)}" class="mh-${COL[k]}-li"><span class="sx-ic">${svgI(ICN[n] || 'ad')}</span><div><h3>${n}</h3><p>${(MENU.flatMap(c => c[1]).find(x => x[0] === n) || [, ''])[1]}.</p><ul class="sx-gets">${((SVC[n] || [[]])[0]).map(g => `<li>${g}</li>`).join('')}</ul></div></li>`).join('')}</ul>
+        ${work.length ? `<p class="label sx-wl">Seen in</p><div class="sx-work">${work.map(p => `<a href="project.html?p=${p.slug}"><div class="sx-wim">${pic(p.img, p.title)}</div><span>${p.title} <b aria-hidden="true">→</b></span></a>`).join('')}</div>` : ''}</div></section>`; }).join('');
+  // highlight the tab for the section on screen
+  const tabs = $$('.sx-tabs a');
+  if ('IntersectionObserver' in window) { const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) tabs.forEach(a => a.classList.toggle('on', a.dataset.k === e.target.id)); }), { rootMargin: '-45% 0px -50% 0px' }); $$('.sx-area').forEach(s => io.observe(s)); }
+  if (location.hash) setTimeout(() => { const el = document.getElementById(location.hash.slice(1)); if (el) { el.scrollIntoView(); el.classList.add('flash'); } }, 200);
 }
 
-
 if (page === 'service') {
-  const ALL = MENU.flatMap(col => col.filter((_, i) => i % 2).flat());
+  // Old single-service pages now live as sections on services.html
   const q = new URLSearchParams(location.search).get('s');
-  const it = ALL.find(([t]) => slugify(t) === q) || ALL[0];
-  const [t, d, ic] = it, [gets, cat] = SVC[t] || [[], ''];
-  const grp = DISCIPLINES.find(([, , l]) => l.includes(t)) || DISCIPLINES[0], gkey = grp[0].split(' ')[0].toLowerCase();
-  document.title = `${t} | Jungle.`;
-  const real = PROJECTS.filter(p => p.img), work = (cat ? real.filter(p => p.cat === cat) : []).concat(real).filter((p, i, a) => a.indexOf(p) === i).slice(0, 3);
-  const others = grp[2].filter(x => x !== t);
-  $('#svc').innerHTML = `
-  <header class="ph sv-hero">
-    <div><p class="sv-crumb"><a href="services.html">Services</a> / <a href="services.html#${gkey}">${grp[0]}</a></p>
-      <h1 class="x words">${hl(t)}</h1><p class="lead" style="margin-top:20px">${d}. ${grp[1]}</p>
-      <div class="hero-ctas" style="margin-top:32px"><a class="btn" href="contact.html">Start a project <span aria-hidden="true">→</span></a><a class="btn btn-2" href="#sv-work">See related work</a></div></div>
-    <figure class="sv-img"><img src="assets/stock/s-${gkey}.jpg" alt="" width="900" height="1125"><span class="sv-ic">${svgI(ic)}</span></figure>
-  </header>
-  <section class="inv pad sec"><h2 class="x reveal" style="font-size:var(--t-head)">What you ${hl("get")}.</h2>
-    <div class="sv-gets">${gets.map((g, i) => `<div class="reveal"><b class="n">${String(i + 1).padStart(2, '0')}</b><p>${g}</p></div>`).join('')}</div></section>
-  <section class="inv pad sec" style="padding-top:0"><h2 class="x reveal" style="font-size:var(--t-head)">How it ${hl("works")}.</h2>
-    <div class="steps s3 mt">${[['Seed', 'Tell us the idea, the question or the opportunity.'], ['Leaf', 'We explore, collaborate and design it into shape.'], ['Dot', 'The idea finds its final form, delivered as finished files.']].map(([a, b], i) => `<div class="step reveal"><b class="n">${i + 1}</b><div><h3 class="w">${a}</h3><p>${b}</p></div></div>`).join('')}</div></section>
-  <section class="pad sec" id="sv-work"><h2 class="x reveal" style="font-size:var(--t-head)">Related ${hl("work")}.</h2>
-    <div class="grid mt" style="padding:0">${work.map(card).join('')}</div></section>
-  ${others.length ? `<section class="pad sec" style="padding-top:0"><h2 class="x reveal" style="font-size:var(--t-head)">More in ${hl(grp[0])}.</h2>
-    <div class="tags mt">${others.map(x => `<a href="service.html?s=${slugify(x)}">${x}</a>`).join('')}</div></section>` : ''}`;
-  $$('#svc h1.x, #svc h2.x').forEach(h => { if (!h.querySelector('.dot')) h.innerHTML = h.innerHTML.replace(/\.?$/, '<span class="dot">.</span>'); });
-  $$('#svc .words').forEach(h => { let k = 0; h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|(<span class="hl">.*?<\/span>)|([^\s<]+)/g, (m, dd, hl, w) => dd || `<span class="wd" style="--i:${k++}">${hl || w}</span>`); h.classList.add('rise'); });
+  location.replace('services.html' + (q ? '#' + q : ''));
 }
 
 if (page === 'why') {
@@ -268,20 +270,35 @@ if (page === 'why') {
 if (page === 'work') {
   // Work page: collage, statement, logos, full-bleed 2-up tiles.
   const real = PROJECTS.filter(p => p.img), list = real.concat(PROJECTS.filter(p => !p.img));
-  const sr = $('#sr'), sb = $('#sr-btn');
-  if (reduce) sr.removeAttribute('autoplay'), sr.pause();
-  const sync = () => { const p = sr.paused; sb.setAttribute('aria-label', p ? 'Play showreel' : 'Pause showreel');
-    sb.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="${p ? 'M8 5l11 7-11 7z' : 'M7 5h4v14H7zM13 5h4v14h-4z'}"/></svg>`; };
-  sb.onclick = () => (sr.paused ? sr.play() : sr.pause()); sr.onplay = sr.onpause = sync; sync();
+  // Pinned hero: a Graphite wave rises over the big "Work." word, then full-screen project scenes stack up.
+  (() => {
+    const hero = $('#wkh'), wave = $('#wkw'), line = $('#wkl'), big = $('.wk-big'), cl = (v, a, b) => Math.min(1, Math.max(0, (v - a) / (b - a))), ease = t => t * t * (3 - 2 * t);
+    const scs = $$('.ws-wrap');
+    if (reduce) { hero.classList.add('static'); return; }
+    let tick = false;
+    const run = () => { tick = false; const vh = innerHeight;
+      const r = hero.getBoundingClientRect(), p = cl(-r.top, 0, r.height - vh), k = ease(cl(p, .1, .8));
+      wave.style.transform = `translateY(${(1 - k) * 100}%)`; big.style.transform = `scale(${1 + p * .12})`;
+      line.style.opacity = cl(p, .78, .95); line.style.transform = `translateY(${(1 - cl(p, .78, .95)) * 24}px)`;
+      scs.forEach(w => { const q = w.getBoundingClientRect(), t = cl(-q.top, 0, q.height - vh), e = cl(q.top, -vh, vh);
+        const po = $('.ws-poster', w), ca = $('.ws-cap', w), bg = $('.ws-bg', w);
+        po.style.transform = `translateY(${(.5 - t) * 8}vh) scale(${.94 + .08 * Math.sin(Math.PI * Math.min(1, t * 1.1 + .1))})`;
+        ca.style.opacity = cl(t, .0, .18) * (1 - cl(t, .88, 1)); bg.style.transform = `scale(${1.15 - t * .1})`; }); };
+    addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(run); } }, { passive: true }); addEventListener('resize', run); run();
+  })();
   const CL = [['janakpur-bolts', 'Janakpur Bolts'], ['husqvarna', 'Husqvarna'], ['lumbini-all-stars', 'Lumbini All Stars'], ['plo-lubricants', 'PLO Lubricants'], ['ptt', 'PTT'], ['sk-zic', 'SK enmove ZIC']];
   $('#wlogos').innerHTML = CL.map(([f, n]) => `<span class="clogo"><img src="assets/clients/${f}.png" alt="${n}" width="120" height="120"></span>`).join('').repeat(4);
-  $('#grid').innerHTML = list.map(p => `<a class="tile2" data-c="${p.cat}" href="project.html?p=${p.slug}">${art(p)}
-    <div class="t2-cap"><h2 class="w">${p.title} <span aria-hidden="true">+</span></h2><p>${p.scope.slice(0, 3).join(', ')}</p></div></a>`).join('');
+  const card = (p, i) => `<a class="wk-card reveal" data-c="${p.cat}" href="project.html?p=${p.slug}"><div class="wk-im">${art(p)}</div><h3>${p.title}</h3><p>${p.brief}</p><span class="wk-tags"><i>${CATS[p.cat] || ''}</i>${p.scope.slice(0, 2).map(t => `<i>${t}</i>`).join('')}</span></a>`;
+  const banner = '<aside class="wk-band" data-band><p>What could a good brand do for <span class="hl">yours</span>?</p><a class="btn" href="contact.html">Start a project <span aria-hidden="true">→</span></a></aside>';
+  $('#grid').innerHTML = list.map(card).map((c, i) => i === 6 ? banner + c : c).join('');
+  // Show every thumbnail whole: tag each card by its image shape so tall posters sit narrower and nothing is cropped.
+  $$('#grid .wk-im img').forEach(im => { const set = () => { const r = im.naturalWidth / im.naturalHeight; im.closest('.wk-card').classList.add(r < .95 ? 'tall' : r > 1.25 ? 'wide' : 'sq'); }; im.complete && im.naturalWidth ? set() : im.addEventListener('load', set, { once: true }); });
   const apply = f => {
     $$('[data-f]').forEach(x => { x.classList.toggle('on', x.dataset.f === f); x.setAttribute('aria-pressed', x.dataset.f === f); });
-    $$('#grid .tile2').forEach(c => c.hidden = f !== 'all' && c.dataset.c !== f);
+    $$('#grid .wk-card').forEach(c => c.hidden = f !== 'all' && c.dataset.c !== f); $$('#grid [data-band]').forEach(c => c.hidden = f !== 'all');
   };
   $$('[data-f]').forEach(b => b.onclick = () => { apply(b.dataset.f); history.replaceState(null, '', b.dataset.f === 'all' ? 'work.html' : `?f=${b.dataset.f}`); });
+  { const fb = $('#fbar'), gr = $('#grid'); if (fb && gr && 'IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(e => fb.classList.toggle('show', e.isIntersecting)), { threshold: 0, rootMargin: '0px 0px -20% 0px' }).observe(gr); else if (fb) fb.classList.add('show'); }
   const f0 = new URLSearchParams(location.search).get('f'); apply(f0 && CATS[f0] ? f0 : 'all');
 }
 

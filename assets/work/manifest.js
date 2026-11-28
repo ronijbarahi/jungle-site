@@ -97,5 +97,144 @@ const IMAGES = {
       "assets/work/janakpur-bolts/13-playoffs.jpg?v=1791386839",
       "assets/work/janakpur-bolts/14-champions.jpg?v=1791386838"
     ]
+  },
+  "breathless": {
+    "cover": "assets/work/breathless/cover.jpg?v=1795871160",
+    "gallery": [
+      "assets/work/breathless/01.jpg?v=1795871160",
+      "assets/work/breathless/02.jpg?v=1795871160",
+      "assets/work/breathless/03.jpg?v=1795871160",
+      "assets/work/breathless/04.jpg?v=1795871160"
+    ]
+  },
+  "casa-gioia": {
+    "cover": "assets/work/casa-gioia/cover.jpg?v=1795871160",
+    "gallery": [
+      "assets/work/casa-gioia/02.jpg?v=1795871160",
+      "assets/work/casa-gioia/03.jpg?v=1795871160",
+      "assets/work/casa-gioia/04.jpg?v=1795871160",
+      "assets/work/casa-gioia/05.jpg?v=1795871160",
+      "assets/work/casa-gioia/06.jpg?v=1795871160",
+      "assets/work/casa-gioia/07.jpg?v=1795871160",
+      "assets/work/casa-gioia/08.jpg?v=1795871160"
+    ]
+  },
+  "eggs-and-more": {
+    "cover": "assets/work/eggs-and-more/cover.jpg?v=1795871160",
+    "gallery": [
+      "assets/work/eggs-and-more/01.jpg?v=1795871160",
+      "assets/work/eggs-and-more/02.jpg?v=1795871160",
+      "assets/work/eggs-and-more/03.jpg?v=1795871160",
+      "assets/work/eggs-and-more/04.jpg?v=1795871160",
+      "assets/work/eggs-and-more/05.jpg?v=1795871160",
+      "assets/work/eggs-and-more/07.jpg?v=1795871160"
+    ]
+  },
+  "empowering-kind": {
+    "cover": "assets/work/empowering-kind/cover.jpg?v=1795871160",
+    "gallery": [
+      "assets/work/empowering-kind/01.jpg?v=1795871160",
+      "assets/work/empowering-kind/03.jpg?v=1795871160",
+      "assets/work/empowering-kind/04.jpg?v=1795871160",
+      "assets/work/empowering-kind/05.jpg?v=1795871160",
+      "assets/work/empowering-kind/06.jpg?v=1795871160",
+      "assets/work/empowering-kind/07.jpg?v=1795871160"
+    ]
+  },
+  "frogging-nook": {
+    "cover": "assets/work/frogging-nook/cover.jpg?v=1795871160",
+    "gallery": [
+      "assets/work/frogging-nook/02.jpg?v=1795871160",
+      "assets/work/frogging-nook/03.jpg?v=1795871160",
+      "assets/work/frogging-nook/04.jpg?v=1795871160",
+      "assets/work/frogging-nook/05.jpg?v=1795871160",
+      "assets/work/frogging-nook/06.jpg?v=1795871160"
+    ]
+  },
+  "ghumgham": {
+    "cover": "assets/work/ghumgham/cover.jpg?v=1795871160",
+    "gallery": [
+      "assets/work/ghumgham/02.jpg?v=1795871160",
+      "assets/work/ghumgham/03.jpg?v=1795871160",
+      "assets/work/ghumgham/04.jpg?v=1795871160",
+      "assets/work/ghumgham/05.jpg?v=1795871160",
+      "assets/work/ghumgham/06.jpg?v=1795871160",
+      "assets/work/ghumgham/07.jpg?v=1795871160"
+    ]
+  },
+  "mr-gole": {
+    "cover": "assets/work/mr-gole/cover.jpg?v=1795871160",
+    "gallery": [
+      "assets/work/mr-gole/02.jpg?v=1795871160",
+      "assets/work/mr-gole/03.jpg?v=1795871160",
+      "assets/work/mr-gole/04.jpg?v=1795871160",
+      "assets/work/mr-gole/05.jpg?v=1795871160"
+    ]
+  },
+  "nu-cosmetics": {
+    "cover": "assets/work/nu-cosmetics/cover.jpg?v=1795871160",
+    "gallery": [
+      "assets/work/nu-cosmetics/02.jpg?v=1795871160",
+      "assets/work/nu-cosmetics/03.jpg?v=1795871160",
+      "assets/work/nu-cosmetics/04.jpg?v=1795871160",
+      "assets/work/nu-cosmetics/05.jpg?v=1795871160",
+      "assets/work/nu-cosmetics/06.jpg?v=1795871160",
+      "assets/work/nu-cosmetics/07.jpg?v=1795871160",
+      "assets/work/nu-cosmetics/08.jpg?v=1795871160"
+    ]
+  },
+  "potela": {
+    "cover": "assets/work/potela/cover.jpg?v=1795871160",
+    "gallery": [
+      "assets/work/potela/02.jpg?v=1795871160",
+      "assets/work/potela/03.jpg?v=1795871160",
+      "assets/work/potela/04.jpg?v=1795871160",
+      "assets/work/potela/05.jpg?v=1795871160",
+      "assets/work/potela/06.jpg?v=1795871160",
+      "assets/work/potela/07.jpg?v=1795871160"
+    ]
+  },
+  "ruby": {
+    "cover": "assets/work/ruby/cover.jpg?v=1795871160",
+    "gallery": [
+      "assets/work/ruby/01.jpg?v=1795871160",
+      "assets/work/ruby/02.jpg?v=1795871160",
+      "assets/work/ruby/03.jpg?v=1795871160",
+      "assets/work/ruby/04.jpg?v=1795871160",
+      "assets/work/ruby/05.jpg?v=1795871160",
+      "assets/work/ruby/07.jpg?v=1795871160"
+    ]
+  },
+  "tsp": {
+    "cover": "assets/work/tsp/cover.jpg?v=1795871160",
+    "gallery": [
+      "assets/work/tsp/02.jpg?v=1795871160",
+      "assets/work/tsp/03.jpg?v=1795871160",
+      "assets/work/tsp/04.jpg?v=1795871160",
+      "assets/work/tsp/05.jpg?v=1795871160",
+      "assets/work/tsp/06.jpg?v=1795871160",
+      "assets/work/tsp/07.jpg?v=1795871160"
+    ]
+  },
+  "yak-and-yeti": {
+    "cover": "assets/work/yak-and-yeti/cover.jpg?v=1795871160",
+    "gallery": [
+      "assets/work/yak-and-yeti/02.jpg?v=1795871160",
+      "assets/work/yak-and-yeti/03.jpg?v=1795871160",
+      "assets/work/yak-and-yeti/04.jpg?v=1795871160",
+      "assets/work/yak-and-yeti/05.jpg?v=1795871160",
+      "assets/work/yak-and-yeti/06.jpg?v=1795871160"
+    ]
+  },
+  "zabardesh-biryani": {
+    "cover": "assets/work/zabardesh-biryani/cover.jpg?v=1795871160",
+    "gallery": [
+      "assets/work/zabardesh-biryani/02.jpg?v=1795871160",
+      "assets/work/zabardesh-biryani/03.jpg?v=1795871160",
+      "assets/work/zabardesh-biryani/04.jpg?v=1795871160",
+      "assets/work/zabardesh-biryani/05.jpg?v=1795871160",
+      "assets/work/zabardesh-biryani/06.jpg?v=1795871160",
+      "assets/work/zabardesh-biryani/07.jpg?v=1795871160"
+    ]
   }
 };

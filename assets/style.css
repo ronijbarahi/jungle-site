@@ -439,3 +439,15 @@ body[data-page=work] .logo-track{display:flex;gap:40px;width:max-content;animati
 .aud p{color:var(--fg2);max-width:46ch}
 @media(max-width:700px){.aud>div{grid-template-columns:1fr;gap:8px}}
 .steps.s3 .step{justify-content:flex-start;gap:clamp(40px,5vw,72px);min-height:260px}
+
+/* 48-hour countdown banner */
+.cd{position:fixed;top:0;left:0;right:0;height:40px;z-index:120;background:var(--graphite);color:var(--mw);display:flex;align-items:center;justify-content:center;gap:18px;padding:0 48px;font-size:14px}
+.cd .hl{color:var(--mint)}
+.cd-c{display:flex;align-items:baseline;gap:2px;font-variant-numeric:tabular-nums}
+.cd-c b{font-weight:500;color:var(--mint);font-size:15px}.cd-c i{font-style:normal;opacity:.7;margin-right:8px;font-size:12px}
+.cd-x{position:absolute;right:14px;top:50%;translate:0 -50%;background:none;border:0;color:var(--mw);font-size:20px;line-height:1;cursor:pointer;padding:6px}
+.has-cd nav{top:40px}
+.has-cd body{padding-top:40px}
+.has-cd .zh-stick,.has-cd .ss-stick,.has-cd .wk-hero-in{top:40px}
+.has-cd .sx-bar{top:112px}
+@media(max-width:600px){.cd{font-size:12px;gap:10px;padding:0 36px 0 12px;justify-content:flex-start}.cd-c i{margin-right:4px}.cd-t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
