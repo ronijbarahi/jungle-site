@@ -1,6 +1,7 @@
-const LOGO = '<svg viewBox="0 26 455 110" fill="currentColor" aria-hidden="true"><path d="M47.45,34.07v56.76c0,5.39-1.23,9.4-3.65,12.01-2.44,2.61-5.89,3.93-10.34,3.93s-7.6-1.29-9.98-3.86c-2.4-2.57-3.65-6.29-3.74-11.17H0c.1,6.54,1.42,12.26,3.99,17.12,2.57,4.89,6.41,8.65,11.51,11.3,5.1,2.67,11.3,3.99,18.63,3.99,11.4,0,20.13-2.99,26.19-8.94,6.06-5.97,9.08-14.49,9.08-25.56V30.19l-21.95,3.88Z"/><polygon points="76.33 28.95 76.33 49.86 69.39 51.07 47.45 54.95 19.73 59.84 19.73 38.96 47.45 34.07 69.39 30.19 76.33 28.95"/><path d="M152.2,51v71.53s-21.95,0-21.95,0l-.08-9.86c-5.59,8.5-15.24,12.53-25.41,11.56-13.34-1.27-20.61-10.32-21.04-23.72v-49.5s21.83,0,21.83,0l.02,41.53c.49,3.96.67,8.33,3.93,11.06,4.17,3.48,11.15,3.31,15.54.29,3.92-2.7,4.77-7.21,5.17-11.76l.02-41.11h21.96Z"/><path d="M200.61,67.42c-4.3-.24-8.24.71-11.01,3.69-2.46,2.65-3.1,6.11-3.5,9.76l-.02,41.66h-21.94s0-71.53,0-71.53h21.93s.03,10.34.03,10.34c5.91-8.84,15.47-13.15,25.85-12.08,13.23,1.36,20.42,9.96,21.12,23.29v49.99s-21.97,0-21.97,0l.02-41.58c-.07-7.29-2.93-13.11-10.51-13.53Z"/><path d="M293.98,51l-.1,8.66c-3.33-4.19-6.96-7.28-12.04-8.88-16.28-5.11-34.14,1.26-38.71,18.75-2.12,8.09-1.85,16.65,1.18,24.42,5.67,14.53,21.81,19.27,36.39,15.44,5.53-1.46,9.87-4.74,13.15-9.37.17,3.38.27,6.59-.69,9.74-4.19,13.67-33.65,9.77-46.38,2.24l-.02,20.13c15.22,6.73,35.8,7.89,50.33,2.07,7.72-3.08,13.77-8.81,16.68-16.16,1.26-3.11,1.92-6.51,1.95-10.14l.15-31.95.12-24.97h-22ZM279.08,95.01c-8.31,0-15.07-6.73-15.07-15.05s6.76-15.07,15.07-15.07,15.07,6.73,15.07,15.07-6.76,15.05-15.07,15.05Z"/><polygon points="349.62 121.85 349.62 122.54 327.64 122.54 327.64 35.76 337.09 34.08 349.6 31.86 349.6 52.75 349.62 121.85"/><path d="M411.38,95.63c-1.09,4.17-2.91,7.06-5.9,9.74-3.21,2.27-6.81,3.08-10.58,2.89-9.37-.32-13.64-7.38-14.18-16.68l46.95-.02c2.05-18.4-2.07-35.45-20.38-40.95-11.74-2.96-24.15-1.53-33.45,4.69-5.23,3.48-9.47,8.46-12.09,15.05-4.91,12.38-4.22,28.47,3.26,39.72,3.26,4.91,7.82,8.91,13.79,11.25,10.34,4.1,22.25,4.22,32.64.05,8.71-3.5,14.41-11.45,16.7-20.2l-16.75-5.53ZM397.15,63.73c6.64.39,11.25,5.28,11.47,11.92.05,1.41-.3,3.28-2.39,3.28l-25.43.02c.47-9.67,6.46-15.84,16.36-15.22Z"/><path class="d" d="M434.17,111.84c0-5.61,4.09-10.11,10.01-10.11s10.01,4.5,10.01,10.11-4.09,10.11-10.01,10.11-10.01-4.42-10.01-10.11Z"/></svg>';
-// Nav logo: J. icon at the top, the rest of the wordmark slides out once you scroll (after dibesu-portfolio).
-const LOGO_NAV = '<svg class="lj" viewBox="0 26 78 110" fill="currentColor" aria-hidden="true"><path d="M47.45,34.07v56.76c0,5.39-1.23,9.4-3.65,12.01-2.44,2.61-5.89,3.93-10.34,3.93s-7.6-1.29-9.98-3.86c-2.4-2.57-3.65-6.29-3.74-11.17H0c.1,6.54,1.42,12.26,3.99,17.12,2.57,4.89,6.41,8.65,11.51,11.3,5.1,2.67,11.3,3.99,18.63,3.99,11.4,0,20.13-2.99,26.19-8.94,6.06-5.97,9.08-14.49,9.08-25.56V30.19l-21.95,3.88Z"/><polygon points="76.33 28.95 76.33 49.86 69.39 51.07 47.45 54.95 19.73 59.84 19.73 38.96 47.45 34.07 69.39 30.19 76.33 28.95"/></svg><span class="lrest"><svg viewBox="80 26 350 110" fill="currentColor" aria-hidden="true"><path d="M152.2,51v71.53s-21.95,0-21.95,0l-.08-9.86c-5.59,8.5-15.24,12.53-25.41,11.56-13.34-1.27-20.61-10.32-21.04-23.72v-49.5s21.83,0,21.83,0l.02,41.53c.49,3.96.67,8.33,3.93,11.06,4.17,3.48,11.15,3.31,15.54.29,3.92-2.7,4.77-7.21,5.17-11.76l.02-41.11h21.96Z"/><path d="M200.61,67.42c-4.3-.24-8.24.71-11.01,3.69-2.46,2.65-3.1,6.11-3.5,9.76l-.02,41.66h-21.94s0-71.53,0-71.53h21.93s.03,10.34.03,10.34c5.91-8.84,15.47-13.15,25.85-12.08,13.23,1.36,20.42,9.96,21.12,23.29v49.99s-21.97,0-21.97,0l.02-41.58c-.07-7.29-2.93-13.11-10.51-13.53Z"/><path d="M293.98,51l-.1,8.66c-3.33-4.19-6.96-7.28-12.04-8.88-16.28-5.11-34.14,1.26-38.71,18.75-2.12,8.09-1.85,16.65,1.18,24.42,5.67,14.53,21.81,19.27,36.39,15.44,5.53-1.46,9.87-4.74,13.15-9.37.17,3.38.27,6.59-.69,9.74-4.19,13.67-33.65,9.77-46.38,2.24l-.02,20.13c15.22,6.73,35.8,7.89,50.33,2.07,7.72-3.08,13.77-8.81,16.68-16.16,1.26-3.11,1.92-6.51,1.95-10.14l.15-31.95.12-24.97h-22ZM279.08,95.01c-8.31,0-15.07-6.73-15.07-15.05s6.76-15.07,15.07-15.07,15.07,6.73,15.07,15.07-6.76,15.05-15.07,15.05Z"/><polygon points="349.62 121.85 349.62 122.54 327.64 122.54 327.64 35.76 337.09 34.08 349.6 31.86 349.6 52.75 349.62 121.85"/><path d="M411.38,95.63c-1.09,4.17-2.91,7.06-5.9,9.74-3.21,2.27-6.81,3.08-10.58,2.89-9.37-.32-13.64-7.38-14.18-16.68l46.95-.02c2.05-18.4-2.07-35.45-20.38-40.95-11.74-2.96-24.15-1.53-33.45,4.69-5.23,3.48-9.47,8.46-12.09,15.05-4.91,12.38-4.22,28.47,3.26,39.72,3.26,4.91,7.82,8.91,13.79,11.25,10.34,4.1,22.25,4.22,32.64.05,8.71-3.5,14.41-11.45,16.7-20.2l-16.75-5.53ZM397.15,63.73c6.64.39,11.25,5.28,11.47,11.92.05,1.41-.3,3.28-2.39,3.28l-25.43.02c.47-9.67,6.46-15.84,16.36-15.22Z"/></svg></span><svg class="ld" viewBox="431 26 24 110" aria-hidden="true"><path class="d" d="M434.17,111.84c0-5.61,4.09-10.11,10.01-10.11s10.01,4.5,10.01,10.11-4.09,10.11-10.01,10.11-10.01-4.42-10.01-10.11Z"/></svg>';
+const hl = s => String(s).replace(/(\S+?)([.!?]*)$/, '<span class="hl">$1</span>$2');
+const LOGO = '<svg viewBox="0 0 740.3 224.23" fill="currentColor" aria-hidden="true"><path class="d" d="M699.42,153.84c0-11.46,8.35-20.64,20.44-20.64s20.44,9.18,20.44,20.64-8.35,20.64-20.44,20.64S699.42,165.46,699.42,153.84Z"/><g><g><path d="M124.72,6.68v106.85q0,29.85-16.33,45.95t-47.07,16.05c-13.16,0-24.28-2.4-33.46-7.19q-13.77-7.12-20.67-20.3Q.27,134.95,0,117.29h35.5c.13,8.77,2.39,15.46,6.69,20.07,4.3,4.62,9.95,6.92,17.95,6.92s14.2-2.35,18.59-7.05c4.34-4.7,6.56-11.89,6.56-21.57V13.64L124.72,6.68Z"/><polygon points="124.72 6.68 124.72 44.21 85.29 51.17 35.45 59.95 35.45 22.46 85.29 13.64 124.72 6.68"/></g><path d="M214.33,134.08c-2.78,1.62-5.77,2.98-8.91,4.06-3.55,1.21-7.15,1.82-10.69,1.82-5.06,0-9.05-1.26-11.84-3.76-2.7-2.42-4.07-6.68-4.07-12.67V50.39l-39.42,1.85v78.41c0,15.19,4.04,26.58,12,33.88,7.89,7.23,18.3,10.9,30.93,10.9,6.78,0,13.22-1.03,19.12-3.06,4.33-1.49,8.64-3.64,12.88-6.42v7.1h39.42V50.39l-39.42,1.85V134.08Z"/><path d="M342.42,48.94c-6.79,0-13.36,1.08-19.52,3.19-4.58,1.57-9.11,3.79-13.54,6.63v-8.37l-39.42,1.85v120.81h39.42v-82.48c3.09-1.79,6.34-3.24,9.66-4.32,3.74-1.22,7.44-1.84,11-1.84,5.05,0,9.03,1.26,11.83,3.76,2.7,2.42,4.07,6.69,4.07,12.67v72.21h39.42v-79.33c0-15.17-3.99-26.56-11.85-33.87C365.68,52.62,355.23,48.94,342.42,48.94Z"/><path d="M499.71,151.71c-9.15-6.57-22.35-9.9-39.24-9.9q-2.41,0-6.68.13-3.91.13-7.81.47l5.42-5.3c14.68-.88,26.52-5.12,35.19-12.63,9.06-7.82,13.65-18.35,13.65-31.29,0-3.45-.54-6.81-1.6-10q-.71-2.12-1.69-4.06h15.13l.32-32.09-45.58,4.76c-6.25-1.9-13.09-2.86-20.33-2.86-10.73,0-20.22,1.82-28.2,5.39-8.11,3.64-14.45,8.82-18.86,15.39-4.43,6.59-6.68,14.49-6.68,23.47,0,10.5,3.33,19.73,9.9,27.42,5.56,6.51,13.11,11.11,22.5,13.72l-15.78,14.89v28.26l3.47-.81c5.08-1.19,11.33-2.05,18.55-2.57,7.29-.52,14.24-.78,20.64-.78,12.84,0,18.47,1.24,20.94,2.28,2.9,1.23,4.2,3.07,4.2,5.97,0,1.96-.55,3.56-1.7,4.89-1.16,1.36-3.48,2.51-6.71,3.32-3.64.9-9.17,1.36-16.47,1.36s-14.99-.65-22.61-1.93c-7.65-1.29-14.65-2.99-20.81-5.04-6.04-2.02-10.84-4.29-14.29-6.75l-4.01-2.86-3.25,35.7,1.53.91c6.74,4.01,15.68,7.23,26.57,9.57,10.81,2.32,22.59,3.49,35.03,3.49,21.84,0,38.01-4.07,48.06-12.09,10.25-8.18,15.44-18.64,15.44-31.1S509.16,158.48,499.71,151.71ZM429,93.19c0-4.7,1.49-8.44,4.56-11.43,3.08-3.01,7.31-4.48,12.93-4.48s9.58,1.47,12.67,4.48c3.06,2.99,4.55,6.73,4.55,11.43s-1.48,8.37-4.53,11.27c-3.08,2.94-7.23,4.37-12.69,4.37s-9.85-1.46-12.93-4.48C430.49,101.37,429,97.71,429,93.19Z"/><polygon points="523.48 173.05 562.9 173.05 562.9 0 523.48 1.85 523.48 173.05"/><path d="M687.89,121.36q.53-4.27.94-9.22c.26-3.27.4-6.15.4-8.54,0-11.19-2.4-20.95-7.12-29-4.73-8.08-11.42-14.35-19.89-18.64-8.37-4.22-17.99-6.36-28.58-6.36-11.53,0-22.07,2.65-31.34,7.88-9.29,5.24-16.66,12.61-21.91,21.91-5.23,9.28-7.88,20.35-7.88,32.92s2.84,24.08,8.43,33.62c5.64,9.6,14.13,17.13,25.24,22.36,12.78,6.02,27.16,8.27,41.2,8.08,6.75-.09,13.61-.63,20.29-1.61,3.56-.52,7.11-1.2,10.6-2.14,1.02-.27,10-2.6,9.96-3.54,0,0-1.52-34.47-1.52-34.47-12.52,4.7-25.68,6.98-39.1,6.54-9.95-.33-21.24-2.26-28.41-9.81-2.07-2.18-3.65-4.7-4.72-7.5h73.1L687.89,121.36ZM652.18,98.32v.61h-39.51c1.09-5.47,3.28-9.98,6.54-13.44,3.79-4.02,8.59-5.97,14.69-5.97,5.76,0,10.14,1.65,13.39,5.06C650.58,88.02,652.18,92.52,652.18,98.32Z"/></g></svg>';
+// Nav logo: the supplied full wordmark (Jungle New System artwork), never redrawn.
+const LOGO_NAV = LOGO;
 // Shared chrome (nav, footer, transitions) + page renderers. Brand rules live in style.css.
 // Real imagery comes from assets/work/<slug>/ via manifest.js (run scripts/build-images.py).
 const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -30,44 +31,38 @@ const IC = {
   camp: '<path d="M4 10v4h3l7 4V6L7 10z"/><path d="M18 9a4 4 0 0 1 0 6"/>',
 };
 const MENU = [
-  [['Creative design services', 'g', 'creative'], [
-    ['Ad creative', 'Scroll-stopping ads for every placement', 'ad'], ['Social media creative', 'Posts, stories and carousels that feel like you', 'social'],
-    ['Presentation design', 'Decks people actually want to sit through', 'pres'], ['Illustration design', 'Drawn worlds that carry your story', 'ill'],
-    ['eBooks and report design', 'Long reads, made easy to read', 'book'], ['Print design', 'Posters, flyers and event materials', 'print'],
-    ['Packaging and merchandise design', 'Kits, tees, scarves and everything fans keep', 'pack']]],
-  [['Motion and digital services', 'i', 'motion'], [
-    ['Motion design', 'Animated type, logos and social motion', 'motion'], ['Video editing', 'Reels, promos, cutdowns and versions', 'video'],
-    ['Email creation', 'Emails that get opened and clicked', 'mail'], ['Web design', 'Websites and landing pages built to convert', 'web'],
-    ['Design systems', 'Templates and rules that keep work consistent', 'sys', 1], ['Product design', 'Clear, friendly app and product screens', 'prod', 1],
-    ['Copywriting', 'Words that sound like you, only sharper', 'copy', 1], ['Immersive experiences', 'Stage visuals, LED screens and 3D moments', 'imm']]],
-  [['AI services', 'm', 'ai'], [
-    ['AI-powered creative', 'Human craft, sped up with AI', 'ai'], ['AI consulting', 'Help your team work well with AI', 'chat'],
-    ['Automation', 'Resizing and versioning on autopilot', 'auto', 1]],
-   ['Marketing services', 'p', 'content'], [['Campaign strategy', 'The plan and concept behind the launch', 'camp', 1]]],
+  [['Design and communication', 'g', 'design'], [
+    ['Marketing design', 'Posters, ads and promotional pieces', 'ad'], ['Packaging design', 'Packs, labels and merchandise people keep', 'pack'],
+    ['Digital design', 'Websites, emails and screens that feel like you', 'web'], ['Creative assets', 'Templates and files your team can reuse', 'sys'],
+    ['Visual communication', 'Illustration, decks and reports made clear', 'ill']]],
+  [['Content and campaigns', 'i', 'content'], [
+    ['Content planning', 'A calendar with a reason behind every post', 'copy'], ['Social media creative', 'Posts, stories and reels with personality', 'social'],
+    ['Creative campaigns', 'One big idea, told across every channel', 'camp'], ['Content consulting', 'Straight advice on what to make and why', 'chat'],
+    ['Art direction', 'A clear look and feel, from sketch to final file', 'pres']]],
+  [['Creative experiences', 'm', 'creative'], [
+    ['Event creative', 'Key art, screens and graphics for the big night', 'imm'], ['Brand activations', 'Moments that bring a brand to life in person', 'motion'],
+    ['Environmental graphics', 'Signage, banners and branded spaces', 'print'], ['Creative production', 'Photo, video and motion, made properly', 'video'],
+    ['Campaign execution', 'Every format and placement, delivered on time', 'auto']]],
 ];
 
 // ── single service pages (service.html?s=<slug>)
 const slugify = t => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const SVC = {
-  'Ad creative': [['Static and animated ads', 'Every size for Meta, Google, TikTok and YouTube', 'Fresh variations to test and refresh', 'Built to your brand and your offer'], 'sport'],
-  'Social media creative': [['Feed posts, stories and carousels', 'Matchday, launch and event templates', 'A steady weekly content calendar', 'Captions written to match'], 'sport'],
-  'Presentation design': [['Pitch and sales decks', 'Company and event profiles', 'Editable templates for your team', 'Charts and data made readable'], ''],
-  'Illustration design': [['Custom illustrations and characters', 'Poster and key-art illustration', 'Icons and spot graphics', 'Styles that fit your existing brand'], 'event'],
-  'eBooks and report design': [['Annual and impact reports', 'eBooks and guides', 'Long-form layouts that stay readable', 'Print-ready and digital versions'], ''],
-  'Print design': [['Posters, flyers and banners', 'Event signage and wayfinding', 'Brochures and menus', 'Print-ready files, checked'], 'event'],
-  'Packaging and merchandise design': [['Jerseys and team kits', 'Scarves, tees and fan merch', 'Packaging and labels', 'Mockups before anything is printed'], 'sport'],
-  'Motion design': [['Animated posts and reels', 'Kinetic type and logo animation', 'Countdown and announcement loops', 'LED and stage visuals'], 'event'],
-  'Video editing': [['Short-form reels and shorts', 'Promo and highlight edits', 'Cutdowns for every platform', 'Subtitles, music and finishing'], 'event'],
-  'Email creation': [['Newsletter and campaign emails', 'Reusable email templates', 'Mobile-first layouts', 'Copy and subject lines'], 'digital'],
-  'Web design': [['Websites and landing pages', 'Event and ticketing pages', 'Responsive, fast layouts', 'Hand-off ready for developers'], 'digital'],
-  'Design systems': [['Template libraries for your team', 'Social and print systems', 'Usage rules that stay simple', 'Files organised to last'], 'sport'],
-  'Product design': [['App and product screens', 'Clear user flows', 'Clickable prototypes', 'Specs your developers can use'], 'digital'],
-  'Copywriting': [['Headlines and taglines', 'Social captions and scripts', 'Website and email copy', 'Written in your voice'], ''],
-  'Immersive experiences': [['Stage and LED screen visuals', '3D scenes and moments', 'Event environments', 'Content timed to the show'], 'event'],
-  'AI-powered creative': [['Faster variations and resizes', 'AI-assisted concepts, finished by designers', 'Image generation done with care', 'Human review on everything'], ''],
-  'AI consulting': [['Where AI fits in your creative process', 'Tool setup and workflows', 'Team training sessions', 'Guidelines for safe use'], ''],
-  'Automation': [['Automatic resizing and versioning', 'Template-driven production', 'Batch exports for every platform', 'More output from the same team'], 'sport'],
-  'Campaign strategy': [['Launch and campaign planning', 'Concepts and key messages', 'Channel and content plans', 'Timelines your team can follow'], 'event'],
+  'Marketing design': [['Posters, flyers and ads', 'Promotional pieces for print and screen', 'Layouts that keep your message clear', 'Files ready for every placement'], ''],
+  'Packaging design': [['Packs, labels and boxes', 'Jerseys, tees and fan merchandise', 'Mockups before anything is printed', 'Print-ready files, checked'], 'sport'],
+  'Digital design': [['Websites and landing pages', 'Email templates and newsletters', 'Screens and interfaces', 'Hand-off ready for developers'], 'digital'],
+  'Creative assets': [['Reusable templates for your team', 'Social and print systems', 'Presentations, decks and reports', 'Files organised to last'], ''],
+  'Visual communication': [['Illustration and icons', 'Ideas and data made easy to read', 'Decks, reports and guides', 'Styles that fit your brand'], ''],
+  'Content planning': [['A content calendar built around your goals', 'Themes and formats that fit your audience', 'A posting rhythm your team can keep', 'Reviewed and adjusted as you grow'], ''],
+  'Social media creative': [['Feed posts, stories, carousels and reels', 'Matchday, launch and event templates', 'Captions written to match', 'A steady, consistent rhythm'], 'sport'],
+  'Creative campaigns': [['One idea carried across every channel', 'Key art and campaign systems', 'Ticketing, launch and countdown series', 'Results you can point to'], 'event'],
+  'Content consulting': [['A fresh look at what you publish today', 'Clear priorities and next steps', 'Simple guidelines your team can follow', 'Honest feedback, kindly given'], ''],
+  'Art direction': [['A look and feel for the whole project', 'Photography and video direction', 'References, mood and creative briefs', 'Quality checks from start to finish'], ''],
+  'Event creative': [['Event key art and posters', 'Stage and LED screen visuals', 'Ticketing and countdown campaigns', 'Sponsor and partner graphics'], 'event'],
+  'Brand activations': [['Ideas that bring your brand to life in person', 'Giveaways and fan moments', 'On-ground graphics and materials', 'Content to carry it online'], 'event'],
+  'Environmental graphics': [['Signage and wayfinding', 'Banners, backdrops and displays', 'Branded spaces', 'Print-ready files, checked'], 'event'],
+  'Creative production': [['Photo and video production', 'Motion graphics and editing', 'Cutdowns for every platform', 'Finishing with care'], 'event'],
+  'Campaign execution': [['Every format and size you need', 'A calm, organised roll-out', 'One owner from brief to final file', 'Delivered on the date we agreed'], ''],
 };
 const svgI = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k]}</svg>`;
 const mItem = ([t, d, ic, isNew]) => `<li><a href="service.html?s=${slugify(t)}"><span><b>${t}${isNew ? ' <em>New</em>' : ''}</b><small>${d}</small></span>${svgI(ic)}</a></li>`;
@@ -75,26 +70,18 @@ const mHead = ([t, c, a]) => `<a class="mh mh-${c}" href="services.html#${a}">${
 const MENU_GROUP = {};
 // Services.
 const DISCIPLINES = [
-  ['Creative Design', 'Design that shows up.', ['Ad creative', 'Social media creative', 'Presentation design', 'Illustration design', 'eBooks and report design', 'Print design', 'Packaging and merchandise design']],
-  ['Motion Design', 'Motion that moves.', ['Motion design', 'Video editing']],
-  ['Digital Design', 'Built for every screen.', ['Web design', 'Email creation', 'Design systems', 'Product design', 'Immersive experiences']],
-  ['Content and Campaigns', 'Words and plans that land.', ['Copywriting', 'Campaign strategy']],
-  ['AI Services', 'Faster, with a human eye.', ['AI-powered creative', 'AI consulting', 'Automation']],
+  ['Design and communication', 'Design that says it clearly.', ['Marketing design', 'Packaging design', 'Digital design', 'Creative assets', 'Visual communication'],
+    'Marketing, packaging and digital design, made with care so your message lands the way you meant it.', ['janakpur-bolts', 'lumbini-all-stars']],
+  ['Content and campaigns', 'Ideas that keep going.', ['Content planning', 'Social media creative', 'Creative campaigns', 'Content consulting', 'Art direction'],
+    'Plans, posts and campaigns that give your brand something worth following, week after week.', ['nepathya-auckland', '1974-ad-tour']],
+  ['Creative experiences', 'Ideas you can step into.', ['Event creative', 'Brand activations', 'Environmental graphics', 'Creative production', 'Campaign execution'],
+    'Creative made for the moments people actually show up to: events, activations and spaces.', ['trn-fest', 'glory-tour']],
 ];
 const SERVICE_COUNT = DISCIPLINES.reduce((n, d) => n + d[2].length, 0);
 DISCIPLINES.forEach(([g, , list]) => list.forEach(n => MENU_GROUP[n] = g.split(' ')[0].toLowerCase()));
 const MEGA = `<div class="mega" id="mega"><div class="mega-in">${MENU.map(col => { let h = ''; for (let i = 0; i < col.length; i += 2) h += mHead(col[i]) + `<ul>${col[i + 1].map(mItem).join('')}</ul>`; return `<div class="mcol">${h}</div>`; }).join('')}</div></div>`;
 
 
-// "Why us" pages (why.html?p=<slug>), one template.
-const WHY = [
-  ['how-it-works', 'How it works', 'From brief to finished files, step by step', 'flex'],
-  ['why-jungle', 'Why Jungle', 'What makes teams stay with us', 'owner'],
-  ['craft-and-ai', 'Craft and AI', 'Where AI helps, and where people lead', 'ai'],
-  ['compare', 'Jungle vs alternatives', 'Hiring, agencies, freelancers or AI tools', 'sys'],
-  ['faq', 'FAQ', 'Straight answers to common questions', 'chat'],
-];
-const WHY_MENU = `<div class="mega mega-sm" id="mega-why"><div class="mega-in" style="grid-template-columns:1fr">${`<div class="mcol"><a class="mh mh-g" href="why.html">Why us <span aria-hidden="true">↗</span></a><ul>${WHY.map(([k, t, d, ic]) => `<li><a href="why.html?p=${k}"><span><b>${t}</b><small>${d}</small></span>${svgI(ic in IC ? ic : 'chat')}</a></li>`).join('')}</ul></div>`}</div></div>`;
 // ── chrome
 document.body.insertAdjacentHTML('afterbegin', `
 <a class="skip" href="#main">Skip to content</a>
@@ -102,15 +89,15 @@ document.body.insertAdjacentHTML('afterbegin', `
 <nav><a class="logo" href="index.html" aria-label="Jungle, home">${LOGO_NAV}</a>
   <button class="menu" aria-expanded="false" aria-controls="nav-links">Menu</button>
   <div class="links" id="nav-links">
-    <a href="work.html" data-p="work">Work</a><div class="has-mega"><button class="mega-btn" data-p="services" aria-expanded="false" aria-controls="mega">Services <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>${MEGA}</div><div class="has-mega"><button class="mega-btn" data-p="why" aria-expanded="false" aria-controls="mega-why">Why us <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>${WHY_MENU}</div>
+    <a href="work.html" data-p="work">Work</a><div class="has-mega"><button class="mega-btn" data-p="services" aria-expanded="false" aria-controls="mega">Services <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>${MEGA}</div><a href="why.html" data-p="why">Studio</a>
     <a href="contact.html" data-p="contact">Contact</a><a class="btn" href="contact.html">Start a project</a></div></nav>`);
 document.body.insertAdjacentHTML('beforeend', `
 <footer class="cta">${page === 'contact' || page === 'home' ? '' : `
-  <p class="cta-line reveal">Good ideas deserve good execution<span class="dot">.</span></p>
+  <p class="cta-line reveal">Where ideas grow<span class="dot">.</span></p>
   <div class="cta-row"><a class="btn" href="contact.html">Start a project <span aria-hidden="true">→</span></a>
   <a class="btn btn-2" href="mailto:ronij.jungle@gmail.com">ronij.jungle@gmail.com</a></div>`}
   <div class="foot">
-    <div><img class="foot-logo" src="assets/logo-dark.svg" alt="Jungle." width="454" height="167"><small>A design-led creative agency.<br>Design, motion, digital, content and AI services.</small></div>
+    <div><img class="foot-logo" src="assets/logo-light.svg" alt="Jungle." width="740" height="224"><small>A design-led creative agency.<br>Where ideas grow.</small></div>
     <div><span class="label">Site</span><a href="work.html">Work</a><a href="services.html">Services</a><a href="contact.html">Contact</a></div>
     <div><span class="label">Follow</span><a href="https://instagram.com/jungledesigns">Instagram</a><a href="https://designbyjungle.com">designbyjungle.com</a></div>
     <div><span class="label">Say hello</span><a href="mailto:ronij.jungle@gmail.com">ronij.jungle@gmail.com</a><small>© 2026 Jungle.</small></div>
@@ -119,8 +106,6 @@ document.body.insertAdjacentHTML('beforeend', `
 $$(`nav [data-p="${page}"]`).forEach(a => { a.classList.add('cur'); a.setAttribute('aria-current', 'page'); });
 const nav = $('nav'), menu = $('nav .menu');
 menu.onclick = () => { const o = nav.classList.toggle('open'); menu.setAttribute('aria-expanded', o); menu.textContent = o ? 'Close' : 'Menu'; };
-// glass highlight follows the pointer across the bar
-nav.addEventListener('pointermove', e => { const r = nav.getBoundingClientRect(); nav.style.setProperty('--gx', (e.clientX - r.left) + 'px'); });
 const onScroll = () => nav.classList.toggle('scrolled', scrollY > 40);
 addEventListener('scroll', onScroll, { passive: true }); onScroll();
 { // mega menus: hover on desktop, click/tap anywhere, Esc to close
@@ -144,7 +129,7 @@ $$('h1.x, h2.x, .next .x').forEach(h => {
 // Type builds word by word (hero titles only: one authored moment per page).
 $$('.words').forEach(h => {
   let i = 0;
-  h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|([^\s<]+)/g, (m, dot, w) => dot ? dot : `<span class="wd" style="--i:${i++}">${w}</span>`);
+  h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|(<span class="hl">.*?<\/span>)|([^\s<]+)/g, (m, dot, hl, w) => dot ? dot : `<span class="wd" style="--i:${i++}">${hl || w}</span>`);
   h.classList.add('rise');
 });
 
@@ -170,115 +155,30 @@ document.addEventListener('click', e => {
 // ── page renderers
 
 if (page === 'home') {
-  // Home sections.
-  const real = PROJECTS.filter(p => p.img), by = slug => PROJECTS.find(p => p.slug === slug) || real[0];
-  const gal = (p, n) => (p.gallery && p.gallery[n]) || p.img;
-  const img = (src, alt = '') => `<img src="${src}" alt="${alt}" loading="lazy" decoding="async">`;
-
-  // Hero wall: 3 columns drifting ~25px/s, neighbours opposite. Lists are doubled so -50% loops.
-  const tiles = PROJECTS.filter(p => p.img).flatMap(p => [p.img, ...(p.gallery || []).slice(0, 3)].map(src => ({ p, src })));
-  $('#wall').innerHTML = [0, 1, 2].map(c => {
-    const cells = tiles.filter((_, i) => i % 3 === c).map((t, i) =>
-      `<a class="tile${i % 3 === 1 ? ' tall' : ''}" href="project.html?p=${t.p.slug}" tabindex="-1">${pic(t.src, '', true)}<span>${t.p.title}</span></a>`).join('');
-    return `<div class="wcol${c % 2 ? ' down' : ''}"><div class="wtrack">${cells}${cells}</div></div>`;
-  }).join('');
-  const speed = () => $$('.wtrack').forEach(t => t.style.animationDuration = (t.scrollHeight / 2 / 50) + 's');
-  speed(); addEventListener('load', speed);
-
   // Clients: real logos, greyscale until hovered.
   const CLIENTS = [['janakpur-bolts', 'Janakpur Bolts'], ['husqvarna', 'Husqvarna'], ['lumbini-all-stars', 'Lumbini All Stars'], ['plo-lubricants', 'PLO Lubricants'], ['ptt', 'PTT'], ['sk-zic', 'SK enmove ZIC']];
   const logoRow = CLIENTS.map(([f, n]) => `<span class="clogo"><img src="assets/clients/${f}.png" alt="${n}" width="120" height="120" loading="lazy"></span>`).join('');
   $('#logos').innerHTML = logoRow.repeat(4);
 
-  // Split media
-  $('#m-ai').insertAdjacentHTML('afterbegin', img('assets/stock/h-ai.jpg', 'A designer working at a laptop'));
-  $('#m-partner').insertAdjacentHTML('afterbegin', img('assets/stock/h-partner.jpg', 'A marketing team working together around a table') +
-    '<a class="play" href="work.html" aria-label="See the work"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></a>');
+  // Selected work: four real projects in an uneven grid.
+  const pick = ['lumbini-all-stars', 'nepathya-auckland', 'trn-fest', '1974-ad-tour'].map(s => PROJECTS.find(p => p.slug === s)).filter(p => p && p.img);
+  $('#zhw').innerHTML = pick.map((p, i) => `<a class="zh-item zi${i + 1} reveal" href="project.html?p=${p.slug}"><div class="zh-im">${pic(p.img, p.title)}</div>
+    <h3>${p.title}</h3><p>${p.scope.slice(0, 3).join(', ')}</p>
+    <div class="zh-tags"><span class="zh-tag"><i></i>${CATS[p.cat]}</span>${p.tag ? `<span class="zh-tag"><i></i>${p.tag}</span>` : ''}</div></a>`).join('');
 
-  // Ways of working: three small animated scenes that act out each title.
-  const SCENES = {
-    flex: `<div class="sc sc-flex"><div class="seg"><i></i><span>Project</span><span>Ongoing</span><span>Campaign</span></div>
-      <div class="blocks"><b></b><b></b><b></b><b></b></div></div>`,
-    team: `<div class="sc sc-team"><svg class="arc" viewBox="0 0 220 90" aria-hidden="true"><path id="arcp" d="M20 80 Q110 -20 200 80" fill="none"/><circle r="5" class="fly"><animateMotion dur="3.2s" repeatCount="indefinite" rotate="auto"><mpath href="#arcp"/></animateMotion></circle></svg>
-      <span class="pin pin-a">Nepal</span><span class="pin pin-b">Worldwide</span>
-      <div class="avs"><span>D</span><span>M</span><span>E</span></div></div>`,
-    owner: `<div class="sc sc-chat"><p class="m in">Need 12 matchday posts by Friday?</p><p class="m typing"><i></i><i></i><i></i></p>
-      <p class="m out">On it. I’ll own it end to end.</p><p class="m in done">Delivered <b>✓✓</b></p></div>`,
-  };
-  const F = [
-    ['c-g', 'flex', 'Flexible by design.', 'One project, ongoing support or a full campaign. Change gears as your plans do.'],
-    ['c-i', 'team', 'A small, senior team.', 'Designers, motion artists and editors in Nepal, working with clients around the world.'],
-    ['c-m', 'owner', 'One point of contact.', 'One person owns your project from brief to final file, so nothing gets lost.'],
-  ];
-  $('#fcards').innerHTML = F.map(([c, k, t, d]) => `<article class="fcard ${c} reveal" tabindex="0"><div class="fm fg" aria-hidden="true">${SCENES[k]}</div><div class="fb"><h3 class="w">${t}</h3><p>${d}</p></div></article>`).join('');
-
-
-  // Services flow: pills → beam → J. hub → arrows → teams.
-  const thumbs = { 'Ad creative': 'nepathya-auckland', 'Motion design': 'trn-fest', 'Illustration design': '1974-ad-tour', 'Packaging and merchandise design': 'lumbini-all-stars', 'AI-powered creative': 'glory-tour', 'Social media creative': 'janakpur-bolts' };
-  const cover = slug => (PROJECTS.find(p => p.slug === slug) || {}).img;
-  const all = DISCIPLINES.flatMap(([g, , list]) => list.map(n => [n, g]));
-  const tone = [0, 3, 1, 5, 2, 4, 0, 1, 3, 2, 4, 5, 1, 0, 2, 3, 4, 5, 1];
-  $('#pills').innerHTML = all.map(([n, g], i) => { const im = null;
-    return `<li><a class="pill c${tone[i % tone.length]}${im ? ' t' : ''}" style="--i:${i}" href="services.html#${g.split(' ')[0].toLowerCase()}">${im ? `<img src="${im}" alt="" loading="lazy">` : ''}${n}</a></li>`; }).join('');
-  $('.hub .jt').innerHTML = `<span style="display:flex;align-items:flex-end;gap:4%;width:56%">${LOGO_NAV.split('<span')[0].replace('class="lj"', 'style="width:70%;height:auto;color:var(--ink)"')}<i style="width:22%;aspect-ratio:1;border-radius:50%;background:var(--green);margin-bottom:6%"></i></span>`;
-  const TEAMS = [ // [label, x%, y%, size, project image, label tone]
-    ['Social', 26, 50, 128, 'janakpur-bolts', 'c0'], ['Performance', 30, 14, 84, 'glory-tour', 'c5'], ['Comms', 14, 34, 76, 'trn-fest', 'c1'],
-    ['Demand gen', 22, 82, 82, '1974-ad-tour', 'c3'], ['Content', 86, 13, 100, 'nepathya-auckland', 'c1'], ['Product marketing', 62, 18, 74, 'lumbini-all-stars', 'c3'],
-    ['Brand and creative', 80, 50, 112, 'lumbini-all-stars', 'c5'], ['Events', 56, 84, 78, 'nepathya-auckland', 'c0'], ['Campaigns', 88, 86, 96, 'trn-fest', 'c1'],
-  ];
-  const teams = $('#teams');
-  teams.insertAdjacentHTML('beforeend', TEAMS.map(([t, x, y, sz, slug, c], i) => {
-    const ph = ['social', 'performance', 'comms', 'demand', 'content', 'product', 'brand', 'events', 'campaigns'][i];
-    return `<div class="team" style="left:${x}%;top:${y}%;--s:${sz}px;--i:${i}"><span class="tp"><img src="assets/stock/t-${ph}.jpg" alt="" width="160" height="160" loading="lazy"></span><b class="pill c${c.slice(1)}" style="opacity:1;transform:none;height:auto">${t}</b></div>`; }).join(''));
-  const drawArrows = () => {
-    const svg = $('#arrows'), r = teams.getBoundingClientRect();
-    svg.setAttribute('viewBox', `0 0 ${r.width} ${r.height}`);
-    svg.innerHTML = TEAMS.slice(0, 9).map(([, x, y], i) => {
-      const tx = r.width * x / 100, ty = r.height * y / 100, sx = -20, sy = r.height / 2;
-      const ex = sx + (tx - sx) * .78, ey = sy + (ty - sy) * .78, mx = (sx + ex) / 2;
-      const d = `M${sx},${sy} C${mx},${sy} ${mx},${ey} ${ex},${ey}`, len = Math.hypot(ex - sx, ey - sy) * 1.3;
-      return `<path d="${d}" style="--len:${len};--i:${i}"/>`; }).join('');
-  };
-  drawArrows(); addEventListener('resize', drawArrows);
-  const fio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); fio.unobserve(e.target); } }), { threshold: .25 });
-  fio.observe($('#flow'));
-
-  // Our work: mixed-size grid (big, small, small / small, small, big)
-  const W = real.slice(0, 6);
-  $('#wgrid').innerHTML = W.map((p, i) => `<a class="wk${i === 0 || i === 5 ? ' big' : ''} reveal" href="project.html?p=${p.slug}"><div class="wm">${img(p.img, p.title)}</div><h3 class="w">${p.title}</h3><p>${p.scope.slice(0, 3).join(', ')}</p></a>`).join('');
-
-  // Comparison table: Jungle. vs the usual alternatives. Rows rise in; ticks draw themselves.
-  const I = {
-    hire: '<path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM2 21v-1a6 6 0 0 1 12 0v1M16 3.5a4 4 0 0 1 0 7.5M22 21v-1a6 6 0 0 0-4-5.6"/>',
-    agency: '<path d="M3 21V7l9-4 9 4v14M9 21v-6h6v6M3 21h18"/>',
-    free: '<path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0"/>',
-    ai: '<path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/>',
-  };
-  const ico = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
-  const tick = c => `<svg class="tick" viewBox="0 0 26 26" style="--c:${c}" role="img" aria-label="Yes"><path d="M6 13.5l4.5 4.5L20 8.5"/></svg>`;
-  const ROWS = [
-    ['Jungle.', 'Designers, motion artists, writers and AI specialists working alongside your team, on your brand, on your dates.', null, [1, 1, 1, 1, 1, 1]],
-    ['In-house hire', 'One hire rarely covers design, motion, web and copy, and hiring takes months.', 'hire', [0, 0, 1, 1, 0, 1]],
-    ['Big agencies', 'Strong work, but slow, costly and built around rigid process.', 'agency', [0, 0, 1, 1, 0, 0]],
-    ['Freelancers', 'Great for one-offs, harder to rely on for steady volume.', 'free', [1, 1, 1, 0, 1, 1]],
-    ['AI tools only', 'Fast and cheap, but no judgement, no brand sense, no craft.', 'ai', [1, 1, 0, 0, 1, 0]],
-  ];
-  $('#vs-body').innerHTML = ROWS.map(([t, d, ic, v], r) => `<tr class="${r ? '' : 'us'}"><td><div class="who"><span class="ic">${r ? ico(I[ic]) : ''}</span><div><b>${t}</b><p>${d}</p></div></div></td>${v.map((y, c) => `<td>${y ? tick(c) : '<span class="no" role="img" aria-label="No"></span>'}</td>`).join('')}</tr>`).join('');
-  const rio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('in'), [...e.target.parentNode.children].indexOf(e.target) * 110); rio.unobserve(e.target); } }), { threshold: .4 });
-  $$('#vs-body tr').forEach(tr => reduce ? tr.classList.add('in') : rio.observe(tr));
-
-  // Wins: real results from the work, two rows drifting opposite ways (no invented quotes)
-  const win = p => `<a class="win" href="project.html?p=${p.slug}"><div class="who">${p.img ? img(p.img) : `<span class="art ${p.art}" style="position:relative;width:44px;height:44px;border-radius:50%;flex:none;overflow:hidden"></span>`}<div><b>${p.title}</b><span>${p.client.split(',')[0]}</span></div></div><p>${p.result}</p><span class="lnk">${sector(p)}</span></a>`;
-  const wr = real.map(win).join(''); $('#wrow1').innerHTML = wr + wr;
+  // Three service areas.
+  $('#areas').innerHTML = DISCIPLINES.map(([t, v, list, para], i) => `<a class="area reveal" href="services.html#${t.split(' ')[0].toLowerCase()}"><span class="an">0${i + 1}</span><h3 class="w">${t}</h3><p class="av">${v}</p><p class="muted">${para}</p><ul>${list.map(x => `<li>${x}</li>`).join('')}</ul><span class="alink">Explore ${ARROW}</span></a>`).join('');
 }
 
 if (page === 'services') {
   const ex = { 'Creative Design': 'janakpur-bolts', 'Motion Design': 'nepathya-auckland', 'Digital Design': 'trn-fest', 'Content and Campaigns': '1974-ad-tour', 'AI Services': 'lumbini-all-stars' };
-  $('#disciplines').innerHTML = DISCIPLINES.map(([t, v, list], i) => { const key = t.split(' ')[0].toLowerCase();
+  $('#disciplines').innerHTML = DISCIPLINES.map(([t, v, list, para, seen], i) => { const key = t.split(' ')[0].toLowerCase();
     return `<section class="split rule reveal" id="${key}" style="padding-block:clamp(56px,7vw,112px);align-items:start">
       <div class="card"><div class="thumb"><div class="art"><img src="assets/stock/s-${key}.jpg" alt="" width="900" height="1125" loading="lazy"></div></div></div>
-      <div><h2 class="x" style="font-size:var(--t-head)">${t}.</h2><p class="v" style="font-size:var(--t-voice);color:var(--green);margin-top:8px">${v}</p>
-      <div class="tags mt">${list.map(x => `<a href="service.html?s=${slugify(x)}">${x}</a>`).join('')}</div></div></section>`; }).join('');
+      <div><p class="label" style="color:var(--fg2)">0${i + 1}</p><h2 class="x" style="font-size:var(--t-head);margin-top:8px">${hl(t)}.</h2><p class="v" style="font-size:var(--t-voice);color:var(--fg2);margin-top:8px">${v}</p>
+      <p class="lead" style="margin-top:20px">${para}</p>
+      <div class="tags mt">${list.map(x => `<a href="service.html?s=${slugify(x)}">${x}</a>`).join('')}</div>
+      <p class="label mt" style="color:var(--fg2)">Seen in</p><p>${seen.map(s => `<a href="project.html?p=${s}" style="text-decoration:underline;text-underline-offset:4px">${(PROJECTS.find(p => p.slug === s) || {}).title}</a>`).join(', ')}</p></div></section>`; }).join('');
   // headline dots for the injected h2s
   $$('#disciplines h2.x').forEach(h => h.innerHTML = h.innerHTML.replace(/\.$/, '<span class="dot">.</span>'));
 }
@@ -296,44 +196,73 @@ if (page === 'service') {
   $('#svc').innerHTML = `
   <header class="ph sv-hero">
     <div><p class="sv-crumb"><a href="services.html">Services</a> / <a href="services.html#${gkey}">${grp[0]}</a></p>
-      <h1 class="x words">${t}</h1><p class="lead" style="margin-top:20px">${d}. ${grp[1]}</p>
+      <h1 class="x words">${hl(t)}</h1><p class="lead" style="margin-top:20px">${d}. ${grp[1]}</p>
       <div class="hero-ctas" style="margin-top:32px"><a class="btn" href="contact.html">Start a project <span aria-hidden="true">→</span></a><a class="btn btn-2" href="#sv-work">See related work</a></div></div>
     <figure class="sv-img"><img src="assets/stock/s-${gkey}.jpg" alt="" width="900" height="1125"><span class="sv-ic">${svgI(ic)}</span></figure>
   </header>
-  <section class="inv pad sec"><h2 class="x reveal" style="font-size:var(--t-head)">What you get.</h2>
+  <section class="inv pad sec"><h2 class="x reveal" style="font-size:var(--t-head)">What you ${hl("get")}.</h2>
     <div class="sv-gets">${gets.map((g, i) => `<div class="reveal"><b class="n">${String(i + 1).padStart(2, '0')}</b><p>${g}</p></div>`).join('')}</div></section>
-  <section class="inv pad sec" style="padding-top:0"><h2 class="x reveal" style="font-size:var(--t-head)">How it works.</h2>
-    <div class="steps mt">${[['Brief', 'Tell us what you need and when, in plain words.'], ['Direction', 'We share a route built on your brand.'], ['Production', 'Every format you need, with clear feedback rounds.'], ['Delivery', 'Organised files, on the agreed date.']].map(([a, b], i) => `<div class="step reveal"><b class="n">${i + 1}</b><div><h3 class="w">${a}</h3><p>${b}</p></div></div>`).join('')}</div></section>
-  <section class="pad sec" id="sv-work"><h2 class="x reveal" style="font-size:var(--t-head)">Related work.</h2>
+  <section class="inv pad sec" style="padding-top:0"><h2 class="x reveal" style="font-size:var(--t-head)">How it ${hl("works")}.</h2>
+    <div class="steps s3 mt">${[['Seed', 'Tell us the idea, the question or the opportunity.'], ['Leaf', 'We explore, collaborate and design it into shape.'], ['Dot', 'The idea finds its final form, delivered as finished files.']].map(([a, b], i) => `<div class="step reveal"><b class="n">${i + 1}</b><div><h3 class="w">${a}</h3><p>${b}</p></div></div>`).join('')}</div></section>
+  <section class="pad sec" id="sv-work"><h2 class="x reveal" style="font-size:var(--t-head)">Related ${hl("work")}.</h2>
     <div class="grid mt" style="padding:0">${work.map(card).join('')}</div></section>
-  ${others.length ? `<section class="pad sec" style="padding-top:0"><h2 class="x reveal" style="font-size:var(--t-head)">More in ${grp[0]}.</h2>
+  ${others.length ? `<section class="pad sec" style="padding-top:0"><h2 class="x reveal" style="font-size:var(--t-head)">More in ${hl(grp[0])}.</h2>
     <div class="tags mt">${others.map(x => `<a href="service.html?s=${slugify(x)}">${x}</a>`).join('')}</div></section>` : ''}`;
   $$('#svc h1.x, #svc h2.x').forEach(h => { if (!h.querySelector('.dot')) h.innerHTML = h.innerHTML.replace(/\.?$/, '<span class="dot">.</span>'); });
-  $$('#svc .words').forEach(h => { let k = 0; h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|([^\s<]+)/g, (m, dd, w) => dd || `<span class="wd" style="--i:${k++}">${w}</span>`); h.classList.add('rise'); });
+  $$('#svc .words').forEach(h => { let k = 0; h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|(<span class="hl">.*?<\/span>)|([^\s<]+)/g, (m, dd, hl, w) => dd || `<span class="wd" style="--i:${k++}">${hl || w}</span>`); h.classList.add('rise'); });
 }
 
 if (page === 'why') {
-  const k = new URLSearchParams(location.search).get('p') || 'how-it-works';
-  const cur = WHY.find(w => w[0] === k) || WHY[0];
-  document.title = `${cur[1]} | Jungle.`;
-  const tabs = `<div class="chips why-tabs">${WHY.map(([kk, t]) => `<a class="chip${kk === cur[0] ? ' on' : ''}" href="why.html?p=${kk}"${kk === cur[0] ? ' aria-current="page"' : ''}>${t}</a>`).join('')}</div>`;
-  const B = {
-    'how-it-works': `<div class="steps">${[['Brief', 'Tell us what you need, the formats and the date, in plain words. A call or a message both work.'], ['Direction', 'We come back with a route built on your brand, with a reason behind it.'], ['Production', 'Every format and size, with clear rounds of feedback in one thread.'], ['Delivery', 'Organised, named files on the agreed date. Ongoing clients get a steady weekly rhythm.']].map(([a, b], i) => `<div class="step reveal"><b class="n">${i + 1}</b><div><h3 class="w">${a}</h3><p>${b}</p></div></div>`).join('')}</div>
-      <div class="why-split mt"><div><h3 class="w">Ways to work with us</h3><p class="muted">Project by project, ongoing creative support, or full campaign production. Change between them as your plans change.</p></div><div><h3 class="w">What we need from you</h3><p class="muted">Your brand guidelines, a clear brief and one person who can give feedback. That’s it.</p></div></div>`,
-    'why-jungle': `<div class="dgrid" style="margin-top:0">${[['Scalable', 'More output, same headcount.', 'We take on the production load so your team can stay on the big ideas.'], ['Flexible', 'Say yes to more projects.', 'More hands or a new skill, we flex with your calendar.'], ['Responsive', 'Fast, without cutting corners.', 'Quick turnarounds with the same care for type, timing and detail.'], ['Reliable', 'One owner, no surprises.', 'Clear scope, realistic dates and files delivered the way you need them.']].map(([l, h, p]) => `<div class="reveal"><p class="label">${l}</p><h3 class="w" style="margin:10px 0">${h}</h3><p class="muted">${p}</p></div>`).join('')}</div>`,
-    'craft-and-ai': `<div class="why-split"><div class="reveal"><h3 class="w">Where AI helps</h3><ul class="why-list"><li>Resizing one design into every format</li><li>Versions and variations for testing</li><li>First drafts and moodboards</li><li>Repetitive production tasks</li></ul></div><div class="reveal"><h3 class="w">Where people lead</h3><ul class="why-list"><li>The idea and the concept</li><li>Typography, composition and timing</li><li>Your brand and its details</li><li>Every final check before delivery</li></ul></div></div>
-      <p class="lead mt reveal">AI makes us faster. It never replaces the designer’s eye, and nothing leaves Jungle without a person signing it off.</p>`,
-    'compare': `<div class="vs-scroll" style="margin-top:0"><table class="vs-t"><thead><tr><th scope="col"><span class="sr">Option</span></th><th scope="col">Speed</th><th scope="col">Flexibility</th><th scope="col">Craft</th><th scope="col">Reliability</th><th scope="col">Value</th><th scope="col">Human touch</th></tr></thead><tbody id="vs-body"></tbody></table></div>`,
-    'faq': [['Do you do branding?', 'No. We work with brands that already exist and make the creative that carries them, built on your guidelines.'], ['Will my work look like Jungle?', 'No. Our own brand is black, white and green. Your work follows your brand.'], ['How fast can you turn work around?', 'Most social and campaign assets take a few working days. Tell us your date and we’ll tell you honestly what’s possible.'], ['Can you work with our in-house team or agency?', 'Yes. We work as an extension of in-house teams, and as white-label production for agencies when agreed.'], ['Where is the team based?', 'In Nepal, working with clients in Nepal, Australia, New Zealand and beyond.'], ['How do we start?', 'Send a brief through the contact page. We reply within one working day.']].map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join(''),
-  };
-  $('#why').innerHTML = `<header class="ph"><p class="sv-crumb"><a href="why.html">Why us</a></p><h1 class="x words">${cur[1]}.</h1><p class="lead">${cur[2]}.</p>${tabs}</header>
-    <section class="inv pad sec">${B[cur[0]]}</section>`;
-  if (cur[0] === 'compare') {
-    const tick = c => `<svg class="tick" viewBox="0 0 26 26" style="--c:${c}" role="img" aria-label="Yes"><path d="M6 13.5l4.5 4.5L20 8.5"/></svg>`;
-    const R = [['Jungle.', 'Designers, motion artists and writers working alongside your team.', [1, 1, 1, 1, 1, 1]], ['In-house hire', 'One hire rarely covers design, motion, web and copy, and hiring takes months.', [0, 0, 1, 1, 0, 1]], ['Big agencies', 'Strong work, but slow, costly and built around rigid process.', [0, 0, 1, 1, 0, 0]], ['Freelancers', 'Great for one-offs, harder to rely on for steady volume.', [1, 1, 1, 0, 1, 1]], ['AI tools only', 'Fast and cheap, but no judgement, no brand sense, no craft.', [1, 1, 0, 0, 1, 0]]];
-    $('#vs-body').innerHTML = R.map(([t, d, v], r) => `<tr class="in${r ? '' : ' us'}"><td><div class="who"><div><b>${t}</b><p>${d}</p></div></div></td>${v.map((y, c) => `<td>${y ? tick(c) : '<span class="no" role="img" aria-label="No"></span>'}</td>`).join('')}</tr>`).join('');
+  // Studio: one long page (Fiasco-style flow), all copy from the guide.
+  document.title = 'Studio | Jungle.';
+  const real = PROJECTS.filter(p => p.img);
+  const strip = ['janakpur-bolts','nepathya-auckland','trn-fest'].map(sl => real.find(p => p.slug === sl)).filter(Boolean);
+  const VAL = [['Curious','We ask the questions behind the brief, and look past the obvious answer.'],['Bold','We back good ideas with confidence, and make work people notice.'],['Playful','We enjoy what we do. It shows in the work, and in how we work with you.'],['Thoughtful','Every choice has a reason, from the first sketch to the final detail.']];
+  const SS = [['assets/studio/photo.jpg', 17, ], ['assets/stock/s-motion.jpg', 15], ['assets/stock/h-relief.jpg', 19], ['assets/studio/g4.jpg', 11], ['assets/stock/s-creative.jpg', 13], ['assets/studio/g6.jpg', 12], ['assets/stock/s-content.jpg', 14]];
+  $('#why').innerHTML = `
+  <section class="ss" id="ss" aria-label="Studio"><div class="ss-stick">
+    <div class="ss-tiles" aria-hidden="true">${SS.map(([f, w]) => `<div class="ss-i" style="--w:${w}vw"><img src="${f}" alt="" width="600" height="800"></div>`).join('')}</div>
+    <div class="ss-b1"><p class="ss-tag">Studio</p><h1 class="ss-h">${'We’re curious thinkers, makers and storytellers who help ideas '.split(' ').filter(Boolean).map(w => `<span class="sw">${w}</span>`).join(' ')} <span class="sw"><span class="hl">grow</span>.</span></h1></div>
+    <div class="ss-b2"><p class="ss-tag">How we work</p><p class="ss-p">From the first question to the final detail, we turn ideas into meaningful creative work. From Kathmandu, with clients near and far.</p></div>
+  </div></section>
+  <section class="inv pad sec st-sec" id="our-story"><div class="st-grid"><div><h2 class="st-h">Our <span class="hl">story</span></h2><figure class="st-fig st-fig-s reveal"><img src="assets/stock/s-creative.jpg" alt="Colour swatches and sketches on a designer’s desk" loading="lazy" data-par="0.08"></figure></div><div class="prose st-prose"><p>Every great thing starts somewhere. A thought. A question. A possibility.</p><p>But ideas need more than imagination. They need curiosity to explore, creativity to develop and the right people to bring them to life.</p><p>We are Jungle. A design-led creative agency that believes in the power of ideas and what they can become.</p><p>We think differently, create thoughtfully and collaborate closely to turn possibilities into meaningful creative work. From the first spark to the final detail, we create room for ideas to grow.</p></div></div></section>
+  <section class="inv pad sec st-sec st-top" id="our-approach"><div class="st-grid"><h2 class="st-h">How we <span class="hl">work</span></h2><div><div class="steps s3"><div class="step reveal"><b class="n">1</b><div><h3 class="w">Seed</h3><p>The beginning. Every great project starts with a seed: an idea, a question or an opportunity waiting to grow.</p></div></div><div class="step reveal"><b class="n">2</b><div><h3 class="w">Leaf</h3><p>The growth. Ideas develop through exploration, collaboration, creative thinking and design.</p></div></div><div class="step reveal"><b class="n">3</b><div><h3 class="w">Dot</h3><p>The outcome. The idea finds its final form. A creative decision becomes something tangible and meaningful.</p></div></div></div><p class="st-note">Why we exist: to create an environment where ideas can grow into meaningful creative work that helps businesses move forward.</p></div></div></section>
+  <div class="st-strip">${strip.map(p => `<a class="reveal" href="project.html?p=${p.slug}"><div class="zh-im">${pic(p.img, p.title)}</div><small>${p.title}</small></a>`).join('')}</div>
+  <figure class="st-wide reveal"><img src="assets/stock/h-relief.jpg" alt="A team working together around a table" loading="lazy" data-par="0.12"><figcaption class="st-cap">Grow together.</figcaption></figure>
+  <section class="inv pad sec st-sec" id="philosophy"><div class="st-grid"><h2 class="st-h">We’re <span class="hl">curious</span>, first</h2><div><div class="st-phil"><p><b>Explore with curiosity.</b> Question the obvious, look beyond the expected and discover new possibilities.</p><p><b>Create with intention.</b> Bring ideas to life through thoughtful design, creative direction and purposeful execution.</p><p><b>Grow together.</b> Collaborate with clients, share perspectives and build something better together.</p></div><div class="aud st-val">${VAL.map(([t, d]) => `<div class="reveal"><b class="w">${t}</b><p>${d}</p></div>`).join('')}</div></div></div></section>
+  <section class="inv pad sec st-sec" id="who-we-work-with"><div class="st-grid"><div><h2 class="st-h">Who we <span class="hl">work</span> with</h2><figure class="st-fig st-fig-s reveal"><img src="assets/stock/s-motion.jpg" alt="A designer working at a laptop" loading="lazy" data-par="0.08"></figure></div><div class="aud st-aud"><div class="reveal"><b class="w">Ambitious founders</b><p>People looking to turn their vision into something recognisable.</p></div><div class="reveal"><b class="w">Growing businesses</b><p>Businesses looking for consistent, quality creative communication.</p></div><div class="reveal"><b class="w">Marketing teams</b><p>Teams seeking a dependable creative partner.</p></div><div class="reveal"><b class="w">Established businesses</b><p>Companies looking for fresh perspectives and stronger creative execution.</p></div><div class="reveal"><b class="w">International clients</b><p>Businesses looking for creative collaboration and thoughtful design solutions.</p></div></div></div></section>
+  <section class="inv pad sec st-sec" id="faq"><div class="st-grid"><h2 class="st-h">Straight <span class="hl">answers</span></h2><div class="st-faq"><details><summary>Can you work with our in-house team or agency?</summary><p>Yes. We believe better ideas grow together, so we work alongside your team and share the thinking as we go.</p></details><details><summary>Where is the team based?</summary><p>In Kathmandu, working with clients in Nepal, Australia, New Zealand and beyond.</p></details><details><summary>How fast can you turn work around?</summary><p>Most social and campaign assets take a few working days. Tell us your date and we’ll tell you honestly what’s possible.</p></details><details><summary>How do we start?</summary><p>Send a brief through the contact page, or just tell us the idea. We reply within one working day.</p></details></div></div></section>
+  <section class="on-green pad sec st-end"><h2 class="st-big">Got an idea that <span class="hl">needs</span> room?</h2><p><a class="btn" href="contact.html">Start a project <span aria-hidden="true">→</span></a></p></section>`;
+  $$('#why h1.x').forEach(h => { h.innerHTML = h.innerHTML.replace(/\.$/, '<span class="dot">.</span>'); let n = 0; h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|(<span class="hl">.*?<\/span>)|([^\s<]+)/g, (m, d, hh, w) => d || `<span class="wd" style="--i:${n++}">${hh || w}</span>`); h.classList.add('rise'); });
+  // Pinned Studio scene: photos drift at the edges while the statement lights up word by word, then the second line arrives.
+  (() => {
+    const ss = $('#ss'); if (!ss) return;
+    const tiles = $$('.ss-i', ss), words = $$('.sw', ss), b1 = $('.ss-b1', ss), b2 = $('.ss-b2', ss), wide = innerWidth > 820;
+    // [x0,y0,x1,y1] top-left in vw / vh, start near the edges and drift
+    const P = wide
+      ? [[-3, 38, -7, 18, 1.1], [82, 14, 88, -6, 1.15], [75, 68, 80, 52, 1.2], [18, 8, 22, -20, 1.1], [86, 44, 94, 36, 1.12], [-2, 74, 4, 60, 1.1], [36, 84, 32, 66, 1.15]]
+      : [[-8, 62, -10, 50, 1.1], [64, 4, 70, -6, 1.1], [58, 76, 62, 66, 1.12], [2, 4, 4, -8, 1.1], [70, 40, 80, 34, 1.1], [-4, 84, 0, 76, 1.1], [30, 88, 28, 78, 1.1]];
+    const cl = (v, a, b) => Math.min(1, Math.max(0, (v - a) / (b - a))), ease = t => t * t * (3 - 2 * t);
+    if (reduce) { ss.classList.add('static'); words.forEach(w => w.style.opacity = 1); return; }
+    let tick = false;
+    const run = () => { tick = false;
+      const r = ss.getBoundingClientRect(), p = cl(-r.top, 0, r.height - innerHeight), vw = innerWidth / 100, vh = innerHeight / 100;
+      tiles.forEach((t, i) => { const q = P[i], k = ease(p); t.style.transform = `translate(${(q[0] + (q[2] - q[0]) * k) * vw}px,${(q[1] + (q[3] - q[1]) * k) * vh}px) scale(${1 + (q[4] - 1) * k})`; });
+      words.forEach((w, i) => { w.style.opacity = (.14 + .86 * cl(p, .04 + i / words.length * .3, .1 + i / words.length * .3 + .06)).toFixed(3); });
+      const o1 = 1 - cl(p, .48, .56), o2 = cl(p, .58, .68) * (1 - cl(p, .94, 1));
+      b1.style.opacity = o1; b1.style.transform = `translateY(${-cl(p, .48, .56) * 24}px)`; b1.style.pointerEvents = o1 < .1 ? 'none' : '';
+      b2.style.opacity = o2; b2.style.transform = `translateY(${(1 - cl(p, .58, .68)) * 24}px)`; };
+    addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(run); } }, { passive: true }); addEventListener('resize', run); run();
+  })();
+  // Motion: hero photo eases in as you scroll, images drift slightly (parallax).
+  if (!reduce) {
+    const ph = $('.st-photo img'), pars = $$('#why [data-par]'); let tick = false;
+    const run = () => { tick = false; const vh = innerHeight;
+      if (ph) { const y = Math.min(scrollY, vh); ph.style.transform = `scale(${1.12 - y / vh * 0.12}) translateY(${y * 0.06}px)`; }
+      pars.forEach(im => { const r = im.parentElement.getBoundingClientRect(); if (r.bottom < 0 || r.top > vh) return; const k = (r.top + r.height / 2 - vh / 2) * parseFloat(im.dataset.par); im.style.transform = `translateY(${-k}px) scale(1.14)`; }); };
+    addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(run); } }, { passive: true }); run();
   }
-  $$('#why h1.x').forEach(h => { h.innerHTML = h.innerHTML.replace(/\.$/, '<span class="dot">.</span>'); let n = 0; h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|([^\s<]+)/g, (m, d, w) => d || `<span class="wd" style="--i:${n++}">${w}</span>`); h.classList.add('rise'); });
+  if (location.hash) setTimeout(() => { const t = document.getElementById(location.hash.slice(1)); if (t) t.scrollIntoView(); }, 300);
 }
 
 if (page === 'work') {
@@ -365,7 +294,7 @@ if (page === 'project') {
   const g = n => `<div class="g reveal">${p.gallery && p.gallery[n] ? `<div class="art">${pic(p.gallery[n], `${p.title}, image ${n + 1}`)}</div>` : art({ ...p, img: null, art: alt[(i + n) % alt.length] })}</div>`;
   const nG = p.gallery && p.gallery.length ? p.gallery.length : 5;
   $('#cs').innerHTML = `
-  <header class="ph"><h1 class="x words">${p.title}</h1></header>
+  <header class="ph"><h1 class="x words">${hl(p.title)}</h1></header>
   <div class="cs-hero${p.img ? ' real' : ''}">${p.img ? `<div class="blur" style="background-image:url('${p.img}')"></div>${pic(p.img, p.title, true)}` : art(p)}</div>
   <div class="facts">
     <div><span>Client</span>${p.client}</div><div><span>Industry</span>${sector(p)}</div>
@@ -378,7 +307,7 @@ if (page === 'project') {
   <div class="pad sec"><div class="split reveal"><span class="label">The result</span><p class="quote">${p.result}</p></div></div>
   <a class="next" href="project.html?p=${nx.slug}"><span class="label">Next project</span><span class="x">${nx.title}</span></a>`;
   $$('#cs h1.x, #cs .next .x').forEach(h => { h.innerHTML += '<span class="dot">.</span>'; });
-  $$('#cs .words').forEach(h => { let k = 0; h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|([^\s<]+)/g, (m, d, w) => d || `<span class="wd" style="--i:${k++}">${w}</span>`); h.classList.add('rise'); });
+  $$('#cs .words').forEach(h => { let k = 0; h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|(<span class="hl">.*?<\/span>)|([^\s<]+)/g, (m, d, hl, w) => d || `<span class="wd" style="--i:${k++}">${hl || w}</span>`); h.classList.add('rise'); });
 }
 
 // ── The Clearing (notes from the studio)
@@ -398,7 +327,7 @@ if (page === 'clearing') {
     $('#clr').innerHTML = `<header class="ph"><h1 class="x words">The Clearing.</h1><p class="lead">Notes, process and ideas from the studio. Where we step back from the work and say what we learned.</p></header>
       <section class="pad" style="padding-bottom:clamp(88px,10vw,160px)"><div class="notes-grid">${NOTES.map((x, i) => noteCard(x, i === 0)).join('')}</div></section>`;
   }
-  $$('#clr h1.x').forEach(h => { if (!h.querySelector('.dot')) h.innerHTML = h.innerHTML.replace(/\.$/, '<span class="dot">.</span>'); let k = 0; h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|([^\s<]+)/g, (m, d, w) => d || `<span class="wd" style="--i:${k++}">${w}</span>`); h.classList.add('rise'); });
+  $$('#clr h1.x').forEach(h => { if (!h.querySelector('.dot')) h.innerHTML = h.innerHTML.replace(/\.$/, '<span class="dot">.</span>'); let k = 0; h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|(<span class="hl">.*?<\/span>)|([^\s<]+)/g, (m, d, hl, w) => d || `<span class="wd" style="--i:${k++}">${hl || w}</span>`); h.classList.add('rise'); });
 }
 
 // ── reveal on scroll + counters
