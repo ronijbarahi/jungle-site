@@ -65,7 +65,7 @@ const SVC = {
   'Campaign execution': [['Every format and size you need', 'A calm, organised roll-out', 'One owner from brief to final file', 'Delivered on the date we agreed'], ''],
 };
 const svgI = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k]}</svg>`;
-const mItem = ([t, d, ic, isNew]) => `<li><a href="service.html?s=${slugify(t)}"><span><b>${t}${isNew ? ' <em>New</em>' : ''}</b><small>${d}</small></span>${svgI(ic)}</a></li>`;
+const mItem = ([t, d, ic, isNew]) => `<li><a href="services.html#${slugify(t)}"><span><b>${t}${isNew ? ' <em>New</em>' : ''}</b><small>${d}</small></span>${svgI(ic)}</a></li>`;
 const mHead = ([t, c, a]) => `<a class="mh mh-${c}" href="services.html#${a}">${t} <span aria-hidden="true">↗</span></a>`;
 const MENU_GROUP = {};
 // Services.
@@ -177,45 +177,28 @@ if (page === 'home') {
 }
 
 if (page === 'services') {
-  const ex = { 'Creative Design': 'janakpur-bolts', 'Motion Design': 'nepathya-auckland', 'Digital Design': 'trn-fest', 'Content and Campaigns': '1974-ad-tour', 'AI Services': 'lumbini-all-stars' };
-  $('#disciplines').innerHTML = DISCIPLINES.map(([t, v, list, para, seen], i) => { const key = t.split(' ')[0].toLowerCase();
-    return `<section class="split rule reveal" id="${key}" style="padding-block:clamp(56px,7vw,112px);align-items:start">
-      <div class="card"><div class="thumb"><div class="art"><img src="assets/stock/s-${key}.jpg" alt="" width="900" height="1125" loading="lazy"></div></div></div>
-      <div><p class="label" style="color:var(--fg2)">0${i + 1}</p><h2 class="x" style="font-size:var(--t-head);margin-top:8px">${hl(t)}.</h2><p class="v" style="font-size:var(--t-voice);color:var(--fg2);margin-top:8px">${v}</p>
-      <p class="lead" style="margin-top:20px">${para}</p>
-      <div class="tags mt">${list.map(x => `<a href="service.html?s=${slugify(x)}">${x}</a>`).join('')}</div>
-      <p class="label mt" style="color:var(--fg2)">Seen in</p><p>${seen.map(s => `<a href="project.html?p=${s}" style="text-decoration:underline;text-underline-offset:4px">${(PROJECTS.find(p => p.slug === s) || {}).title}</a>`).join(', ')}</p></div></section>`; }).join('');
-  // headline dots for the injected h2s
-  $$('#disciplines h2.x').forEach(h => h.innerHTML = h.innerHTML.replace(/\.$/, '<span class="dot">.</span>'));
+  // One page: three areas, each listing its five services. Menu links jump to #area or #service.
+  const ICN = {}; MENU.forEach(col => col[1].forEach(([t, , ic]) => ICN[t] = ic));
+  const WK = { design: ['casa-gioia', 'ghumgham'], content: ['nepathya-auckland', 'lumbini-all-stars'], creative: ['trn-fest', 'zabardesh-biryani'] };
+  const COL = { design: 'g', content: 'i', creative: 'm' };
+  $('#sxbar').innerHTML = `<div class="sx-tabs">${DISCIPLINES.map(([t], i) => { const k = t.split(' ')[0].toLowerCase(); return `<a href="#${k}" data-k="${k}"><span>0${i + 1}</span>${t}</a>`; }).join('')}</div>`;
+  $('#sx').innerHTML = DISCIPLINES.map(([t, v, list, para], i) => { const k = t.split(' ')[0].toLowerCase();
+    const work = (WK[k] || []).map(s => PROJECTS.find(p => p.slug === s)).filter(p => p && p.img);
+    return `<section class="sx-area pad" id="${k}">
+      <div class="sx-side"><p class="label">0${i + 1}</p><h2 class="sx-h">${hl(t)}</h2><p class="sx-v">${v}</p><p class="sx-p">${para}</p>
+        <a class="btn" href="contact.html">Start a project <span aria-hidden="true">→</span></a></div>
+      <div class="sx-main"><ul class="sx-list">${list.map(n => `<li id="${slugify(n)}" class="mh-${COL[k]}-li"><span class="sx-ic">${svgI(ICN[n] || 'ad')}</span><div><h3>${n}</h3><p>${(MENU.flatMap(c => c[1]).find(x => x[0] === n) || [, ''])[1]}.</p><ul class="sx-gets">${((SVC[n] || [[]])[0]).map(g => `<li>${g}</li>`).join('')}</ul></div></li>`).join('')}</ul>
+        ${work.length ? `<p class="label sx-wl">Seen in</p><div class="sx-work">${work.map(p => `<a href="project.html?p=${p.slug}"><div class="sx-wim">${pic(p.img, p.title)}</div><span>${p.title} <b aria-hidden="true">→</b></span></a>`).join('')}</div>` : ''}</div></section>`; }).join('');
+  // highlight the tab for the section on screen
+  const tabs = $$('.sx-tabs a');
+  if ('IntersectionObserver' in window) { const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) tabs.forEach(a => a.classList.toggle('on', a.dataset.k === e.target.id)); }), { rootMargin: '-45% 0px -50% 0px' }); $$('.sx-area').forEach(s => io.observe(s)); }
+  if (location.hash) setTimeout(() => { const el = document.getElementById(location.hash.slice(1)); if (el) { el.scrollIntoView(); el.classList.add('flash'); } }, 200);
 }
 
-
 if (page === 'service') {
-  const ALL = MENU.flatMap(col => col.filter((_, i) => i % 2).flat());
+  // Old single-service pages now live as sections on services.html
   const q = new URLSearchParams(location.search).get('s');
-  const it = ALL.find(([t]) => slugify(t) === q) || ALL[0];
-  const [t, d, ic] = it, [gets, cat] = SVC[t] || [[], ''];
-  const grp = DISCIPLINES.find(([, , l]) => l.includes(t)) || DISCIPLINES[0], gkey = grp[0].split(' ')[0].toLowerCase();
-  document.title = `${t} | Jungle.`;
-  const real = PROJECTS.filter(p => p.img), work = (cat ? real.filter(p => p.cat === cat) : []).concat(real).filter((p, i, a) => a.indexOf(p) === i).slice(0, 3);
-  const others = grp[2].filter(x => x !== t);
-  $('#svc').innerHTML = `
-  <header class="ph sv-hero">
-    <div><p class="sv-crumb"><a href="services.html">Services</a> / <a href="services.html#${gkey}">${grp[0]}</a></p>
-      <h1 class="x words">${hl(t)}</h1><p class="lead" style="margin-top:20px">${d}. ${grp[1]}</p>
-      <div class="hero-ctas" style="margin-top:32px"><a class="btn" href="contact.html">Start a project <span aria-hidden="true">→</span></a><a class="btn btn-2" href="#sv-work">See related work</a></div></div>
-    <figure class="sv-img"><img src="assets/stock/s-${gkey}.jpg" alt="" width="900" height="1125"><span class="sv-ic">${svgI(ic)}</span></figure>
-  </header>
-  <section class="inv pad sec"><h2 class="x reveal" style="font-size:var(--t-head)">What you ${hl("get")}.</h2>
-    <div class="sv-gets">${gets.map((g, i) => `<div class="reveal"><b class="n">${String(i + 1).padStart(2, '0')}</b><p>${g}</p></div>`).join('')}</div></section>
-  <section class="inv pad sec" style="padding-top:0"><h2 class="x reveal" style="font-size:var(--t-head)">How it ${hl("works")}.</h2>
-    <div class="steps s3 mt">${[['Seed', 'Tell us the idea, the question or the opportunity.'], ['Leaf', 'We explore, collaborate and design it into shape.'], ['Dot', 'The idea finds its final form, delivered as finished files.']].map(([a, b], i) => `<div class="step reveal"><b class="n">${i + 1}</b><div><h3 class="w">${a}</h3><p>${b}</p></div></div>`).join('')}</div></section>
-  <section class="pad sec" id="sv-work"><h2 class="x reveal" style="font-size:var(--t-head)">Related ${hl("work")}.</h2>
-    <div class="grid mt" style="padding:0">${work.map(card).join('')}</div></section>
-  ${others.length ? `<section class="pad sec" style="padding-top:0"><h2 class="x reveal" style="font-size:var(--t-head)">More in ${hl(grp[0])}.</h2>
-    <div class="tags mt">${others.map(x => `<a href="service.html?s=${slugify(x)}">${x}</a>`).join('')}</div></section>` : ''}`;
-  $$('#svc h1.x, #svc h2.x').forEach(h => { if (!h.querySelector('.dot')) h.innerHTML = h.innerHTML.replace(/\.?$/, '<span class="dot">.</span>'); });
-  $$('#svc .words').forEach(h => { let k = 0; h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|(<span class="hl">.*?<\/span>)|([^\s<]+)/g, (m, dd, hl, w) => dd || `<span class="wd" style="--i:${k++}">${hl || w}</span>`); h.classList.add('rise'); });
+  location.replace('services.html' + (q ? '#' + q : ''));
 }
 
 if (page === 'why') {
