@@ -31,44 +31,38 @@ const IC = {
   camp: '<path d="M4 10v4h3l7 4V6L7 10z"/><path d="M18 9a4 4 0 0 1 0 6"/>',
 };
 const MENU = [
-  [['Creative design services', 'g', 'creative'], [
-    ['Ad creative', 'Scroll-stopping ads for every placement', 'ad'], ['Social media creative', 'Posts, stories and carousels that feel like you', 'social'],
-    ['Presentation design', 'Decks people actually want to sit through', 'pres'], ['Illustration design', 'Drawn worlds that carry your story', 'ill'],
-    ['eBooks and report design', 'Long reads, made easy to read', 'book'], ['Print design', 'Posters, flyers and event materials', 'print'],
-    ['Packaging and merchandise design', 'Kits, tees, scarves and everything fans keep', 'pack']]],
-  [['Motion and digital services', 'i', 'motion'], [
-    ['Motion design', 'Animated type, logos and social motion', 'motion'], ['Video editing', 'Reels, promos, cutdowns and versions', 'video'],
-    ['Email creation', 'Emails that get opened and clicked', 'mail'], ['Web design', 'Websites and landing pages built to convert', 'web'],
-    ['Design systems', 'Templates and rules that keep work consistent', 'sys', 1], ['Product design', 'Clear, friendly app and product screens', 'prod', 1],
-    ['Copywriting', 'Words that sound like you, only sharper', 'copy', 1], ['Immersive experiences', 'Stage visuals, LED screens and 3D moments', 'imm']]],
-  [['AI services', 'm', 'ai'], [
-    ['AI-powered creative', 'Human craft, sped up with AI', 'ai'], ['AI consulting', 'Help your team work well with AI', 'chat'],
-    ['Automation', 'Resizing and versioning on autopilot', 'auto', 1]],
-   ['Marketing services', 'p', 'content'], [['Campaign strategy', 'The plan and concept behind the launch', 'camp', 1]]],
+  [['Design and communication', 'g', 'design'], [
+    ['Marketing design', 'Posters, ads and promotional pieces', 'ad'], ['Packaging design', 'Packs, labels and merchandise people keep', 'pack'],
+    ['Digital design', 'Websites, emails and screens that feel like you', 'web'], ['Creative assets', 'Templates and files your team can reuse', 'sys'],
+    ['Visual communication', 'Illustration, decks and reports made clear', 'ill']]],
+  [['Content and campaigns', 'i', 'content'], [
+    ['Content planning', 'A calendar with a reason behind every post', 'copy'], ['Social media creative', 'Posts, stories and reels with personality', 'social'],
+    ['Creative campaigns', 'One big idea, told across every channel', 'camp'], ['Content consulting', 'Straight advice on what to make and why', 'chat'],
+    ['Art direction', 'A clear look and feel, from sketch to final file', 'pres']]],
+  [['Creative experiences', 'm', 'creative'], [
+    ['Event creative', 'Key art, screens and graphics for the big night', 'imm'], ['Brand activations', 'Moments that bring a brand to life in person', 'motion'],
+    ['Environmental graphics', 'Signage, banners and branded spaces', 'print'], ['Creative production', 'Photo, video and motion, made properly', 'video'],
+    ['Campaign execution', 'Every format and placement, delivered on time', 'auto']]],
 ];
 
 // ── single service pages (service.html?s=<slug>)
 const slugify = t => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const SVC = {
-  'Ad creative': [['Static and animated ads', 'Every size for Meta, Google, TikTok and YouTube', 'Fresh variations to test and refresh', 'Built to your brand and your offer'], 'sport'],
-  'Social media creative': [['Feed posts, stories and carousels', 'Matchday, launch and event templates', 'A steady weekly content calendar', 'Captions written to match'], 'sport'],
-  'Presentation design': [['Pitch and sales decks', 'Company and event profiles', 'Editable templates for your team', 'Charts and data made readable'], ''],
-  'Illustration design': [['Custom illustrations and characters', 'Poster and key-art illustration', 'Icons and spot graphics', 'Styles that fit your existing brand'], 'event'],
-  'eBooks and report design': [['Annual and impact reports', 'eBooks and guides', 'Long-form layouts that stay readable', 'Print-ready and digital versions'], ''],
-  'Print design': [['Posters, flyers and banners', 'Event signage and wayfinding', 'Brochures and menus', 'Print-ready files, checked'], 'event'],
-  'Packaging and merchandise design': [['Jerseys and team kits', 'Scarves, tees and fan merch', 'Packaging and labels', 'Mockups before anything is printed'], 'sport'],
-  'Motion design': [['Animated posts and reels', 'Kinetic type and logo animation', 'Countdown and announcement loops', 'LED and stage visuals'], 'event'],
-  'Video editing': [['Short-form reels and shorts', 'Promo and highlight edits', 'Cutdowns for every platform', 'Subtitles, music and finishing'], 'event'],
-  'Email creation': [['Newsletter and campaign emails', 'Reusable email templates', 'Mobile-first layouts', 'Copy and subject lines'], 'digital'],
-  'Web design': [['Websites and landing pages', 'Event and ticketing pages', 'Responsive, fast layouts', 'Hand-off ready for developers'], 'digital'],
-  'Design systems': [['Template libraries for your team', 'Social and print systems', 'Usage rules that stay simple', 'Files organised to last'], 'sport'],
-  'Product design': [['App and product screens', 'Clear user flows', 'Clickable prototypes', 'Specs your developers can use'], 'digital'],
-  'Copywriting': [['Headlines and taglines', 'Social captions and scripts', 'Website and email copy', 'Written in your voice'], ''],
-  'Immersive experiences': [['Stage and LED screen visuals', '3D scenes and moments', 'Event environments', 'Content timed to the show'], 'event'],
-  'AI-powered creative': [['Faster variations and resizes', 'AI-assisted concepts, finished by designers', 'Image generation done with care', 'Human review on everything'], ''],
-  'AI consulting': [['Where AI fits in your creative process', 'Tool setup and workflows', 'Team training sessions', 'Guidelines for safe use'], ''],
-  'Automation': [['Automatic resizing and versioning', 'Template-driven production', 'Batch exports for every platform', 'More output from the same team'], 'sport'],
-  'Campaign strategy': [['Launch and campaign planning', 'Concepts and key messages', 'Channel and content plans', 'Timelines your team can follow'], 'event'],
+  'Marketing design': [['Posters, flyers and ads', 'Promotional pieces for print and screen', 'Layouts that keep your message clear', 'Files ready for every placement'], ''],
+  'Packaging design': [['Packs, labels and boxes', 'Jerseys, tees and fan merchandise', 'Mockups before anything is printed', 'Print-ready files, checked'], 'sport'],
+  'Digital design': [['Websites and landing pages', 'Email templates and newsletters', 'Screens and interfaces', 'Hand-off ready for developers'], 'digital'],
+  'Creative assets': [['Reusable templates for your team', 'Social and print systems', 'Presentations, decks and reports', 'Files organised to last'], ''],
+  'Visual communication': [['Illustration and icons', 'Ideas and data made easy to read', 'Decks, reports and guides', 'Styles that fit your brand'], ''],
+  'Content planning': [['A content calendar built around your goals', 'Themes and formats that fit your audience', 'A posting rhythm your team can keep', 'Reviewed and adjusted as you grow'], ''],
+  'Social media creative': [['Feed posts, stories, carousels and reels', 'Matchday, launch and event templates', 'Captions written to match', 'A steady, consistent rhythm'], 'sport'],
+  'Creative campaigns': [['One idea carried across every channel', 'Key art and campaign systems', 'Ticketing, launch and countdown series', 'Results you can point to'], 'event'],
+  'Content consulting': [['A fresh look at what you publish today', 'Clear priorities and next steps', 'Simple guidelines your team can follow', 'Honest feedback, kindly given'], ''],
+  'Art direction': [['A look and feel for the whole project', 'Photography and video direction', 'References, mood and creative briefs', 'Quality checks from start to finish'], ''],
+  'Event creative': [['Event key art and posters', 'Stage and LED screen visuals', 'Ticketing and countdown campaigns', 'Sponsor and partner graphics'], 'event'],
+  'Brand activations': [['Ideas that bring your brand to life in person', 'Giveaways and fan moments', 'On-ground graphics and materials', 'Content to carry it online'], 'event'],
+  'Environmental graphics': [['Signage and wayfinding', 'Banners, backdrops and displays', 'Branded spaces', 'Print-ready files, checked'], 'event'],
+  'Creative production': [['Photo and video production', 'Motion graphics and editing', 'Cutdowns for every platform', 'Finishing with care'], 'event'],
+  'Campaign execution': [['Every format and size you need', 'A calm, organised roll-out', 'One owner from brief to final file', 'Delivered on the date we agreed'], ''],
 };
 const svgI = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[k]}</svg>`;
 const mItem = ([t, d, ic, isNew]) => `<li><a href="service.html?s=${slugify(t)}"><span><b>${t}${isNew ? ' <em>New</em>' : ''}</b><small>${d}</small></span>${svgI(ic)}</a></li>`;
@@ -76,11 +70,12 @@ const mHead = ([t, c, a]) => `<a class="mh mh-${c}" href="services.html#${a}">${
 const MENU_GROUP = {};
 // Services.
 const DISCIPLINES = [
-  ['Creative Design', 'Design that shows up.', ['Ad creative', 'Social media creative', 'Presentation design', 'Illustration design', 'eBooks and report design', 'Print design', 'Packaging and merchandise design']],
-  ['Motion Design', 'Motion that moves.', ['Motion design', 'Video editing']],
-  ['Digital Design', 'Built for every screen.', ['Web design', 'Email creation', 'Design systems', 'Product design', 'Immersive experiences']],
-  ['Content and Campaigns', 'Words and plans that land.', ['Copywriting', 'Campaign strategy']],
-  ['AI Services', 'Faster, with a human eye.', ['AI-powered creative', 'AI consulting', 'Automation']],
+  ['Design and communication', 'Design that says it clearly.', ['Marketing design', 'Packaging design', 'Digital design', 'Creative assets', 'Visual communication'],
+    'Marketing, packaging and digital design, made with care so your message lands the way you meant it.', ['janakpur-bolts', 'lumbini-all-stars']],
+  ['Content and campaigns', 'Ideas that keep going.', ['Content planning', 'Social media creative', 'Creative campaigns', 'Content consulting', 'Art direction'],
+    'Plans, posts and campaigns that give your brand something worth following, week after week.', ['nepathya-auckland', '1974-ad-tour']],
+  ['Creative experiences', 'Ideas you can step into.', ['Event creative', 'Brand activations', 'Environmental graphics', 'Creative production', 'Campaign execution'],
+    'Creative made for the moments people actually show up to: events, activations and spaces.', ['trn-fest', 'glory-tour']],
 ];
 const SERVICE_COUNT = DISCIPLINES.reduce((n, d) => n + d[2].length, 0);
 DISCIPLINES.forEach(([g, , list]) => list.forEach(n => MENU_GROUP[n] = g.split(' ')[0].toLowerCase()));
@@ -89,13 +84,13 @@ const MEGA = `<div class="mega" id="mega"><div class="mega-in">${MENU.map(col =>
 
 // "Why us" pages (why.html?p=<slug>), one template.
 const WHY = [
-  ['how-it-works', 'How it works', 'From brief to finished files, step by step', 'flex'],
-  ['why-jungle', 'Why Jungle', 'What makes teams stay with us', 'owner'],
-  ['craft-and-ai', 'Craft and AI', 'Where AI helps, and where people lead', 'ai'],
-  ['compare', 'Jungle vs alternatives', 'Hiring, agencies, freelancers or AI tools', 'sys'],
+  ['our-story', 'Our story', 'Where ideas grow', 'copy'],
+  ['our-approach', 'Our approach', 'Seed, Leaf, Dot', 'camp'],
+  ['philosophy', 'Philosophy', 'Ideas grow when creativity has room', 'chat'],
+  ['who-we-work-with', 'Who we work with', 'People who believe in creativity', 'sys'],
   ['faq', 'FAQ', 'Straight answers to common questions', 'chat'],
 ];
-const WHY_MENU = `<div class="mega mega-sm" id="mega-why"><div class="mega-in" style="grid-template-columns:1fr">${`<div class="mcol"><a class="mh mh-g" href="why.html">Why us <span aria-hidden="true">↗</span></a><ul>${WHY.map(([k, t, d, ic]) => `<li><a href="why.html?p=${k}"><span><b>${t}</b><small>${d}</small></span>${svgI(ic in IC ? ic : 'chat')}</a></li>`).join('')}</ul></div>`}</div></div>`;
+const WHY_MENU = `<div class="mega mega-sm" id="mega-why"><div class="mega-in" style="grid-template-columns:1fr">${`<div class="mcol"><a class="mh mh-g" href="why.html">Studio <span aria-hidden="true">↗</span></a><ul>${WHY.map(([k, t, d, ic]) => `<li><a href="why.html?p=${k}"><span><b>${t}</b><small>${d}</small></span>${svgI(ic in IC ? ic : 'chat')}</a></li>`).join('')}</ul></div>`}</div></div>`;
 // ── chrome
 document.body.insertAdjacentHTML('afterbegin', `
 <a class="skip" href="#main">Skip to content</a>
@@ -103,15 +98,15 @@ document.body.insertAdjacentHTML('afterbegin', `
 <nav><a class="logo" href="index.html" aria-label="Jungle, home">${LOGO_NAV}</a>
   <button class="menu" aria-expanded="false" aria-controls="nav-links">Menu</button>
   <div class="links" id="nav-links">
-    <a href="work.html" data-p="work">Work</a><div class="has-mega"><button class="mega-btn" data-p="services" aria-expanded="false" aria-controls="mega">Services <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>${MEGA}</div><div class="has-mega"><button class="mega-btn" data-p="why" aria-expanded="false" aria-controls="mega-why">Why us <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>${WHY_MENU}</div>
+    <a href="work.html" data-p="work">Work</a><div class="has-mega"><button class="mega-btn" data-p="services" aria-expanded="false" aria-controls="mega">Services <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>${MEGA}</div><div class="has-mega"><button class="mega-btn" data-p="why" aria-expanded="false" aria-controls="mega-why">Studio <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>${WHY_MENU}</div>
     <a href="contact.html" data-p="contact">Contact</a><a class="btn" href="contact.html">Start a project</a></div></nav>`);
 document.body.insertAdjacentHTML('beforeend', `
 <footer class="cta">${page === 'contact' || page === 'home' ? '' : `
-  <p class="cta-line reveal">Good ideas deserve good execution<span class="dot">.</span></p>
+  <p class="cta-line reveal">Where ideas grow<span class="dot">.</span></p>
   <div class="cta-row"><a class="btn" href="contact.html">Start a project <span aria-hidden="true">→</span></a>
   <a class="btn btn-2" href="mailto:ronij.jungle@gmail.com">ronij.jungle@gmail.com</a></div>`}
   <div class="foot">
-    <div><img class="foot-logo" src="assets/logo-light.svg" alt="Jungle." width="454" height="167"><small>A design-led creative agency.<br>Design, motion, digital, content and AI services.</small></div>
+    <div><img class="foot-logo" src="assets/logo-light.svg" alt="Jungle." width="454" height="167"><small>A design-led creative agency.<br>Where ideas grow.</small></div>
     <div><span class="label">Site</span><a href="work.html">Work</a><a href="services.html">Services</a><a href="contact.html">Contact</a></div>
     <div><span class="label">Follow</span><a href="https://instagram.com/jungledesigns">Instagram</a><a href="https://designbyjungle.com">designbyjungle.com</a></div>
     <div><span class="label">Say hello</span><a href="mailto:ronij.jungle@gmail.com">ronij.jungle@gmail.com</a><small>© 2026 Jungle.</small></div>
@@ -190,81 +185,19 @@ if (page === 'home') {
   $('#logos').innerHTML = logoRow.repeat(4);
 
   // Split media
-  $('#m-ai').insertAdjacentHTML('afterbegin', img('assets/stock/h-ai.jpg', 'A designer working at a laptop'));
-  $('#m-partner').insertAdjacentHTML('afterbegin', img('assets/stock/h-partner.jpg', 'A marketing team working together around a table') +
+  $('#m-ai').insertAdjacentHTML('afterbegin', img('assets/stock/h-ai.jpg', 'A designer at work'));
+  $('#m-partner').insertAdjacentHTML('afterbegin', img('assets/stock/h-partner.jpg', 'A team working together around a table') +
     '<a class="play" href="work.html" aria-label="See the work"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></a>');
 
-  // Ways of working: three small animated scenes that act out each title.
-  const SCENES = {
-    flex: `<div class="sc sc-flex"><div class="seg"><i></i><span>Project</span><span>Ongoing</span><span>Campaign</span></div>
-      <div class="blocks"><b></b><b></b><b></b><b></b></div></div>`,
-    team: `<div class="sc sc-team"><svg class="arc" viewBox="0 0 220 90" aria-hidden="true"><path id="arcp" d="M20 80 Q110 -20 200 80" fill="none"/><circle r="5" class="fly"><animateMotion dur="3.2s" repeatCount="indefinite" rotate="auto"><mpath href="#arcp"/></animateMotion></circle></svg>
-      <span class="pin pin-a">Nepal</span><span class="pin pin-b">Worldwide</span>
-      <div class="avs"><span>D</span><span>M</span><span>E</span></div></div>`,
-    owner: `<div class="sc sc-chat"><p class="m in">Need 12 matchday posts by Friday?</p><p class="m typing"><i></i><i></i><i></i></p>
-      <p class="m out">On it. I’ll own it end to end.</p><p class="m in done">Delivered <b>✓✓</b></p></div>`,
-  };
-  const F = [
-    ['c-g', 'flex', 'Flexible by design.', 'One project, ongoing support or a full campaign. Change gears as your plans do.'],
-    ['c-i', 'team', 'A small, senior team.', 'Designers, motion artists and editors in Nepal, working with clients around the world.'],
-    ['c-m', 'owner', 'One point of contact.', 'One person owns your project from brief to final file, so nothing gets lost.'],
-  ];
-  $('#fcards').innerHTML = F.map(([c, k, t, d]) => `<article class="fcard ${c} reveal" tabindex="0"><div class="fm fg" aria-hidden="true">${SCENES[k]}</div><div class="fb"><h3 class="w">${t}</h3><p>${d}</p></div></article>`).join('');
 
 
-  // Services flow: pills → beam → J. hub → arrows → teams.
-  const thumbs = { 'Ad creative': 'nepathya-auckland', 'Motion design': 'trn-fest', 'Illustration design': '1974-ad-tour', 'Packaging and merchandise design': 'lumbini-all-stars', 'AI-powered creative': 'glory-tour', 'Social media creative': 'janakpur-bolts' };
-  const cover = slug => (PROJECTS.find(p => p.slug === slug) || {}).img;
-  const all = DISCIPLINES.flatMap(([g, , list]) => list.map(n => [n, g]));
-  const tone = [0, 3, 1, 5, 2, 4, 0, 1, 3, 2, 4, 5, 1, 0, 2, 3, 4, 5, 1];
-  $('#pills').innerHTML = all.map(([n, g], i) => { const im = null;
-    return `<li><a class="pill c${tone[i % tone.length]}${im ? ' t' : ''}" style="--i:${i}" href="services.html#${g.split(' ')[0].toLowerCase()}">${im ? `<img src="${im}" alt="" loading="lazy">` : ''}${n}</a></li>`; }).join('');
-  $('.hub .jt').innerHTML = `<span style="display:flex;align-items:flex-end;gap:4%;width:56%">${LOGO_NAV.split('<span')[0].replace('class="lj"', 'style="width:70%;height:auto;color:var(--ink)"')}<i style="width:22%;aspect-ratio:1;border-radius:50%;background:var(--green);margin-bottom:6%"></i></span>`;
-  const TEAMS = [ // [label, x%, y%, size, project image, label tone]
-    ['Social', 26, 50, 128, 'janakpur-bolts', 'c0'], ['Performance', 30, 14, 84, 'glory-tour', 'c5'], ['Comms', 14, 34, 76, 'trn-fest', 'c1'],
-    ['Demand gen', 22, 82, 82, '1974-ad-tour', 'c3'], ['Content', 86, 13, 100, 'nepathya-auckland', 'c1'], ['Product marketing', 62, 18, 74, 'lumbini-all-stars', 'c3'],
-    ['Brand and creative', 80, 50, 112, 'lumbini-all-stars', 'c5'], ['Events', 56, 84, 78, 'nepathya-auckland', 'c0'], ['Campaigns', 88, 86, 96, 'trn-fest', 'c1'],
-  ];
-  const teams = $('#teams');
-  teams.insertAdjacentHTML('beforeend', TEAMS.map(([t, x, y, sz, slug, c], i) => {
-    const ph = ['social', 'performance', 'comms', 'demand', 'content', 'product', 'brand', 'events', 'campaigns'][i];
-    return `<div class="team" style="left:${x}%;top:${y}%;--s:${sz}px;--i:${i}"><span class="tp"><img src="assets/stock/t-${ph}.jpg" alt="" width="160" height="160" loading="lazy"></span><b class="pill c${c.slice(1)}" style="opacity:1;transform:none;height:auto">${t}</b></div>`; }).join(''));
-  const drawArrows = () => {
-    const svg = $('#arrows'), r = teams.getBoundingClientRect();
-    svg.setAttribute('viewBox', `0 0 ${r.width} ${r.height}`);
-    svg.innerHTML = TEAMS.slice(0, 9).map(([, x, y], i) => {
-      const tx = r.width * x / 100, ty = r.height * y / 100, sx = -20, sy = r.height / 2;
-      const ex = sx + (tx - sx) * .78, ey = sy + (ty - sy) * .78, mx = (sx + ex) / 2;
-      const d = `M${sx},${sy} C${mx},${sy} ${mx},${ey} ${ex},${ey}`, len = Math.hypot(ex - sx, ey - sy) * 1.3;
-      return `<path d="${d}" style="--len:${len};--i:${i}"/>`; }).join('');
-  };
-  drawArrows(); addEventListener('resize', drawArrows);
-  const fio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); fio.unobserve(e.target); } }), { threshold: .25 });
-  fio.observe($('#flow'));
+  // Three service areas.
+  $('#areas').innerHTML = DISCIPLINES.map(([t, v, list, para], i) => `<a class="area reveal" href="services.html#${t.split(' ')[0].toLowerCase()}"><span class="an">0${i + 1}</span><h3 class="w">${t}</h3><p class="av">${v}</p><p class="muted">${para}</p><ul>${list.map(x => `<li>${x}</li>`).join('')}</ul><span class="alink">Explore ${ARROW}</span></a>`).join('');
 
   // Our work: mixed-size grid (big, small, small / small, small, big)
   const W = real.slice(0, 6);
   $('#wgrid').innerHTML = W.map((p, i) => `<a class="wk${i === 0 || i === 5 ? ' big' : ''} reveal" href="project.html?p=${p.slug}"><div class="wm">${img(p.img, p.title)}</div><h3 class="w">${p.title}</h3><p>${p.scope.slice(0, 3).join(', ')}</p></a>`).join('');
 
-  // Comparison table: Jungle. vs the usual alternatives. Rows rise in; ticks draw themselves.
-  const I = {
-    hire: '<path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM2 21v-1a6 6 0 0 1 12 0v1M16 3.5a4 4 0 0 1 0 7.5M22 21v-1a6 6 0 0 0-4-5.6"/>',
-    agency: '<path d="M3 21V7l9-4 9 4v14M9 21v-6h6v6M3 21h18"/>',
-    free: '<path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0"/>',
-    ai: '<path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/>',
-  };
-  const ico = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
-  const tick = c => `<svg class="tick" viewBox="0 0 26 26" style="--c:${c}" role="img" aria-label="Yes"><path d="M6 13.5l4.5 4.5L20 8.5"/></svg>`;
-  const ROWS = [
-    ['Jungle.', 'Designers, motion artists, writers and AI specialists working alongside your team, on your brand, on your dates.', null, [1, 1, 1, 1, 1, 1]],
-    ['In-house hire', 'One hire rarely covers design, motion, web and copy, and hiring takes months.', 'hire', [0, 0, 1, 1, 0, 1]],
-    ['Big agencies', 'Strong work, but slow, costly and built around rigid process.', 'agency', [0, 0, 1, 1, 0, 0]],
-    ['Freelancers', 'Great for one-offs, harder to rely on for steady volume.', 'free', [1, 1, 1, 0, 1, 1]],
-    ['AI tools only', 'Fast and cheap, but no judgement, no brand sense, no craft.', 'ai', [1, 1, 0, 0, 1, 0]],
-  ];
-  $('#vs-body').innerHTML = ROWS.map(([t, d, ic, v], r) => `<tr class="${r ? '' : 'us'}"><td><div class="who"><span class="ic">${r ? ico(I[ic]) : ''}</span><div><b>${t}</b><p>${d}</p></div></div></td>${v.map((y, c) => `<td>${y ? tick(c) : '<span class="no" role="img" aria-label="No"></span>'}</td>`).join('')}</tr>`).join('');
-  const rio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('in'), [...e.target.parentNode.children].indexOf(e.target) * 110); rio.unobserve(e.target); } }), { threshold: .4 });
-  $$('#vs-body tr').forEach(tr => reduce ? tr.classList.add('in') : rio.observe(tr));
 
   // Wins: real results from the work, two rows drifting opposite ways (no invented quotes)
   const win = p => `<a class="win" href="project.html?p=${p.slug}"><div class="who">${p.img ? img(p.img) : `<span class="art ${p.art}" style="position:relative;width:44px;height:44px;border-radius:50%;flex:none;overflow:hidden"></span>`}<div><b>${p.title}</b><span>${p.client.split(',')[0]}</span></div></div><p>${p.result}</p><span class="lnk">${sector(p)}</span></a>`;
@@ -273,11 +206,13 @@ if (page === 'home') {
 
 if (page === 'services') {
   const ex = { 'Creative Design': 'janakpur-bolts', 'Motion Design': 'nepathya-auckland', 'Digital Design': 'trn-fest', 'Content and Campaigns': '1974-ad-tour', 'AI Services': 'lumbini-all-stars' };
-  $('#disciplines').innerHTML = DISCIPLINES.map(([t, v, list], i) => { const key = t.split(' ')[0].toLowerCase();
+  $('#disciplines').innerHTML = DISCIPLINES.map(([t, v, list, para, seen], i) => { const key = t.split(' ')[0].toLowerCase();
     return `<section class="split rule reveal" id="${key}" style="padding-block:clamp(56px,7vw,112px);align-items:start">
       <div class="card"><div class="thumb"><div class="art"><img src="assets/stock/s-${key}.jpg" alt="" width="900" height="1125" loading="lazy"></div></div></div>
-      <div><h2 class="x" style="font-size:var(--t-head)">${hl(t)}.</h2><p class="v" style="font-size:var(--t-voice);color:var(--fg2);margin-top:8px">${v}</p>
-      <div class="tags mt">${list.map(x => `<a href="service.html?s=${slugify(x)}">${x}</a>`).join('')}</div></div></section>`; }).join('');
+      <div><p class="label" style="color:var(--fg2)">0${i + 1}</p><h2 class="x" style="font-size:var(--t-head);margin-top:8px">${hl(t)}.</h2><p class="v" style="font-size:var(--t-voice);color:var(--fg2);margin-top:8px">${v}</p>
+      <p class="lead" style="margin-top:20px">${para}</p>
+      <div class="tags mt">${list.map(x => `<a href="service.html?s=${slugify(x)}">${x}</a>`).join('')}</div>
+      <p class="label mt" style="color:var(--fg2)">Seen in</p><p>${seen.map(s => `<a href="project.html?p=${s}" style="text-decoration:underline;text-underline-offset:4px">${(PROJECTS.find(p => p.slug === s) || {}).title}</a>`).join(', ')}</p></div></section>`; }).join('');
   // headline dots for the injected h2s
   $$('#disciplines h2.x').forEach(h => h.innerHTML = h.innerHTML.replace(/\.$/, '<span class="dot">.</span>'));
 }
@@ -302,7 +237,7 @@ if (page === 'service') {
   <section class="inv pad sec"><h2 class="x reveal" style="font-size:var(--t-head)">What you ${hl("get")}.</h2>
     <div class="sv-gets">${gets.map((g, i) => `<div class="reveal"><b class="n">${String(i + 1).padStart(2, '0')}</b><p>${g}</p></div>`).join('')}</div></section>
   <section class="inv pad sec" style="padding-top:0"><h2 class="x reveal" style="font-size:var(--t-head)">How it ${hl("works")}.</h2>
-    <div class="steps mt">${[['Brief', 'Tell us what you need and when, in plain words.'], ['Direction', 'We share a route built on your brand.'], ['Production', 'Every format you need, with clear feedback rounds.'], ['Delivery', 'Organised files, on the agreed date.']].map(([a, b], i) => `<div class="step reveal"><b class="n">${i + 1}</b><div><h3 class="w">${a}</h3><p>${b}</p></div></div>`).join('')}</div></section>
+    <div class="steps s3 mt">${[['Seed', 'Tell us the idea, the question or the opportunity.'], ['Leaf', 'We explore, collaborate and design it into shape.'], ['Dot', 'The idea finds its final form, delivered as finished files.']].map(([a, b], i) => `<div class="step reveal"><b class="n">${i + 1}</b><div><h3 class="w">${a}</h3><p>${b}</p></div></div>`).join('')}</div></section>
   <section class="pad sec" id="sv-work"><h2 class="x reveal" style="font-size:var(--t-head)">Related ${hl("work")}.</h2>
     <div class="grid mt" style="padding:0">${work.map(card).join('')}</div></section>
   ${others.length ? `<section class="pad sec" style="padding-top:0"><h2 class="x reveal" style="font-size:var(--t-head)">More in ${hl(grp[0])}.</h2>
@@ -312,27 +247,20 @@ if (page === 'service') {
 }
 
 if (page === 'why') {
-  const k = new URLSearchParams(location.search).get('p') || 'how-it-works';
+  const k = new URLSearchParams(location.search).get('p') || 'our-story';
   const cur = WHY.find(w => w[0] === k) || WHY[0];
   document.title = `${cur[1]} | Jungle.`;
   const tabs = `<div class="chips why-tabs">${WHY.map(([kk, t]) => `<a class="chip${kk === cur[0] ? ' on' : ''}" href="why.html?p=${kk}"${kk === cur[0] ? ' aria-current="page"' : ''}>${t}</a>`).join('')}</div>`;
   const B = {
-    'how-it-works': `<div class="steps">${[['Brief', 'Tell us what you need, the formats and the date, in plain words. A call or a message both work.'], ['Direction', 'We come back with a route built on your brand, with a reason behind it.'], ['Production', 'Every format and size, with clear rounds of feedback in one thread.'], ['Delivery', 'Organised, named files on the agreed date. Ongoing clients get a steady weekly rhythm.']].map(([a, b], i) => `<div class="step reveal"><b class="n">${i + 1}</b><div><h3 class="w">${a}</h3><p>${b}</p></div></div>`).join('')}</div>
-      <div class="why-split mt"><div><h3 class="w">Ways to work with us</h3><p class="muted">Project by project, ongoing creative support, or full campaign production. Change between them as your plans change.</p></div><div><h3 class="w">What we need from you</h3><p class="muted">Your brand guidelines, a clear brief and one person who can give feedback. That’s it.</p></div></div>`,
-    'why-jungle': `<div class="dgrid" style="margin-top:0">${[['Scalable', 'More output, same headcount.', 'We take on the production load so your team can stay on the big ideas.'], ['Flexible', 'Say yes to more projects.', 'More hands or a new skill, we flex with your calendar.'], ['Responsive', 'Fast, without cutting corners.', 'Quick turnarounds with the same care for type, timing and detail.'], ['Reliable', 'One owner, no surprises.', 'Clear scope, realistic dates and files delivered the way you need them.']].map(([l, h, p]) => `<div class="reveal"><p class="label">${l}</p><h3 class="w" style="margin:10px 0">${h}</h3><p class="muted">${p}</p></div>`).join('')}</div>`,
-    'craft-and-ai': `<div class="why-split"><div class="reveal"><h3 class="w">Where AI helps</h3><ul class="why-list"><li>Resizing one design into every format</li><li>Versions and variations for testing</li><li>First drafts and moodboards</li><li>Repetitive production tasks</li></ul></div><div class="reveal"><h3 class="w">Where people lead</h3><ul class="why-list"><li>The idea and the concept</li><li>Typography, composition and timing</li><li>Your brand and its details</li><li>Every final check before delivery</li></ul></div></div>
-      <p class="lead mt reveal">AI makes us faster. It never replaces the designer’s eye, and nothing leaves Jungle without a person signing it off.</p>`,
-    'compare': `<div class="vs-scroll" style="margin-top:0"><table class="vs-t"><thead><tr><th scope="col"><span class="sr">Option</span></th><th scope="col">Speed</th><th scope="col">Flexibility</th><th scope="col">Craft</th><th scope="col">Reliability</th><th scope="col">Value</th><th scope="col">Human touch</th></tr></thead><tbody id="vs-body"></tbody></table></div>`,
-    'faq': [['Do you do branding?', 'No. We work with brands that already exist and make the creative that carries them, built on your guidelines.'], ['Will my work look like Jungle?', 'No. Our own brand is black, white and green. Your work follows your brand.'], ['How fast can you turn work around?', 'Most social and campaign assets take a few working days. Tell us your date and we’ll tell you honestly what’s possible.'], ['Can you work with our in-house team or agency?', 'Yes. We work as an extension of in-house teams, and as white-label production for agencies when agreed.'], ['Where is the team based?', 'In Nepal, working with clients in Nepal, Australia, New Zealand and beyond.'], ['How do we start?', 'Send a brief through the contact page. We reply within one working day.']].map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join(''),
+    'our-story': `<div class="prose"><p>Every great thing starts somewhere. A thought. A question. A possibility.</p><p>But ideas need more than imagination. They need curiosity to explore, creativity to develop and the right people to bring them to life.</p><p>We are Jungle. A design-led creative agency that believes in the power of ideas and what they can become.</p><p>We think differently, create thoughtfully and collaborate closely to turn possibilities into meaningful creative work.</p><p>From the first spark to the final detail, we create room for ideas to grow.</p><p><a class="btn" href="work.html">See our work <span aria-hidden="true">→</span></a></p></div>`,
+    'our-approach': `<div class="steps s3"><div class="step reveal"><b class="n">1</b><div><h3 class="w">Seed</h3><p>The beginning. Every great project starts with a seed: an idea, a question or an opportunity waiting to grow.</p></div></div><div class="step reveal"><b class="n">2</b><div><h3 class="w">Leaf</h3><p>The growth. Ideas develop through exploration, collaboration, creative thinking and design.</p></div></div><div class="step reveal"><b class="n">3</b><div><h3 class="w">Dot</h3><p>The outcome. The idea finds its final form. A creative decision becomes something tangible and meaningful.</p></div></div></div><div class="why-split mt"><div class="reveal"><h3 class="w">Why we exist</h3><p class="muted">To create an environment where ideas can grow into meaningful creative work that helps businesses move forward.</p></div><div class="reveal"><h3 class="w">How we get there</h3><p class="muted">To bring ideas to life through creative thinking, thoughtful design and purposeful execution, helping businesses communicate better, connect deeper and grow stronger.</p></div></div>`,
+    'philosophy': `<div class="steps s3"><div class="step reveal"><b class="n">1</b><div><h3 class="w">Explore with curiosity.</h3><p>Question the obvious, look beyond the expected and discover new possibilities.</p></div></div><div class="step reveal"><b class="n">2</b><div><h3 class="w">Create with intention.</h3><p>Bring ideas to life through thoughtful design, creative direction and purposeful execution.</p></div></div><div class="step reveal"><b class="n">3</b><div><h3 class="w">Grow together.</h3><p>Collaborate with clients, share perspectives and build something better together.</p></div></div></div><div class="why-split mt"><div class="reveal"><h3 class="w">Where we are heading</h3><p class="muted">To become a recognised creative agency known for growing ideas into distinctive, meaningful and impactful work across industries and borders.</p></div><div class="reveal"><h3 class="w">Our promise</h3><p class="muted">Creating the right conditions for ideas to grow.</p></div></div>`,
+    'who-we-work-with': `<div class="aud"><div class="reveal"><b class="w">Ambitious founders</b><p>People looking to turn their vision into something recognisable.</p></div><div class="reveal"><b class="w">Growing businesses</b><p>Businesses looking for consistent, quality creative communication.</p></div><div class="reveal"><b class="w">Marketing teams</b><p>Teams seeking a dependable creative partner.</p></div><div class="reveal"><b class="w">Established businesses</b><p>Companies looking for fresh perspectives and stronger creative execution.</p></div><div class="reveal"><b class="w">International clients</b><p>Businesses looking for creative collaboration and thoughtful design solutions.</p></div></div>`,
+    'faq': `<details><summary>Who do you work with?</summary><p>Ambitious founders, growing and established businesses, marketing teams and international clients, anyone who believes in the value of creativity.</p></details><details><summary>Can you work with our in-house team or agency?</summary><p>Yes. We believe better ideas grow together, so we work alongside your team and share the thinking as we go.</p></details><details><summary>Where is the team based?</summary><p>In Kathmandu, working with clients in Nepal, Australia, New Zealand and beyond.</p></details><details><summary>How fast can you turn work around?</summary><p>Most social and campaign assets take a few working days. Tell us your date and we’ll tell you honestly what’s possible.</p></details><details><summary>How do we start?</summary><p>Send a brief through the contact page, or just tell us the idea. We reply within one working day.</p></details>`,
   };
-  $('#why').innerHTML = `<header class="ph"><p class="sv-crumb"><a href="why.html">Why us</a></p><h1 class="x words">${hl(cur[1])}.</h1><p class="lead">${cur[2]}.</p>${tabs}</header>
+  $('#why').innerHTML = `<header class="ph"><p class="sv-crumb"><a href="why.html">Studio</a></p><h1 class="x words">${hl(cur[1])}.</h1><p class="lead">${cur[2]}.</p>${tabs}</header>
     <section class="inv pad sec">${B[cur[0]]}</section>`;
-  if (cur[0] === 'compare') {
-    const tick = c => `<svg class="tick" viewBox="0 0 26 26" style="--c:${c}" role="img" aria-label="Yes"><path d="M6 13.5l4.5 4.5L20 8.5"/></svg>`;
-    const R = [['Jungle.', 'Designers, motion artists and writers working alongside your team.', [1, 1, 1, 1, 1, 1]], ['In-house hire', 'One hire rarely covers design, motion, web and copy, and hiring takes months.', [0, 0, 1, 1, 0, 1]], ['Big agencies', 'Strong work, but slow, costly and built around rigid process.', [0, 0, 1, 1, 0, 0]], ['Freelancers', 'Great for one-offs, harder to rely on for steady volume.', [1, 1, 1, 0, 1, 1]], ['AI tools only', 'Fast and cheap, but no judgement, no brand sense, no craft.', [1, 1, 0, 0, 1, 0]]];
-    $('#vs-body').innerHTML = R.map(([t, d, v], r) => `<tr class="in${r ? '' : ' us'}"><td><div class="who"><div><b>${t}</b><p>${d}</p></div></div></td>${v.map((y, c) => `<td>${y ? tick(c) : '<span class="no" role="img" aria-label="No"></span>'}</td>`).join('')}</tr>`).join('');
-  }
-  $$('#why h1.x').forEach(h => { h.innerHTML = h.innerHTML.replace(/\.$/, '<span class="dot">.</span>'); let n = 0; h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|([^\s<]+)/g, (m, d, w) => d || `<span class="wd" style="--i:${n++}">${w}</span>`); h.classList.add('rise'); });
+  $$('#why h1.x').forEach(h => { h.innerHTML = h.innerHTML.replace(/\.$/, '<span class="dot">.</span>'); let n = 0; h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|(<span class="hl">.*?<\/span>)|([^\s<]+)/g, (m, d, hh, w) => d || `<span class="wd" style="--i:${n++}">${hh || w}</span>`); h.classList.add('rise'); });
 }
 
 if (page === 'work') {

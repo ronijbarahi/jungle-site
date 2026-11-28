@@ -429,3 +429,13 @@ body[data-page=work] .logo-track{display:flex;gap:40px;width:max-content;animati
 .prose{max-width:68ch;margin:0 auto;font-size:clamp(18px,1.3vw,21px);line-height:1.7}
 .prose p+p{margin-top:1.2em}
 @media(max-width:900px){.notes-grid{grid-template-columns:1fr}}
+
+/* Brand 1.4 content pass: three-step rows and audience list */
+.steps.s3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:800px){.steps.s3{grid-template-columns:1fr}}
+.aud{margin-top:clamp(40px,5vw,72px)}
+.aud>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:24px;padding:28px 0;border-top:1px solid var(--line-2)}
+.aud b{font-size:clamp(22px,2vw,32px);font-weight:500;letter-spacing:-.01em}
+.aud p{color:var(--fg2);max-width:46ch}
+@media(max-width:700px){.aud>div{grid-template-columns:1fr;gap:8px}}
+.steps.s3 .step{justify-content:flex-start;gap:clamp(40px,5vw,72px);min-height:260px}

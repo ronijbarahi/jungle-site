@@ -147,7 +147,7 @@ body.go .rise{opacity:1;transform:none}
 
 /* ───── Jungle. styling ───── */
 .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(40px,5vw,72px)}
-.sec-head h2,.nums h2,.feat h2,.diff h2,.wins h2,.flow-h,.vs h2{font-size:var(--t-head);max-width:18ch}
+.sec-head h2,.nums h2,.feat h2,.diff h2,.wins h2,.flow-h,.vs h2,#sld-h,#svc-h,#au-h{font-size:var(--t-head);max-width:18ch}
 .feat h2,.nums h2,.diff h2,.wins h2,.flow-h{text-align:center;margin-inline:auto}
 
 /* clients strip on Paper */
@@ -389,3 +389,17 @@ body.go .rise{opacity:1;transform:none}
 @keyframes typ{0%{opacity:0;max-height:0;padding:0 14px}5%,18%{opacity:1;max-height:40px;padding:12px 14px}22%,100%{opacity:0;max-height:0;padding:0 14px;margin:-8px 0 0}}
 @keyframes td{0%,100%{opacity:.3;transform:none}50%{opacity:1;transform:translateY(-3px)}}
 @media(prefers-reduced-motion:reduce){.m{opacity:1;transform:none}.m.typing{display:none}.blocks b:nth-child(n+2){flex:1;opacity:1}}
+
+/* Three service areas */
+.areas{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,32px);margin-top:clamp(40px,5vw,72px)}
+.area{display:flex;flex-direction:column;gap:12px;padding:clamp(24px,2.4vw,36px);background:var(--panel);border-radius:var(--r);transition:background .3s}
+.area:hover{background:var(--mint)}
+.area .an{font:500 14px "General Sans",sans-serif;color:var(--fg2)}
+.area h3{font-size:clamp(26px,2.4vw,40px);line-height:1.08;letter-spacing:-.015em}
+.area .av{font:400 clamp(18px,1.5vw,22px)/1.3 "General Sans",sans-serif}
+.area .muted{max-width:34ch}
+.area ul{list-style:none;margin:12px 0 auto;padding:0}
+.area li{padding:11px 0;border-top:1px solid var(--line-2);font-size:16px}
+.area .alink{margin-top:24px;display:inline-flex;gap:8px;align-items:center;font-weight:500;text-decoration:underline;text-underline-offset:4px}
+.area .alink svg{width:18px;height:18px}
+@media(max-width:900px){.areas{grid-template-columns:1fr}}
