@@ -468,3 +468,23 @@ body[data-page=home] footer.cta{padding-top:clamp(48px,5vw,80px)}
   #zf3{width:46vw!important;height:28vh!important}#zf4{width:34vw!important;height:16vh!important}
   .zh-btxt{font-size:17px;padding:0 20px}
 }
+
+/* Studio page (one long page) */
+.st-hero h1{max-width:none}
+.st-photo{position:relative;margin:0 .75vw;border-radius:var(--r);overflow:hidden;aspect-ratio:16/9;background:var(--panel)}
+.st-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 62%;display:block}
+.st-card{position:absolute;left:clamp(16px,2.4vw,40px);bottom:clamp(16px,2.4vw,40px);background:var(--mint);color:var(--graphite);padding:clamp(18px,2vw,30px) clamp(22px,2.6vw,40px);border-radius:var(--r);font-size:clamp(20px,2.4vw,40px);line-height:1.1;letter-spacing:-.02em;max-width:min(80%,520px)}
+.st-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,5vw,96px);align-items:start}
+.st-h{font-size:clamp(34px,4.2vw,68px);font-weight:400;letter-spacing:-.03em;line-height:1.02;position:sticky;top:110px}
+.st-prose{margin:0;max-width:60ch}
+.st-top{padding-top:0}
+.st-note{margin-top:clamp(28px,3vw,48px);max-width:52ch;font-size:clamp(18px,1.3vw,21px);line-height:1.6}
+.st-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6vw;padding:0 .75vw}
+.st-strip a{display:block}.st-strip small{display:block;margin-top:12px;font-size:14px}
+.st-strip .zh-im{aspect-ratio:4/5}.st-strip .zh-im img{height:100%;object-fit:cover}
+.st-phil p{font-size:clamp(18px,1.3vw,21px);line-height:1.6;max-width:56ch}.st-phil p+p{margin-top:1em}.st-phil b{font-weight:500}
+.st-aud,.st-val{margin-top:0}.st-val{margin-top:clamp(36px,4vw,64px)}
+.st-faq{max-width:64ch}
+.st-end{min-height:60vh;display:flex;flex-direction:column;justify-content:center;gap:32px}
+.st-big{font-size:clamp(40px,7vw,120px);font-weight:400;letter-spacing:-.035em;line-height:.98;max-width:14ch}
+@media(max-width:820px){.st-grid{grid-template-columns:1fr}.st-h{position:static}.st-strip{grid-template-columns:1fr}.st-photo{aspect-ratio:4/5}}
