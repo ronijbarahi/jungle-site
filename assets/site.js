@@ -218,9 +218,13 @@ if (page === 'why') {
   const real = PROJECTS.filter(p => p.img);
   const strip = ['janakpur-bolts','nepathya-auckland','trn-fest'].map(sl => real.find(p => p.slug === sl)).filter(Boolean);
   const VAL = [['Curious','We ask the questions behind the brief, and look past the obvious answer.'],['Bold','We back good ideas with confidence, and make work people notice.'],['Playful','We enjoy what we do. It shows in the work, and in how we work with you.'],['Thoughtful','Every choice has a reason, from the first sketch to the final detail.']];
+  const SS = [['assets/studio/photo.jpg', 17, ], ['assets/stock/s-motion.jpg', 15], ['assets/stock/h-relief.jpg', 19], ['assets/studio/g4.jpg', 11], ['assets/stock/s-creative.jpg', 13], ['assets/studio/g6.jpg', 12], ['assets/stock/s-content.jpg', 14]];
   $('#why').innerHTML = `
-  <header class="ph st-hero"><p class="sv-crumb"><a href="index.html">Jungle.</a></p><h1 class="x words">${hl('Studio')}.</h1><p class="lead">A design-led creative agency in Kathmandu, where ideas have room to grow.</p></header>
-  <div class="st-photo reveal"><img src="assets/studio/photo.jpg" alt="The Jungle team at work in the Kathmandu studio" width="1050" height="1400"><div class="st-card"><span>A home for ideas to grow.</span></div></div>
+  <section class="ss" id="ss" aria-label="Studio"><div class="ss-stick">
+    <div class="ss-tiles" aria-hidden="true">${SS.map(([f, w]) => `<div class="ss-i" style="--w:${w}vw"><img src="${f}" alt="" width="600" height="800"></div>`).join('')}</div>
+    <div class="ss-b1"><p class="ss-tag">Studio</p><h1 class="ss-h">${'We’re curious thinkers, makers and storytellers who help ideas '.split(' ').filter(Boolean).map(w => `<span class="sw">${w}</span>`).join(' ')} <span class="sw"><span class="hl">grow</span>.</span></h1></div>
+    <div class="ss-b2"><p class="ss-tag">How we work</p><p class="ss-p">From the first question to the final detail, we turn ideas into meaningful creative work. From Kathmandu, with clients near and far.</p></div>
+  </div></section>
   <section class="inv pad sec st-sec" id="our-story"><div class="st-grid"><div><h2 class="st-h">Our <span class="hl">story</span></h2><figure class="st-fig st-fig-s reveal"><img src="assets/stock/s-creative.jpg" alt="Colour swatches and sketches on a designer’s desk" loading="lazy" data-par="0.08"></figure></div><div class="prose st-prose"><p>Every great thing starts somewhere. A thought. A question. A possibility.</p><p>But ideas need more than imagination. They need curiosity to explore, creativity to develop and the right people to bring them to life.</p><p>We are Jungle. A design-led creative agency that believes in the power of ideas and what they can become.</p><p>We think differently, create thoughtfully and collaborate closely to turn possibilities into meaningful creative work. From the first spark to the final detail, we create room for ideas to grow.</p></div></div></section>
   <section class="inv pad sec st-sec st-top" id="our-approach"><div class="st-grid"><h2 class="st-h">How we <span class="hl">work</span></h2><div><div class="steps s3"><div class="step reveal"><b class="n">1</b><div><h3 class="w">Seed</h3><p>The beginning. Every great project starts with a seed: an idea, a question or an opportunity waiting to grow.</p></div></div><div class="step reveal"><b class="n">2</b><div><h3 class="w">Leaf</h3><p>The growth. Ideas develop through exploration, collaboration, creative thinking and design.</p></div></div><div class="step reveal"><b class="n">3</b><div><h3 class="w">Dot</h3><p>The outcome. The idea finds its final form. A creative decision becomes something tangible and meaningful.</p></div></div></div><p class="st-note">Why we exist: to create an environment where ideas can grow into meaningful creative work that helps businesses move forward.</p></div></div></section>
   <div class="st-strip">${strip.map(p => `<a class="reveal" href="project.html?p=${p.slug}"><div class="zh-im">${pic(p.img, p.title)}</div><small>${p.title}</small></a>`).join('')}</div>
@@ -230,6 +234,26 @@ if (page === 'why') {
   <section class="inv pad sec st-sec" id="faq"><div class="st-grid"><h2 class="st-h">Straight <span class="hl">answers</span></h2><div class="st-faq"><details><summary>Can you work with our in-house team or agency?</summary><p>Yes. We believe better ideas grow together, so we work alongside your team and share the thinking as we go.</p></details><details><summary>Where is the team based?</summary><p>In Kathmandu, working with clients in Nepal, Australia, New Zealand and beyond.</p></details><details><summary>How fast can you turn work around?</summary><p>Most social and campaign assets take a few working days. Tell us your date and we’ll tell you honestly what’s possible.</p></details><details><summary>How do we start?</summary><p>Send a brief through the contact page, or just tell us the idea. We reply within one working day.</p></details></div></div></section>
   <section class="on-green pad sec st-end"><h2 class="st-big">Got an idea that <span class="hl">needs</span> room?</h2><p><a class="btn" href="contact.html">Start a project <span aria-hidden="true">→</span></a></p></section>`;
   $$('#why h1.x').forEach(h => { h.innerHTML = h.innerHTML.replace(/\.$/, '<span class="dot">.</span>'); let n = 0; h.innerHTML = h.innerHTML.replace(/(<span class="dot">.*?<\/span>)|(<span class="hl">.*?<\/span>)|([^\s<]+)/g, (m, d, hh, w) => d || `<span class="wd" style="--i:${n++}">${hh || w}</span>`); h.classList.add('rise'); });
+  // Pinned Studio scene: photos drift at the edges while the statement lights up word by word, then the second line arrives.
+  (() => {
+    const ss = $('#ss'); if (!ss) return;
+    const tiles = $$('.ss-i', ss), words = $$('.sw', ss), b1 = $('.ss-b1', ss), b2 = $('.ss-b2', ss), wide = innerWidth > 820;
+    // [x0,y0,x1,y1] top-left in vw / vh, start near the edges and drift
+    const P = wide
+      ? [[-3, 38, -7, 18, 1.1], [82, 14, 88, -6, 1.15], [75, 68, 80, 52, 1.2], [18, 8, 22, -20, 1.1], [86, 44, 94, 36, 1.12], [-2, 74, 4, 60, 1.1], [36, 84, 32, 66, 1.15]]
+      : [[-8, 62, -10, 50, 1.1], [64, 4, 70, -6, 1.1], [58, 76, 62, 66, 1.12], [2, 4, 4, -8, 1.1], [70, 40, 80, 34, 1.1], [-4, 84, 0, 76, 1.1], [30, 88, 28, 78, 1.1]];
+    const cl = (v, a, b) => Math.min(1, Math.max(0, (v - a) / (b - a))), ease = t => t * t * (3 - 2 * t);
+    if (reduce) { ss.classList.add('static'); words.forEach(w => w.style.opacity = 1); return; }
+    let tick = false;
+    const run = () => { tick = false;
+      const r = ss.getBoundingClientRect(), p = cl(-r.top, 0, r.height - innerHeight), vw = innerWidth / 100, vh = innerHeight / 100;
+      tiles.forEach((t, i) => { const q = P[i], k = ease(p); t.style.transform = `translate(${(q[0] + (q[2] - q[0]) * k) * vw}px,${(q[1] + (q[3] - q[1]) * k) * vh}px) scale(${1 + (q[4] - 1) * k})`; });
+      words.forEach((w, i) => { w.style.opacity = (.14 + .86 * cl(p, .04 + i / words.length * .3, .1 + i / words.length * .3 + .06)).toFixed(3); });
+      const o1 = 1 - cl(p, .48, .56), o2 = cl(p, .58, .68) * (1 - cl(p, .94, 1));
+      b1.style.opacity = o1; b1.style.transform = `translateY(${-cl(p, .48, .56) * 24}px)`; b1.style.pointerEvents = o1 < .1 ? 'none' : '';
+      b2.style.opacity = o2; b2.style.transform = `translateY(${(1 - cl(p, .58, .68)) * 24}px)`; };
+    addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(run); } }, { passive: true }); addEventListener('resize', run); run();
+  })();
   // Motion: hero photo eases in as you scroll, images drift slightly (parallax).
   if (!reduce) {
     const ph = $('.st-photo img'), pars = $$('#why [data-par]'); let tick = false;
