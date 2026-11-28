@@ -117,9 +117,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
   background:transparent;color:var(--graphite);border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
 nav.scrolled,nav.mega-open,nav.open{background:var(--mw);border-bottom-color:rgba(28,30,28,.12)}
 nav .logo{display:inline-flex;align-items:flex-start;color:var(--graphite)}
-nav .logo svg{height:32px;width:auto;display:block;flex:none}
-nav .logo .lrest{display:block}
-nav .logo .lj{margin-right:0}
+nav .logo svg{height:40px;width:auto;display:block;flex:none}
 nav .logo .d{fill:var(--mint)}
 /* on the gradient hero use the one-colour Graphite logo (guide p.41) */
 body[data-page=home] nav:not(.scrolled):not(.open):not(.mega-open) .logo .d{fill:var(--graphite)}
