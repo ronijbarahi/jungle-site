@@ -82,15 +82,6 @@ DISCIPLINES.forEach(([g, , list]) => list.forEach(n => MENU_GROUP[n] = g.split('
 const MEGA = `<div class="mega" id="mega"><div class="mega-in">${MENU.map(col => { let h = ''; for (let i = 0; i < col.length; i += 2) h += mHead(col[i]) + `<ul>${col[i + 1].map(mItem).join('')}</ul>`; return `<div class="mcol">${h}</div>`; }).join('')}</div></div>`;
 
 
-// "Why us" pages (why.html?p=<slug>), one template.
-const WHY = [
-  ['our-story', 'Our story', 'Where ideas grow', 'copy'],
-  ['our-approach', 'Our approach', 'Seed, Leaf, Dot', 'camp'],
-  ['philosophy', 'Philosophy', 'Ideas grow when creativity has room', 'chat'],
-  ['who-we-work-with', 'Who we work with', 'People who believe in creativity', 'sys'],
-  ['faq', 'FAQ', 'Straight answers to common questions', 'chat'],
-];
-const WHY_MENU = `<div class="mega mega-sm" id="mega-why"><div class="mega-in" style="grid-template-columns:1fr">${`<div class="mcol"><a class="mh mh-g" href="why.html">Studio <span aria-hidden="true">↗</span></a><ul>${WHY.map(([k, t, d, ic]) => `<li><a href="why.html#${k}"><span><b>${t}</b><small>${d}</small></span>${svgI(ic in IC ? ic : 'chat')}</a></li>`).join('')}</ul></div>`}</div></div>`;
 // ── chrome
 document.body.insertAdjacentHTML('afterbegin', `
 <a class="skip" href="#main">Skip to content</a>
@@ -98,7 +89,7 @@ document.body.insertAdjacentHTML('afterbegin', `
 <nav><a class="logo" href="index.html" aria-label="Jungle, home">${LOGO_NAV}</a>
   <button class="menu" aria-expanded="false" aria-controls="nav-links">Menu</button>
   <div class="links" id="nav-links">
-    <a href="work.html" data-p="work">Work</a><div class="has-mega"><button class="mega-btn" data-p="services" aria-expanded="false" aria-controls="mega">Services <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>${MEGA}</div><div class="has-mega"><button class="mega-btn" data-p="why" aria-expanded="false" aria-controls="mega-why">Studio <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>${WHY_MENU}</div>
+    <a href="work.html" data-p="work">Work</a><div class="has-mega"><button class="mega-btn" data-p="services" aria-expanded="false" aria-controls="mega">Services <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>${MEGA}</div><a href="why.html" data-p="why">Studio</a>
     <a href="contact.html" data-p="contact">Contact</a><a class="btn" href="contact.html">Start a project</a></div></nav>`);
 document.body.insertAdjacentHTML('beforeend', `
 <footer class="cta">${page === 'contact' || page === 'home' ? '' : `
