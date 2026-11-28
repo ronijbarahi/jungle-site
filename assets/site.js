@@ -269,8 +269,6 @@ if (page === 'work') {
   // Work page: collage, statement, logos, full-bleed 2-up tiles.
   const real = PROJECTS.filter(p => p.img), list = real.concat(PROJECTS.filter(p => !p.img));
   // Pinned hero: a Graphite wave rises over the big "Work." word, then full-screen project scenes stack up.
-  const feat = ['janakpur-bolts', 'lumbini-all-stars', 'nepathya-auckland', 'trn-fest', '1974-ad-tour'].map(sl => PROJECTS.find(p => p.slug === sl)).filter(p => p && p.img);
-  $('#wks').innerHTML = feat.map((p, i) => `<div class="ws-wrap"><a class="ws" href="project.html?p=${p.slug}" aria-label="${p.title}"><div class="ws-bg" style="background-image:url('${p.img}')"></div><div class="ws-poster">${pic(p.img, p.title)}</div><div class="ws-cap"><span class="ws-n">0${i + 1}</span><h2>${p.title}</h2><p>${p.scope.slice(0, 3).join(', ')}</p><span class="ws-go">View project <b aria-hidden="true">→</b></span></div></a></div>`).join('');
   (() => {
     const hero = $('#wkh'), wave = $('#wkw'), line = $('#wkl'), big = $('.wk-big'), cl = (v, a, b) => Math.min(1, Math.max(0, (v - a) / (b - a))), ease = t => t * t * (3 - 2 * t);
     const scs = $$('.ws-wrap');
@@ -288,11 +286,12 @@ if (page === 'work') {
   })();
   const CL = [['janakpur-bolts', 'Janakpur Bolts'], ['husqvarna', 'Husqvarna'], ['lumbini-all-stars', 'Lumbini All Stars'], ['plo-lubricants', 'PLO Lubricants'], ['ptt', 'PTT'], ['sk-zic', 'SK enmove ZIC']];
   $('#wlogos').innerHTML = CL.map(([f, n]) => `<span class="clogo"><img src="assets/clients/${f}.png" alt="${n}" width="120" height="120"></span>`).join('').repeat(4);
-  $('#grid').innerHTML = list.map(p => `<a class="tile2" data-c="${p.cat}" href="project.html?p=${p.slug}">${art(p)}
-    <div class="t2-cap"><h2 class="w">${p.title} <span aria-hidden="true">+</span></h2><p>${p.scope.slice(0, 3).join(', ')}</p></div></a>`).join('');
+  const card = (p, i) => `<a class="wk-card reveal" data-c="${p.cat}" href="project.html?p=${p.slug}"><div class="wk-im">${art(p)}</div><div class="wk-tx"><span class="wk-no">0${i + 1}</span><h3>${p.title}</h3><p>${p.brief}</p><span class="wk-tags">${p.scope.slice(0, 3).map(t => `<i>${t}</i>`).join('')}<i>${CATS[p.cat] || ''}</i></span></div></a>`;
+  const banner = '<aside class="wk-band" data-band><p>What could a good brand do for <span class="hl">yours</span>?</p><a class="btn" href="contact.html">Start a project <span aria-hidden="true">→</span></a></aside>';
+  $('#grid').innerHTML = list.map(card).map((c, i) => i === 3 ? banner + c : c).join('');
   const apply = f => {
     $$('[data-f]').forEach(x => { x.classList.toggle('on', x.dataset.f === f); x.setAttribute('aria-pressed', x.dataset.f === f); });
-    $$('#grid .tile2').forEach(c => c.hidden = f !== 'all' && c.dataset.c !== f);
+    $$('#grid .wk-card').forEach(c => c.hidden = f !== 'all' && c.dataset.c !== f); $$('#grid [data-band]').forEach(c => c.hidden = f !== 'all');
   };
   $$('[data-f]').forEach(b => b.onclick = () => { apply(b.dataset.f); history.replaceState(null, '', b.dataset.f === 'all' ? 'work.html' : `?f=${b.dataset.f}`); });
   const f0 = new URLSearchParams(location.search).get('f'); apply(f0 && CATS[f0] ? f0 : 'all');
