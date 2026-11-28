@@ -117,10 +117,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
   background:transparent;color:var(--graphite);border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
 nav.scrolled,nav.mega-open,nav.open{background:var(--mw);border-bottom-color:rgba(28,30,28,.12)}
 nav .logo{display:inline-flex;align-items:flex-start;color:var(--graphite)}
-nav .logo svg{height:28px;width:auto;display:block;flex:none}
-nav .logo .lrest{display:block;max-width:0;overflow:hidden;transition:max-width .8s var(--ease)}
-nav.scrolled .logo .lrest,nav.open .logo .lrest{max-width:140px}
+nav .logo svg{height:32px;width:auto;display:block;flex:none}
+nav .logo .lrest{display:block}
+nav .logo .lj{margin-right:0}
 nav .logo .d{fill:var(--mint)}
+/* on the gradient hero use the one-colour Graphite logo (guide p.41) */
+body[data-page=home] nav:not(.scrolled):not(.open):not(.mega-open) .logo .d{fill:var(--graphite)}
 nav .links{display:flex;align-items:center;gap:32px;font:500 15px/1 "General Sans",sans-serif}
 nav .links a{position:relative;color:var(--graphite);transition:opacity .3s}
 nav .links a:hover{opacity:.62}
